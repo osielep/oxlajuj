@@ -11,7 +11,7 @@ namespace Entidades
 
     }
 
-    public class TipoDeEvaluacionEntidad
+    public class TipoDeEvaluacionEntidad : TokenEntidad
     {
         public int IdTipoEvaluacion { get; set; }
         public string TxtNombreEvaluacion { get; set; }
@@ -19,7 +19,7 @@ namespace Entidades
         public int IntMaxPalabras { get; set; }
     }
 
-    public class WorksheetHeaderEntidad
+    public class WorksheetHeaderEntidad : TokenEntidad
     {
         public int IdWorksheetHeader { get; set; }
         public string ImgLogo { get; set; }
@@ -28,13 +28,13 @@ namespace Entidades
         public string TxtTipoWorksheet { get; set; }
     }
 
-    public class WorksheetBodyEntidad
+    public class WorksheetBodyEntidad : TokenEntidad
     {
         public int IdWorksheetBody { get; set; }
         public int IdWorksheetHeader { get; set; }
     }
 
-    public class WorksheetSeccionEntidad
+    public class WorksheetSeccionEntidad : TokenEntidad
     {
         public int IdWorksheetSeccion { get; set; }
         public int IdWorksheetBody { get; set; }
@@ -42,7 +42,7 @@ namespace Entidades
         public string TxtComposicion { get; set; }
     }
 
-    public class WorksheetPalabraEntidad
+    public class WorksheetPalabraEntidad : TokenEntidad
     {
         public int IdWorksheetPalabra { get; set; }
         public int IdWorksheetSeccion { get; set; }

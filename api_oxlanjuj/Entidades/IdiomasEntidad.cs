@@ -10,7 +10,7 @@ namespace Entidades
     {
     }
 
-    public class PalabraEntidad
+    public class PalabraEntidad : TokenEntidad
     {
         public int IdPalabra { get; set; }
         public string TxtPalabraEspanol { get; set; }
@@ -29,28 +29,28 @@ namespace Entidades
 
     }
 
-    public class TipoDepalabraEntidad
+    public class TipoDepalabraEntidad : TokenEntidad
     {
         public int IdTipoPalabra { get; set; }
         public string TxtNombreTipoPalabra { get; set; }
         public string TxtDescripcion { get; set; }
     }
 
-    public class IdiomaEntidad
+    public class IdiomaEntidad : TokenEntidad
     {
         public int IdIdioma { get; set; }
         public string TxtNombreIdioma { get; set; }
         public string TxtDescripcion { get; set; }
     }
 
-    public class CtaGramaticalEntidad
+    public class CtaGramaticalEntidad : TokenEntidad
     {
         public int IdCtaGramatical { get; set; }
         public string TxtNombreCtaGramatical { get; set; }
         public string TxtDescripcion { get; set; }
     }
 
-    public class AutorEntidad
+    public class AutorEntidad : TokenEntidad
     {
         public int IdAutor { get; set; }
         public string TxtNombreAutor { get; set; }

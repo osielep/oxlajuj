@@ -15,6 +15,7 @@ namespace Entidades
     {
         // public int IdUsuario { get; set; }
         public int IdRol { get; set; }
+        public int IdInstitucion { get; set; }
         public string TxtNombreUsuario { get; set; }
         public string TxtApellidoUsuario { get; set; }
         public string TxtEmailUsuario { get; set; }

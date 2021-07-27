@@ -41,8 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IdiomasEntidad.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AulaVirtualEntidad.cs" />
+    <Compile Include="SesionEntidad.cs" />
+    <Compile Include="TokenEntidad.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

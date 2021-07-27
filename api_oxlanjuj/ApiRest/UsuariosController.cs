@@ -14,7 +14,7 @@ namespace ApiRest
         [Route("api/AgregarUsuario")]
         public DataTable AgregarUsuario(Entidades.UsuarioEntidad entidad)
         {
-            return Datos.Usuarios.AgregarUsuario(entidad);
+            return Datos.UsuariosDatos.AgregarUsuario(entidad);
         }
     }
 }

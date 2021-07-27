@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Datos
 {
-    public class Usuarios
+    public class UsuariosDatos
     {
         private static readonly Funciones Funciones = new Funciones();
 

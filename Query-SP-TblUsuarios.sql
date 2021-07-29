@@ -198,3 +198,70 @@ BEGIN
 
 		SELECT Resultado = @Resultado
 END 
+
+
+
+/*
+	Tipo:	Actualizar datos de usuario
+	-------------------------------------
+	Autor:	Widman Esquivel
+	Fecha:	28/07/2021
+	-------------------------------------
+*/
+
+CREATE PROC Sesion.SPActualizarUsuario (
+											@IdUsuario				INT,
+											@IdRol					INT,
+											@IdInstitucion			INT,
+											@TxtNombreUsuario		NVARCHAR(50),
+											@TxtApellidoUsuario		NVARCHAR(50),
+											@TxtEmailUsuario		NVARCHAR(100),
+											@TxtPasswordUsuario		NVARCHAR(150),
+											@TxtGenero				NVARCHAR(15),
+											@TxtDescripcion			NVARCHAR(150),
+											@TxtImg					NVARCHAR(100)
+										)
+AS
+DECLARE @FilasAfectadas TINYINT,
+		@Resultado		INT
+BEGIN
+	BEGIN TRAN
+
+		BEGIN TRY
+			UPDATE Sesion.TblUsuario 
+			SET								IdRol				=	@IdRol,
+											IdInstitucion		=	@IdInstitucion,
+											TxtNombreUsuario	=	@TxtNombreUsuario,
+											TxtApellidoUsuario	=	@TxtApellidoUsuario,
+											TxtEmailUsuario		=	@TxtEmailUsuario,
+											TxtPasswordUsuario	=	@TxtPasswordUsuario,
+											TxtGenero			=	@TxtGenero,
+											TxtDescripcion		=	@TxtDescripcion,
+											TxtImg				=	TxtImg
+
+			WHERE							IdUsuario			=	@IdUsuario
+
+			--Si se hizo la transacción, se asigna las filas afectadas
+			SET @FilasAfectadas						= @@ROWCOUNT
+
+		END TRY
+
+		BEGIN CATCH
+			--Si no se hizo la transacción, se asigna 0
+			SET @FilasAfectadas						= 0
+		END CATCH
+
+		-- Se comprueba la transacción y se hace la operación correspondiente
+		IF(@FilasAfectadas > 0)
+			BEGIN
+				SET @Resultado = @IdUsuario
+				COMMIT -- Se confirma
+			END
+		ELSE
+			BEGIN
+				SET @Resultado = 0
+				ROLLBACK -- Se regresa al estado anterior
+			END
+
+		SELECT Resultado = @Resultado
+END 

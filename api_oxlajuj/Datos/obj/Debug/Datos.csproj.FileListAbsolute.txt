@@ -16,3 +16,12 @@ C:\Oxlanjuj\git\oxlajuj\api_oxlanjuj\Datos\obj\Debug\Datos.csproj.CoreCompileInp
 C:\Oxlanjuj\git\oxlajuj\api_oxlanjuj\Datos\obj\Debug\Datos.csproj.CopyComplete
 C:\Oxlanjuj\git\oxlajuj\api_oxlanjuj\Datos\obj\Debug\Datos.dll
 C:\Oxlanjuj\git\oxlajuj\api_oxlanjuj\Datos\obj\Debug\Datos.pdb
+C:\Oxlanjuj\git\oxlajuj\api_oxlajuj\Datos\bin\Debug\Datos.dll
+C:\Oxlanjuj\git\oxlajuj\api_oxlajuj\Datos\bin\Debug\Datos.pdb
+C:\Oxlanjuj\git\oxlajuj\api_oxlajuj\Datos\bin\Debug\Entidades.dll
+C:\Oxlanjuj\git\oxlajuj\api_oxlajuj\Datos\bin\Debug\Entidades.pdb
+C:\Oxlanjuj\git\oxlajuj\api_oxlajuj\Datos\obj\Debug\Datos.csprojAssemblyReference.cache
+C:\Oxlanjuj\git\oxlajuj\api_oxlajuj\Datos\obj\Debug\Datos.csproj.CoreCompileInputs.cache
+C:\Oxlanjuj\git\oxlajuj\api_oxlajuj\Datos\obj\Debug\Datos.csproj.CopyComplete
+C:\Oxlanjuj\git\oxlajuj\api_oxlajuj\Datos\obj\Debug\Datos.dll
+C:\Oxlanjuj\git\oxlajuj\api_oxlajuj\Datos\obj\Debug\Datos.pdb

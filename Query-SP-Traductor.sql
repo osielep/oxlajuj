@@ -1,10 +1,14 @@
 
 /*
-	Tipo:	Buscar palabra
-	-------------------------------------
-	Autor:	Widman Esquivel
-	Fecha:	30/07/2021
-	-------------------------------------
+	+---------------------------------------+
+	|	Tipo:	Buscar palabra				|
+	+---------------------------------------+
+	|	Autor:	Widman Esquivel				|
+	|	Fecha:	30/07/2021					|
+	+---------------------------------------+
+	|  Modificado: 05/08/2021				|
+	|  Detalle:	Se agrego autor				|
+	+---------------------------------------+
 */
 
 alter PROC Idiomas.SPBuscarPalabra (@TxtPalabraEspanol NVARCHAR(50))
@@ -18,10 +22,12 @@ BEGIN
 	p.TxtImg,
 	p.TxtAudio,
 	t.TxtNombreTipoPalabra,
-	g.TxtNombreCtaGramatical
+	g.TxtNombreCtaGramatical,
+	CONCAT (a.TxtNombreAutor, ' ', a.TxtApellidoAutor) as TxtAutor
+
 
 FROM
-	
+	Idiomas.TblAutor a,
 	Idiomas.TblCtaGramatical g,
 	Idiomas.TblIdioma i,
 	Idiomas.TblPalabra p,
@@ -29,7 +35,7 @@ FROM
 
 WHERE	
 	
-	p.IdAutor is null and
+	p.IdAutor = a.IdAutor and
 	p.IdCategoriaGramatical = g.IdCtaGramatical and
 	p.IdIdioma = i.IdIdioma and
 	p.IdTipoPalabra = t.IdTipoPalabra and
@@ -47,7 +53,7 @@ END
 	-------------------------------------
 */
 
-CREATE PROC SPBuscarOracionesDeEjemplo (@TxtPalabraEspanol NVARCHAR(50))
+ALTER PROC Idiomas.SPBuscarOracionesDeEjemplo (@TxtPalabraEspanol NVARCHAR(50))
 AS
 BEGIN
 	
@@ -58,7 +64,9 @@ BEGIN
 		i.TxtNombreIdioma,
 		t.TxtNombreTipoPalabra,
 		c.TxtNombreCtaGramatical,
-		CONCAT (o.TxOracionEspanol, ' // ', o.TxtOracionIdiomaMaya) as TxtOracionEjemplo
+		o.TxOracionEspanol,
+		o.TxtOracionIdiomaMaya
+	    
 	
 
 	from
@@ -79,4 +87,6 @@ BEGIN
 
 END
 
-exec SPBuscarOracionesDeEjemplo taltuza
+exec Idiomas.SPBuscarOracionesDeEjemplo taltuza
+
+CONCAT (o.TxOracionEspanol, ' // ', o.TxtOracionIdiomaMaya) as TxtOracionEjemplo

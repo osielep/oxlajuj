@@ -1,3 +1,13 @@
 textarea {
     resize: none;
 }
+
+#PalabraBuscar {
+    font-size: 3rem;
+    line-height: 2;
+}
+
+#TxtMejorResultado {
+    font-size: 3rem;
+    line-height: 2;
+}

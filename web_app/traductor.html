@@ -30,6 +30,9 @@
                             <a class="nav-link active" aria-current="page" href="#">Traductor</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="#">Colecciones</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="#">Cursos</a>
                         </li>
                         <li class="nav-item">
@@ -57,14 +60,14 @@
                 <div class="col col-lg-5 col-10">
                     <label for="inputPassword5" class="form-label text-success"><h6>Español</h6></label>
                     <div class="form-floating ">
-                        <textarea class="form-control shadow p-3 mb-5 bg-white rounded" placeholder="Leave a comment here" id="PalabraBuscar" style="height: 170px">árbol</textarea>
+                        <textarea class="form-control shadow p-3 mb-5 bg-white rounded" placeholder="Leave a comment here" id="PalabraBuscar" style="height: 170px"></textarea>
                         <label for="PalabraBuscar">Ingresa una palabra <br></label>
                     </div>
                 </div>
                 <div class="col col-lg-5 col-10 ">
                     <label for="inputPassword5 " class="form-label text-warning "><h6>Q'eqchi'</h6></label>
                     <div class="form-floating">
-                        <textarea class="form-control shadow p-3 mb-5 bg-white rounded" placeholder="Mejor resultado" id="TxtMejorResultado" style="height: 170px" readonly>amche'</textarea>
+                        <textarea class="form-control shadow p-3 mb-5 bg-white rounded" placeholder="Mejor resultado" id="TxtMejorResultado" style="height: 170px" readonly></textarea>
                         <label for="TxtMejorResultado">Mejor resultado</label>
                     </div>
                 </div>
@@ -108,12 +111,14 @@
                         <label for=" ">Definiciones</label>
                         <hr width="75% " />
                         <div id="def-traductor ">
-                            <h6><strong> árbol</strong></h6>
+                            <h6><strong> <span  id="DefPlEsp"></span></strong></h6>
                             <dl class="row">
                                 <dt class="col-sm-1"> </dt>
                                 <dd class="col-sm-11">
                                     <span><small class="text-muted"><em>nombre masculino</em></small></a></span><br>
-                                    <span><small class="text-muted"><em>sustantivo</em></small></span><br>
+                                    <span><small class="text-muted"><em><span id="CtaGramFrt"></span></em>
+                                    </small>
+                                    </span><br>
                                     <span>Planta de tronco leñoso, grueso y elevado que se ramifica a cierta altura del suelo formando la copa.</span>
                                 </dd>
                             </dl>
@@ -121,7 +126,9 @@
                             <dl class="row">
                                 <dt class="col-sm-1"></dt>
                                 <dd class="col-sm-11">
-                                    <span><small class="text-muted"><em>naturaleza</em></small></span>
+                                    <span><small class="text-muted"><em><span id="TipoPalrabFrt"></span></em>
+                                    </small>
+                                    </span>
                                 </dd>
                             </dl>
                         </div>
@@ -134,10 +141,10 @@
             <div class="col col-lg-5 col-10">
                 <div class="card">
                     <div class="card-body ">
-                        <label for=" ">Como usar <strong>arbol</strong>?</label>
+                        <label for=" ">¿Cómo usar <strong><span  id="ComoUsarFrt"></span></strong>?</label>
                         <hr width="75% " />
-                        <div id="def-traductor ">
-                            <dl class="row">
+                        <div id="deftraductor">
+                            <!-- <dl class="row">
                                 <dt class="col-sm-2">
                                     <small class="text-warning"><em>q'eqchi'</em></small>
                                     <small class="text-success "><em>español</em></small>
@@ -157,6 +164,7 @@
                                     <span>El palo brujo es bueno para leña.</span>
                                 </dd>
                             </dl>
+                            -->
                         </div>
                     </div>
                 </div>

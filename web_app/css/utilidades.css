@@ -11,3 +11,13 @@ textarea {
     font-size: 3rem;
     line-height: 2;
 }
+
+#HeaderCurso {
+    background-image: linear-gradient(to right, #11998e, #38ef7d);
+}
+
+.breadcrumb>li+li:before {
+    color: #ccc;
+    content: "/ ";
+    padding: 0 5px;
+}

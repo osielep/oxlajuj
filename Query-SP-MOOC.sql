@@ -1,18 +1,20 @@
 
 CREATE TABLE Aula.EspecializacionDetalle (
-	IdEspecializacionDetalle int PRIMARY KEY,
-	TxtNombreEspecializacion nvarchar(150) NOT NULL,
-	TxtDescripcion nvarchar(500) NOT NULL,
-	IntDescuento int,
-	IntEstado tinyint DEFAULT 1,
-	FechaIngreso datetime DEFAULT getdate(),
-	IdUsuarioAdmin int NULL
-)
+  [IdEspecializacionDetalle] int PRIMARY KEY,
+  TxtNombreEspecializacion nvarchar(150) NOT NULL,
+  [TxtDescripcion] nvarchar(500) NOT NULL,
+  ---------------------------
+  IntEstado tinyint DEFAULT 1,
+  FechaIngreso datetime DEFAULT getdate(),
+  IdUsuarioAdmin int NULL
+);
+
 
 CREATE TABLE Aula.EspecializacionProfesor (
 	IdEspecializacionProfesor int PRIMARY KEY,
 	IdEspecialziacionDetalle int NOT NULL,
 	IdProfesor int NOT NULL,
+	---------------------------
 	IntEstado tinyint DEFAULT 1,
 	FechaIngreso datetime DEFAULT getdate(),
 	IdUsuarioAdmin int NULL
@@ -21,6 +23,7 @@ CREATE TABLE Aula.EspecializacionProfesor (
 CREATE TABLE Aula.Profesor (
 	IdProfesor int PRIMARY KEY,
 	IdUsuario int NOT NULL,
+	---------------------------
 	IntEstado tinyint DEFAULT 1,
 	FechaIngreso datetime DEFAULT getdate(),
 	IdUsuarioAdmin int NULL
@@ -32,8 +35,8 @@ CREATE TABLE Aula.CursoDetalle (
 	TxtDescripcion nvarchar(500) NOT NULL,
 	TxtImagen nvarchar(150),
 	IntNotaMinima decimal(5,2) NOT NULL,
-	IntPrecioCurso decimal(10,2) NOT NULL,
-	IdEspecialziacionDetalle int NOT NULL,
+	IntPrecio decimal(10,2)  NULL,
+	IdEspecialziacionDetalle int NULL,
 	--------------------------------------
 	IntEstado tinyint DEFAULT 1,
 	FechaIngreso datetime DEFAULT getdate(),
@@ -51,7 +54,7 @@ CREATE TABLE Aula.CursoProfesor (
 )
 
 
-CREATE TABLE Aula.TblCursoCapitulo (
+CREATE TABLE Aula.CursoCapitulo (
 	IdCursoCapitulo INT PRIMARY KEY,
 	IdCursoDetalle INT NOT NULL,
 	IntNoCapitulo INT NOT NULL,
@@ -63,8 +66,8 @@ CREATE TABLE Aula.TblCursoCapitulo (
 )
 
 
-CREATE TABLE Aula.TblCursoMaterial (
-	IdCursoMaterial INT PRIMARY KEY,
+CREATE TABLE Aula.CapituloMaterial (
+	IdCapituloMaterial INT PRIMARY KEY,
 	IdCursoCapitulo INT NOT NULL,
 	IntNoMaterial INT NOT NULL,
 	IdTipoMaterial INT NOT NULL,
@@ -78,7 +81,7 @@ CREATE TABLE Aula.TblCursoMaterial (
 )
 
 
-CREATE TABLE Aula.TblTipoMaterial (
+CREATE TABLE Aula.TipoMaterial (
 	IdTipoMaterial INT PRIMARY KEY,
 	TxtTipoMaterial nvarchar(50) NOT NULL,
 	TxtDescripcion nvarchar(150) NOT NULL,
@@ -88,14 +91,13 @@ CREATE TABLE Aula.TblTipoMaterial (
 	IdUsuarioAdmin int NULL
 )
 
-CREATE TABLE Aula.TblEstudianteCursoAsignado (
-	IdCursoAsignado INT PRIMARY KEY,
+CREATE TABLE Aula.EstudianteAsignacion (
+	IdEstudianteAsignacion INT PRIMARY KEY,
+	IdCursoDetalle INT NOT NULL,
 	IdEstudiante INT NOT NULL,
-	IdAsignacionCursos INT NOT NULL,
 	FechaDeAsignacion DATETIME DEFAULT getdate(),
 	IdEstado INT NOT NULL,
-	FechaEstado datetime not null,
-	IntCalificacion decimal(5,2) NOT NULL,
+	IntNotaFinal decimal(5,2) NOT NULL,
 	IdCertificado INT DEFAULT 100001 NOT NULL,
 	UbicacionCertificado nvarchar(150) NULL,
 	--------------------------------------
@@ -105,20 +107,20 @@ CREATE TABLE Aula.TblEstudianteCursoAsignado (
 )
 
 
-CREATE TABLE Aula.TblEstudianteResultados (
+CREATE TABLE Aula.EstudianteResultados (
 	IdEstudianteResultados INT PRIMARY KEY,
-	IdCursoAsignado INT NOT NULL,
-	IdCursoMaterial INT NOT NULL,
+	IdEstudianteAsignacion INT NOT NULL,
+	IdCapituloMaterial INT NOT NULL,
 	FechaInicio datetime DEFAULT getdate(),
 	FechaFinallizacion datetime DEFAULT getdate(),
-	IntPuntajeObtenido INT NOT NULL,
+	IntPuntajeObtenido INT  NULL,
 	--------------------------------------
 	IntEstado tinyint DEFAULT 1,
 	FechaIngreso datetime DEFAULT getdate(),
 	IdUsuarioAdmin int NULL
 )
 
-CREATE TABLE Aula.TblEstudiante (
+CREATE TABLE Aula.Estudiante (
 	IdEstudiante INT PRIMARY KEY,
 	IntGrado INT NOT NULL,
 	IdUsuario INT NOT NULL,
@@ -139,13 +141,12 @@ CREATE TABLE Aula.Estado (
 	IdUsuarioAdmin int NULL
 )
 
-
-CREATE TABLE Aula.TblAsignacionCursos (
-	IdAsignacionCursos INT PRIMARY KEY,
-	IdCursoDetalle int NOT NULL,
-	IdAsignacionEspecializacion int NOT NULL,
-	FechaInicio datetime not null,
-	FechaFin datetime not null,
+CREATE TABLE Aula.HojaEncabezado (
+	IdHojaEncabezado INT PRIMARY KEY,
+	RefLogo NVARCHAR(250) NULL,
+	TxtDocente NVARCHAR(250) NULL,
+	FechaAplicacion NVARCHAR(200) NOT NULL,
+	TxtTipoHoja NVARCHAR(100) NULL,
 	--------------------------------------
 	IntEstado tinyint DEFAULT 1,
 	FechaIngreso datetime DEFAULT getdate(),
@@ -153,27 +154,41 @@ CREATE TABLE Aula.TblAsignacionCursos (
 )
 
 
-CREATE TABLE Aula.TblAsignacionEspecializacion (
-	IdAsignacionEspecializacion INT PRIMARY KEY,
-	IdEspecializacionDetalle int NOT NULL,
-	FechaInicio datetime not null,
-	FechaFin datetime not null,
+CREATE TABLE Aula.HojaCuerpo (
+	IdHojaCuerpo INT PRIMARY KEY,
+	IdHojaEncabezado INT,
 	--------------------------------------
 	IntEstado tinyint DEFAULT 1,
 	FechaIngreso datetime DEFAULT getdate(),
 	IdUsuarioAdmin int NULL
 )
 
-CREATE TABLE Aula.TblEstudianteEspecializacionAsignada (
-	IdEspecializacionAsignada INT PRIMARY KEY,
-	IdEstudiante int not null,
-	IdEspecialziacionDetalle int NOT NULL,
-	FechaDeAsignacion DATETIME DEFAULT getdate(),
-	IdEstado INT NOT NULL,
-	FechaEstado datetime not null,
-	IntCalificacion decimal(5,2) NOT NULL,
-	IdCertificado INT DEFAULT 100001 NOT NULL,
-	UbicacionCertificado nvarchar(150) NULL,
+
+CREATE TABLE Aula.HojaSeccion (
+	IdHojaSeccion INT PRIMARY KEY,
+	IdHojaCuerpo INT,
+	IdTipoEvaluacion INT,
+	--------------------------------------
+	IntEstado tinyint DEFAULT 1,
+	FechaIngreso datetime DEFAULT getdate(),
+	IdUsuarioAdmin int NULL
+)
+
+CREATE TABLE Aula.HojaPalabra (
+	IdHojaPalabra INT PRIMARY KEY,
+	IdHojaSeccion INT,
+	IdPalabra INT,
+	--------------------------------------
+	IntEstado tinyint DEFAULT 1,
+	FechaIngreso datetime DEFAULT getdate(),
+	IdUsuarioAdmin int NULL
+)
+
+CREATE TABLE Aula.TipoEvaluacion (
+	IdTipoEvaluacion INT PRIMARY KEY,
+	TxtNombreEvaluacion NVARCHAR(100) NOT NULL,
+	TxtDescripcion NVARCHAR(250) NOT NULL,
+	IntMaxPalabras INT NOT NULL,
 	--------------------------------------
 	IntEstado tinyint DEFAULT 1,
 	FechaIngreso datetime DEFAULT getdate(),

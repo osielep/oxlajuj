@@ -16,6 +16,14 @@ textarea {
     background-image: linear-gradient(to right, #11998e, #38ef7d);
 }
 
+#TopTraductor {
+    background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
+}
+
+#HYF {
+    background-image: linear-gradient(to right, #fff, #fff);
+}
+
 .breadcrumb>li+li:before {
     color: #ccc;
     content: "/ ";

@@ -64,149 +64,151 @@
 
     </div>
 
-    <div class="container">
-        <!--Inicio row translate-->
-        <div class="row">
-            <!-- row espacio-->
+    <main class="flex-shrink-0">
+        <div class="container">
+            <!--Inicio row translate-->
             <div class="row">
-                <p><br></p>
+                <!-- row espacio-->
+                <div class="row">
+                    <p><br></p>
+                </div>
+                <!-- row textarea translate-->
+                <div class="row justify-content-md-center">
+                    <div class="col col-lg-5 col-10">
+                        <label for="inputPassword5" class="form-label text-success"><h6>Español</h6></label>
+
+                        <div class="form-floating ">
+                            <textarea class="form-control shadow p-3 mb-5 bg-white rounded" placeholder="Leave a comment here" id="PalabraBuscar" style="height: 170px"></textarea>
+                            <label for="PalabraBuscar">Ingresa una palabra <br></label>
+
+                        </div>
+                    </div>
+
+                    <div class="col col-lg-5 col-10 ">
+                        <!--Row info-->
+                        <div class="row">
+                            <div class="col">
+                                <label for="inputPassword5 " class="form-label text-warning "><h6>Q'eqchi'</h6></label>
+                            </div>
+                            <div class="col  text-end">
+                                <span class=" badge rounded-pill bg-success"><i class="bi bi-clipboard"></i> Copiar</span>
+                                <span class="badge rounded-pill bg-danger"><i class="bi bi-flag-fill"></i> Reportar</span>
+                            </div>
+                        </div>
+                        <!--Row info-->
+                        <div class="form-floating">
+                            <textarea class="form-control shadow p-3 mb-5 bg-white rounded" placeholder="Mejor resultado" id="TxtMejorResultado" style="height: 170px" readonly></textarea>
+                            <label for="TxtMejorResultado">Mejor resultado</label>
+                        </div>
+                    </div>
+                </div>
+                <!-- row search button-->
+                <div class="row ">
+
+                    <div class="col text-center">
+                        <button onclick="BuscarPalabra(); OracionesDeEjemplo(); " type="button " class="btn btn-success btn-lg">Traducir</button>
+                    </div>
+                </div>
             </div>
-            <!-- row textarea translate-->
+            <!--Fin row translate-->
+
+            <br>
+
+            <!-- Inicio row otras busquedas-->
             <div class="row justify-content-md-center">
+                <div class="col-10">
+                    <div class="card">
+                        <div class="card-body">
+                            <span><small class="text-muted"><em>Búsquedas populares/</em></small></span>
+                            <span class="badge rounded-pill bg-primary">padre</span>
+                            <span class="badge rounded-pill bg-secondary">maestra</span>
+                            <span class="badge rounded-pill bg-success">dios</span>
+                            <span class="badge rounded-pill bg-warning text-dark">zapato</span>
+                            <span class="badge rounded-pill bg-info text-dark">árbol</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Fin row otras busquedas-->
+
+            <br>
+            <!--Inicio row datos de busqueda-->
+            <div class="row justify-content-md-center">
+
                 <div class="col col-lg-5 col-10">
-                    <label for="inputPassword5" class="form-label text-success"><h6>Español</h6></label>
-
-                    <div class="form-floating ">
-                        <textarea class="form-control shadow p-3 mb-5 bg-white rounded" placeholder="Leave a comment here" id="PalabraBuscar" style="height: 170px"></textarea>
-                        <label for="PalabraBuscar">Ingresa una palabra <br></label>
-
-                    </div>
-                </div>
-
-                <div class="col col-lg-5 col-10 ">
-                    <!--Row info-->
-                    <div class="row">
-                        <div class="col">
-                            <label for="inputPassword5 " class="form-label text-warning "><h6>Q'eqchi'</h6></label>
+                    <div class="card ">
+                        <div class="card-body ">
+                            <label for=" ">Definiciones</label>
+                            <hr width="75% " />
+                            <div id="def-traductor ">
+                                <h6><strong> <span  id="DefPlEsp"></span></strong></h6>
+                                <dl class="row">
+                                    <dt class="col-sm-1"> </dt>
+                                    <dd class="col-sm-11">
+                                        <span><small class="text-muted"><em>nombre masculino</em></small></a></span><br>
+                                        <span><small class="text-muted"><em><span id="CtaGramFrt"></span></em>
+                                        </small>
+                                        </span><br>
+                                        <!--  <span>Def.</span>-->
+                                    </dd>
+                                </dl>
+                                <h6><strong>categoria</strong></h6>
+                                <dl class="row">
+                                    <dt class="col-sm-1"></dt>
+                                    <dd class="col-sm-11">
+                                        <span><small class="text-muted"><em><i class="bi bi-piggy-bank-fill" ></i><span id="TipoPalrabFrt"></span></em>
+                                        </small>
+                                        </span>
+                                    </dd>
+                                </dl>
+                            </div>
                         </div>
-                        <div class="col  text-end">
-                            <span class=" badge rounded-pill bg-success"><i class="bi bi-clipboard"></i> Copiar</span>
-                            <span class="badge rounded-pill bg-danger"><i class="bi bi-flag-fill"></i> Reportar</span>
+                        <div class="card-fo">
+
                         </div>
                     </div>
-                    <!--Row info-->
-                    <div class="form-floating">
-                        <textarea class="form-control shadow p-3 mb-5 bg-white rounded" placeholder="Mejor resultado" id="TxtMejorResultado" style="height: 170px" readonly></textarea>
-                        <label for="TxtMejorResultado">Mejor resultado</label>
+                </div>
+                <div class="col col-lg-5 col-10">
+                    <div class="card">
+                        <div class="card-body ">
+                            <label for=" ">¿Cómo usar <strong><span  id="ComoUsarFrt"></span></strong>?</label>
+                            <hr width="75% " />
+                            <div id="deftraductor">
+                                <!-- <dl class="row">
+                                    <dt class="col-sm-2">
+                                        <small class="text-warning"><em>q'eqchi'</em></small>
+                                        <small class="text-success "><em>español</em></small>
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        <span>Xinxk’at li amche’.</span><br>
+                                        <span>El palo brujo me quemó.</span>
+                                    </dd>
+                                </dl>
+                                <dl class="row">
+                                    <dt class="col-sm-2">
+                                        <small class="text-warning"><em>q'eqchi'</em></small>
+                                        <small class="text-success "><em>español</em></small>
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        <span>Us cho’q si’ li amche’.</span><br>
+                                        <span>El palo brujo es bueno para leña.</span>
+                                    </dd>
+                                </dl>
+                                -->
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- row search button-->
-            <div class="row ">
 
-                <div class="col text-center">
-                    <button onclick="BuscarPalabra(); OracionesDeEjemplo(); " type="button " class="btn btn-success btn-lg">Traducir</button>
-                </div>
+                <p></p>
+                <p></p>
             </div>
+            <!--Fin row datos de busqueda-->
         </div>
-        <!--Fin row translate-->
-
-        <br>
-
-        <!-- Inicio row otras busquedas-->
-        <div class="row justify-content-md-center">
-            <div class="col-10">
-                <div class="card">
-                    <div class="card-body">
-                        <span><small class="text-muted"><em>Búsquedas populares/</em></small></span>
-                        <span class="badge rounded-pill bg-primary">padre</span>
-                        <span class="badge rounded-pill bg-secondary">maestra</span>
-                        <span class="badge rounded-pill bg-success">dios</span>
-                        <span class="badge rounded-pill bg-warning text-dark">zapato</span>
-                        <span class="badge rounded-pill bg-info text-dark">árbol</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Fin row otras busquedas-->
-
-        <br>
-        <!--Inicio row datos de busqueda-->
-        <div class="row justify-content-md-center">
-
-            <div class="col col-lg-5 col-10">
-                <div class="card ">
-                    <div class="card-body ">
-                        <label for=" ">Definiciones</label>
-                        <hr width="75% " />
-                        <div id="def-traductor ">
-                            <h6><strong> <span  id="DefPlEsp"></span></strong></h6>
-                            <dl class="row">
-                                <dt class="col-sm-1"> </dt>
-                                <dd class="col-sm-11">
-                                    <span><small class="text-muted"><em>nombre masculino</em></small></a></span><br>
-                                    <span><small class="text-muted"><em><span id="CtaGramFrt"></span></em>
-                                    </small>
-                                    </span><br>
-                                    <!--  <span>Def.</span>-->
-                                </dd>
-                            </dl>
-                            <h6><strong>categoria</strong></h6>
-                            <dl class="row">
-                                <dt class="col-sm-1"></dt>
-                                <dd class="col-sm-11">
-                                    <span><small class="text-muted"><em><i class="bi bi-piggy-bank-fill" ></i><span id="TipoPalrabFrt"></span></em>
-                                    </small>
-                                    </span>
-                                </dd>
-                            </dl>
-                        </div>
-                    </div>
-                    <div class="card-fo">
-
-                    </div>
-                </div>
-            </div>
-            <div class="col col-lg-5 col-10">
-                <div class="card">
-                    <div class="card-body ">
-                        <label for=" ">¿Cómo usar <strong><span  id="ComoUsarFrt"></span></strong>?</label>
-                        <hr width="75% " />
-                        <div id="deftraductor">
-                            <!-- <dl class="row">
-                                <dt class="col-sm-2">
-                                    <small class="text-warning"><em>q'eqchi'</em></small>
-                                    <small class="text-success "><em>español</em></small>
-                                </dt>
-                                <dd class="col-sm-10">
-                                    <span>Xinxk’at li amche’.</span><br>
-                                    <span>El palo brujo me quemó.</span>
-                                </dd>
-                            </dl>
-                            <dl class="row">
-                                <dt class="col-sm-2">
-                                    <small class="text-warning"><em>q'eqchi'</em></small>
-                                    <small class="text-success "><em>español</em></small>
-                                </dt>
-                                <dd class="col-sm-10">
-                                    <span>Us cho’q si’ li amche’.</span><br>
-                                    <span>El palo brujo es bueno para leña.</span>
-                                </dd>
-                            </dl>
-                            -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <p></p>
-            <p></p>
-        </div>
-        <!--Fin row datos de busqueda-->
-    </div>
+    </main>
 
 
-    <footer class="footer mt-auto py-3 bg-gray-400" style="background-color: #d9dbd9;">
+    <footer class="footer mt-auto py-3 bg-light">
         <div class="container">
             <div class="row">
                 <div class="col">

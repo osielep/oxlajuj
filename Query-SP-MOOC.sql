@@ -194,3 +194,12 @@ CREATE TABLE Aula.TipoEvaluacion (
 	FechaIngreso datetime DEFAULT getdate(),
 	IdUsuarioAdmin int NULL
 )
+
+CREATE TABLE Aula.Dificultad (
+	IdDificultad INT PRIMARY KEY,
+	TxtNombre NVARCHAR(100) NOT NULL,
+	--------------------------------------
+	IntEstado tinyint DEFAULT 1,
+	FechaIngreso datetime DEFAULT getdate(),
+	IdUsuarioAdmin int NULL
+)

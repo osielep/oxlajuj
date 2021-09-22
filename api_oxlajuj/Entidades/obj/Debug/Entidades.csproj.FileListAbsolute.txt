@@ -10,3 +10,9 @@ C:\Oxlanjuj\git\oxlajuj\api_oxlanjuj\Entidades\obj\Debug\Entidades.csprojAssembl
 C:\Oxlanjuj\git\oxlajuj\api_oxlanjuj\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
 C:\Oxlanjuj\git\oxlajuj\api_oxlanjuj\Entidades\obj\Debug\Entidades.dll
 C:\Oxlanjuj\git\oxlajuj\api_oxlanjuj\Entidades\obj\Debug\Entidades.pdb
+C:\Oxlanjuj\git\oxlajuj\api_oxlajuj\Entidades\bin\Debug\Entidades.dll
+C:\Oxlanjuj\git\oxlajuj\api_oxlajuj\Entidades\bin\Debug\Entidades.pdb
+C:\Oxlanjuj\git\oxlajuj\api_oxlajuj\Entidades\obj\Debug\Entidades.csprojAssemblyReference.cache
+C:\Oxlanjuj\git\oxlajuj\api_oxlajuj\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\Oxlanjuj\git\oxlajuj\api_oxlajuj\Entidades\obj\Debug\Entidades.dll
+C:\Oxlanjuj\git\oxlajuj\api_oxlajuj\Entidades\obj\Debug\Entidades.pdb

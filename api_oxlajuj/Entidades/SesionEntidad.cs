@@ -20,7 +20,7 @@ namespace Entidades
         public string TxtApellidoUsuario { get; set; }
         public string TxtEmailUsuario { get; set; }
         public string TxtPasswordUsuario { get; set; }
-        public string TxtGenero { get; set; }
+        public int IdGenero { get; set; }
         public string TxtDescripcion { get; set; }
         public string TxtImg { get; set; }
     }

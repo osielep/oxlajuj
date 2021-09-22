@@ -11,10 +11,10 @@ namespace ApiRest
     public class UsuariosController : ApiController
     {
         [HttpPost]
-        [Route("api/AgregarUsuario")]
-        public DataTable AgregarUsuario(Entidades.UsuarioEntidad entidad)
+        [Route("api/RegistroUsuarios")]
+        public DataTable RegistroUsuarios(Entidades.UsuarioEntidad entidad)
         {
-            return Datos.UsuariosDatos.AgregarUsuario(entidad);
+            return Datos.UsuariosDatos.RegistroUsuarios(entidad);
         }
 
         [HttpGet]
@@ -43,6 +43,13 @@ namespace ApiRest
         public DataTable ActualizarUsuario(Entidades.UsuarioEntidad entidad)
         {
             return Datos.UsuariosDatos.ActualizarUsuario(entidad);
+        }
+
+        [HttpPost]
+        [Route("api/IniciarSesion")]
+        public DataTable IniciarSesion(Entidades.UsuarioEntidad entidad)
+        {
+            return Datos.UsuariosDatos.IniciarSesion(entidad);
         }
     }
 }

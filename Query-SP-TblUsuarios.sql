@@ -13,14 +13,13 @@
 	-------------------------------------
 */
 
-CREATE PROC Sesion.SPAgregarUsuario (
-									@IdRol					INT,
+ALTER PROC Sesion.SPAgregarUsuario (
 									@IdInstitucion			INT,
 									@TxtNombreUsuario		NVARCHAR(50),
 									@TxtApellidoUsuario		NVARCHAR(50),
 									@TxtEmailUsuario		NVARCHAR(100),
 									@TxtPasswordUsuario		NVARCHAR(150),
-									@TxtGenero				NVARCHAR(15),
+									@IdGenero				NVARCHAR(15),
 									@TxtDescripcion			NVARCHAR(150),
 									@TxtImg					NVARCHAR(100)
 								)
@@ -37,26 +36,24 @@ BEGIN
 	BEGIN TRY
 		INSERT INTO Sesion.TblUsuario (
 									IdUsuario,
-									IdRol,
 									IdInstitucion,
 									TxtNombreUsuario,
 									TxtApellidoUsuario,
 									TxtEmailUsuario,
 									TxtPasswordUsuario,
-									TxtGenero,
+									IdGenero,
 									TxtDescripcion,
 									TxtImg
 									)
 		VALUES
 									(
 									@UltimoID + 1,
-									@IdRol,
 									@IdInstitucion,
 									@TxtNombreUsuario,
 									@TxtApellidoUsuario,
 									@TxtEmailUsuario,
 									@TxtPasswordUsuario,
-									@TxtGenero,
+									@IdGenero,
 									@TxtDescripcion,
 									@TxtImg
 									)
@@ -85,7 +82,7 @@ END
 
 
 
-
+exec Sesion.SPAgregarUsuario 1, 'Edvin', 'Alballero', 'ed@gmail.com', 1234, 2, 'no', 'ss'
 
 
 /*

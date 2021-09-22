@@ -110,9 +110,6 @@ namespace Datos
             return Convert.ToInt32(DT.Rows[0][0].ToString());
         }
 
-        public static DataTable AgregarEstadoToken(DataTable DT, string Estado)
-        {
-
-        }
+       
     }
 }

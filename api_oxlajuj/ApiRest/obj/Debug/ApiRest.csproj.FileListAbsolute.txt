@@ -328,3 +328,11 @@ C:\Oxlanjuj\git\oxlajuj\api_oxlajuj\ApiRest\obj\Debug\ApiRest.csproj.CoreCompile
 C:\Oxlanjuj\git\oxlajuj\api_oxlajuj\ApiRest\obj\Debug\ApiRest.csproj.CopyComplete
 C:\Oxlanjuj\git\oxlajuj\api_oxlajuj\ApiRest\obj\Debug\ApiRest.dll
 C:\Oxlanjuj\git\oxlajuj\api_oxlajuj\ApiRest\obj\Debug\ApiRest.pdb
+C:\Oxlanjuj\git\oxlajuj\api_oxlajuj\ApiRest\bin\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Oxlanjuj\git\oxlajuj\api_oxlajuj\ApiRest\bin\Microsoft.IdentityModel.Logging.dll
+C:\Oxlanjuj\git\oxlajuj\api_oxlajuj\ApiRest\bin\Microsoft.IdentityModel.Tokens.dll
+C:\Oxlanjuj\git\oxlajuj\api_oxlajuj\ApiRest\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Oxlanjuj\git\oxlajuj\api_oxlajuj\ApiRest\bin\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\Oxlanjuj\git\oxlajuj\api_oxlajuj\ApiRest\bin\Microsoft.IdentityModel.Logging.xml
+C:\Oxlanjuj\git\oxlajuj\api_oxlajuj\ApiRest\bin\Microsoft.IdentityModel.Tokens.xml
+C:\Oxlanjuj\git\oxlajuj\api_oxlajuj\ApiRest\bin\System.IdentityModel.Tokens.Jwt.xml

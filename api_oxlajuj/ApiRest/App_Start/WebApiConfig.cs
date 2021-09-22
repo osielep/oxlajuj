@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using ApiRest.Controllers;
 
 namespace ApiRest
 {
@@ -16,6 +17,9 @@ namespace ApiRest
 
             // Rutas de API web
             config.MapHttpAttributeRoutes();
+
+            //TokenJWT
+            config.MessageHandlers.Add(new TokenValidationHandler());
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

@@ -89,11 +89,9 @@ namespace Datos
         public static DataTable IniciarSesion(Entidades.UsuarioEntidad Entidad)
         {
             DataTable DT = new DataTable();
-            SqlCommand Comando = Conexion.EjecutarPA("Sesion.SPIniciarSesion");
+            SqlCommand Comando = Conexion.EjecutarPA("Sesion.SPIniciarSesion1");
             Comando.Parameters.AddWithValue("@TxtEmail", Entidad.TxtEmailUsuario);
             Comando.Parameters.AddWithValue("@TxtPassword", Funciones.PasswordSHA512(Entidad.TxtPasswordUsuario));
-            Comando.Parameters.AddWithValue("@TxtToken", Entidad.TxtToken);
-            Comando.Parameters.AddWithValue("@VigenciaMin", Entidad.VigenciaMinutos);
 
             DT = Conexion.EjecutarComandoSelect(Comando);
 

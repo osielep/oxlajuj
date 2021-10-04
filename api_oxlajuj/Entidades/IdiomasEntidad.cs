@@ -20,7 +20,7 @@ namespace Entidades
         public string TxtDefTemp { get; set; }
         public int IntSinonimo { get; set; }
         public int IntAntonimo { get; set; }
-        public string TxtGenero { get; set; }
+        public int IdGenero { get; set; }
         public int IdCategoriaGramatical { get; set; }
         public int IdTipoPalabra { get; set; }
         public string TxtImg { get; set; }

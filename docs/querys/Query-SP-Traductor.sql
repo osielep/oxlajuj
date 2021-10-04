@@ -12,6 +12,9 @@
 	|  Modificado: 18/08/2021				|
 	|  Detalle:	Se agrego acomulativo		|
 	+---------------------------------------+
+	|  Modificado: 3/10/2021				|
+	|  Detalle:	Se modifico genero			|
+	+---------------------------------------+
 */
 
 alter PROC Idiomas.SPBuscarPalabra (@TxtPalabraEspanol NVARCHAR(50))
@@ -36,7 +39,7 @@ BEGIN
 	SELECT
 		p.IdPalabra,
 		p.TxtPalabraIdiomaMaya,
-		p.TxtGenero,
+		p.IdGenero,
 		p.TxtImg,
 		p.TxtAudio,
 		t.TxtNombreTipoPalabra,

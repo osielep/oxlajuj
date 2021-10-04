@@ -5,15 +5,16 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Configuration;
 
 namespace Datos
 {
     class Conexion
     {
-        private static string Usuario   = "sa";
-        private static string Password  = "1234";
-        private static string Server    = "MSI\\SQLEXPRESS";
-        private static string DB        = "OxlanjujDB";
+        private static string Usuario   = WebConfigurationManager.AppSettings["Usuario"].ToString();
+        private static string Password  = WebConfigurationManager.AppSettings["Password"].ToString();
+        private static string Server    = WebConfigurationManager.AppSettings["Server"].ToString();
+        private static string DB        = WebConfigurationManager.AppSettings["DB"].ToString();
 
         private static string CadenaConexionSQL()
         {

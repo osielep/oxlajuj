@@ -19,6 +19,26 @@ namespace Entidades
         public int IntMaxPalabras { get; set; }
     }
 
+    public class CursoDetalleEntidad : TokenEntidad
+    {
+        public int IdCursoDetalle { get; set; }
+        public string TxtNombreCurso { get; set; }
+        public string TxtDescripcion { get; set; }
+        public string TxtImagen { get; set; }
+        public decimal IntPrecio { get; set; }
+        public int IdEspecialziacionDetalle { get; set; }
+        public int IdDificultad { get; set; }
+        public int DuracionHoras { get; set; }
+    }
+
+    public class CursoProfesor : TokenEntidad
+    {
+        public int IdCursoProfesor { get; set; }
+        public int IdCursoDetalle { get; set; }
+        public int IdProfesor { get; set; }
+    }
+
+
     public class WorksheetHeaderEntidad : TokenEntidad
     {
         public int IdWorksheetHeader { get; set; }

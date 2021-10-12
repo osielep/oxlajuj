@@ -1,16 +1,8 @@
-var urlApi = "http://localhost:60957/api/"
+var urlApi = "http://api.oxlajuj.com/api/"
 var LimpiarDiv = "";
+var scriptAudio = "<span class='ejemplos' style='color: green;'><i class='fas fa-volume-up'></i></span>";
 
-var CardBodyEjemplos = '<dl class="row">'
-'<dt class="col-sm-2">' +
-'<small class="text-warning">qeqchi<em></em></small>' +
-'<small class="text-success "><em>español</em></small>' +
-'</dt>' +
-'<dd class="col-sm-10">' +
-'<span>Xinxk’at li amche’.</span><br>' +
-'<span>El palo brujo me quemó.</span>' +
-'</dd>' +
-'</dl>';
+
 
 function BuscarPalabra() {
     var settings = {
@@ -91,7 +83,7 @@ function OracionesDeEjemplo() {
                 var idDiv = data.TxtPalabraEspanol;
                 var OracionEspanol = data.TxOracionEspanol;
                 var OracionMaya = data.TxtOracionIdiomaMaya;
-                var oraciones1234 = "<div id=" + idDiv + "> <small class='text-warning'><em>Q'eqchi'</em></small> " + OracionMaya + " <br> <span class='small text-muted'><em class='text-success'>Espanol </em>" + OracionEspanol + "</span> </div> <br>";
+                var oraciones1234 = "<div id=" + idDiv + "> <small class='text-warning'><em>Q'eqchi'</em></small> " + OracionMaya + "" + scriptAudio + "<br> <span class='small text-muted'><em class='text-success'>Espanol </em>" + OracionEspanol + "</span> </div> <br>";
                 var PalbraEspanolFrt = $("#PalabraBuscar").val();
                 var valor = '';
                 document.getElementById('ComoUsarFrt').innerHTML = valor;

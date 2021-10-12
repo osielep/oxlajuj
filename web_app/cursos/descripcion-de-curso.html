@@ -3,6 +3,8 @@
 
 <head>
     <!-- Required meta tags -->
+
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,12 +16,62 @@
     <!-- Font awesome-->
     <script src="https://kit.fontawesome.com/02fcd5a7a9.js" crossorigin="anonymous"></script>
 
-    <title>Curso Saludos - Oxlajuj Aula Virtual</title>
+
+
+    <script>
+        function getParameter(nombre) {
+            let parameters = new URLSearchParams(window.location.search);
+            return parameters.get(nombre);
+        }
+
+        var IdCursoDetalle = getParameter("IdCurso")
+        console.log(IdCursoDetalle)
+
+
+
+        function ObtenerDetalleDeCurso() {
+            var settings = {
+                "url": "http://localhost:60957/api/ObtenerDetalleDeCurso",
+                "method": "POST",
+                "timeout": 0,
+                "headers": {
+                    "Content-Type": "application/json"
+                },
+                "data": JSON.stringify({
+                    "IdCursoDetalle": IdCursoDetalle
+                }),
+            };
+
+            $.ajax(settings).done(function(response) {
+                console.log(response);
+                $.each(
+                    response,
+                    function(index, data) {
+
+                        document.getElementById('NombreCurso').innerHTML = data.TxtNombreCurso;
+                        document.getElementById('DescripcionCurso').innerHTML = data.TxtDescripcion;
+                        document.getElementById('NombreProfesor').innerHTML = data.Profesor;
+                        document.getElementById('UltimaActualizacion').innerHTML = data.FechaIngreso;
+                        document.getElementById('TotalHoras').innerHTML = data.DuracionHoras;
+                        document.getElementById('Dificultad').innerHTML = data.TxtNombre;
+                        document.getElementById('NombreEspecializacion').innerHTML = data.TxtNombreEspecializacion;
+
+                        document.title = data.TxtNombreCurso + " - Oxlajuj Mi Aula Virtual";
+                        document.getElementById('tipo-dificultad-nav').innerHTML = data.TxtNombre;
+
+                    }
+                );
+            });
+        }
+    </script>
+
+    <title>Ver curso</title>
+
 
 
 </head>
 
-<body>
+<body onload="ObtenerDetalleDeCurso(); ObtenerCapitulos(); ObtenerMaterial();">
 
 
 
@@ -48,7 +100,7 @@
                 </ul>
             </div>
             <form class="d-flex">
-                <button class="btn btn-dark" type="submit"><i class="fas fa-user"></i> Widman Esquivel </button>
+                <button class="btn btn-dark" type="submit" onclick="ObtenerDetalleDeCurso();">Iniciar Sesión</button>
             </form>
         </div>
     </nav>
@@ -64,44 +116,43 @@
             <nav class="text-white" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                 <ol class="breadcrumb ">
                     <li class="breadcrumb-item"><a href="#" class="link-light">Cursos</a></li>
-                    <li class="breadcrumb-item"><a href="#" class="link-light">Principiantes</a></li>
-                    <li class="breadcrumb-item"><a href="#" class="link-light">Saludos</a></li>
+                    <li class="breadcrumb-item"><a href="#" class="link-light"><span id="tipo-dificultad-nav"></span></a></li>
                 </ol>
             </nav>
             <!--end Nav-->
             <!--Course info-->
             <div class="row">
                 <div class="col-md-7 col-sm-12 ">
-                    <h1 class="display-3">Saludos en Q'eqchi'</h1>
+                    <h1 class="display-3"><span id="NombreCurso"></span></h1>
                     <p class="lead">
-                        Aprende a tener una comunicacion efectiva con las y los otros. Sorprende a tus amigos y familiares dandoles los buenos dias en un nuevo idioma.
+                        <span id="DescripcionCurso"></span>
                     </p>
 
                     <!--Detalles del curso-->
                     <ul class="fa-ul">
                         <li>
                             <span class="fa-li"><i class="fas fa-user-tie"></i></span>
-                            <strong> Instructor: </strong> <a href=""><span class="badge rounded-pill bg-light text-dark">Javier Hoc Choc</span></a>
+                            <strong> Instructor: </strong> <a href=""><span class="badge rounded-pill bg-light text-dark"><span id="NombreProfesor"></span></a>
                             </span>
                         </li>
                         <li>
                             <span class="fa-li"><i class="fas fa-clock"></i></span>
-                            <strong> Ultima actualizacion: </strong> 20 de agosto de 2021
+                            <strong> Ultima actualizacion: </strong> <span id="UltimaActualizacion"></span>
                             </span>
                         </li>
                         <li>
                             <span class="fa-li"><i class="fas fa-hourglass-half"></i></span>
-                            <strong> Duracion: </strong> 5 horas
+                            <strong> Duracion: </strong> <span id="TotalHoras"></span> horas
                             </span>
                         </li>
                         <li>
                             <span class="fa-li"><i class="fas fa-cubes"></i></span>
-                            <strong> Nivel: </strong> Principiante
+                            <strong> Nivel: </strong> <span id="Dificultad"></span>
                             </span>
                         </li>
                         <li>
                             <span class="fa-li"><i class="fas fa-user-graduate"></i></span>
-                            <strong> Especializacion: </strong> Comunicacion basica
+                            <strong> Especializacion: </strong> <span id="NombreEspecializacion"></span>
                             </span>
                         </li>
                         <li>
@@ -130,50 +181,11 @@
         El curso tiene un total de 4 capitulos y tendras acceso a 20 diferentes tipos de materiales.
         <br><br>
         <div class="form-group">
-            <div class="row">
-                <div class="col-md-6 col-sm-12">
-                    <div class="card">
-                        <h5 class="card-header">Aprende lo basico</h5>
-                        <div class="card-body">
-                            <ul class="list-group">
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    Los colores primarios
-                                    <span class="badge bg-danger rounded-pill">PDF</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    Consonantes importantes
-                                    <span class="badge bg-primary rounded-pill">Video</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    Las vocables en qeqchi
-                                    <span class="badge bg-warning rounded-pill">Imagen</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="card">
-                        <h5 class="card-header">Avanzando en el aprendizaje</h5>
-                        <div class="card-body">
-                            <ul class="list-group">
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    Formando palabras
-                                    <span class="badge bg-primary rounded-pill">Video</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    Consonantes importantes
-                                    <span class="badge bg-success rounded-pill">Hoja de trabajo</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+            <div class="row" id="VerCapitulos">
+
+
             </div>
         </div>
-        <br>
-
-
         <br>
     </div>
 
@@ -207,7 +219,8 @@
     <script src="../libs/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js "></script>
-    <script src="../js/buscar-palabra.js "></script>
+    <script src="../js/ver-curso.js "></script>
+
 </body>
 
 </html>

@@ -23,11 +23,19 @@ namespace ApiRest.Controllers
         {
             return Datos.CursoDatos.ObtenerCapitulosDeCurso(entidad);
         }
+
         [HttpPost]
         [Route("api/ObtenerMaterialDeCapitulo")]
         public DataTable ObtenerMaterialDeCapitulo(Entidades.CursoDetalleEntidad entidad)
         {
             return Datos.CursoDatos.ObtenerMaterialDeCapitulo(entidad);
+        }
+
+        [HttpGet]
+        [Route("api/ObtenerCursos")]
+        public DataTable ObtenerCursos()
+        {
+            return Datos.CursoDatos.ObtenerCursos();
         }
     }
 }

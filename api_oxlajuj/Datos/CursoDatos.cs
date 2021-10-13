@@ -45,5 +45,16 @@ namespace Datos
 
             return DT;
         }
+
+        public static DataTable ObtenerCursos()
+        {
+            DataTable DT = new DataTable();
+
+            SqlCommand Comando = Conexion.EjecutarPA("Aula.SPObtenerCursos");
+
+            DT = Conexion.EjecutarComandoSelect(Comando);
+
+            return DT;
+        }
     }
 }

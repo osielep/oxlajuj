@@ -1,11 +1,12 @@
-var urlApi2 = "http://api.oxlajuj.com/api/"
-var urlApi = "http://localhost:60957/api/"
+var urlApi = "http://api.oxlajuj.com/api/"
+var urlApi2 = "http://localhost:60957/api/"
 var LimpiarDiv = "";
 var scriptAudio = "<span class='ejemplos' style='color: green;'><i class='fas fa-volume-up'></i></span>";
 var colours = ["primary", "secondary", "success", "warning", "danger", "info"];
 var EspacioInfo = "<div class='row justify-content-md-center gy-3'><div class='col col-lg-5 col-10'><div class='card '><div class='card-body '><label for=' '>Definiciones</label>               <hr width='75% ' />                <div id='def-traductor'>                    <h6><strong> <span  id='DefPlEsp'></span></strong></h6>                    <ul class='fa-ul'>                        <li id='listaPalabra'>                        </li>                    </ul>                    <h6><strong>categoria</strong></h6>                    <ul class='fa-ul'>                        <li id='listaPalabraCTA'>                        </li>                    </ul>                </div>            </div>            <div class='card-fo'>            </div>        </div>    </div>    <div class='col col-lg-5 col-10'>        <div class='card'>            <div class='card-body '>                <label for=' '>¿Cómo usar <strong><span  id='ComoUsarFrt'></span></strong>?</label>                <hr width='75% ' />                <div id='deftraductor'>                </div>            </div>        </div>    </div>    <p></p>    <p></p></div>";
 var CardInfo = "<div class='card '>    <div class='card-body '>        <label for=' '>Definiciones</label>        <hr width='75% ' />        <div id='def-traductor'>            <h6><strong> <span  id='DefPlEsp'></span></strong></h6><ul class='fa-ul'><li id='listaPalabra'></li></ul><h6><strong>categoria</strong></h6><ul class='fa-ul'><li id='listaPalabraCTA'></li></ul></div></div></div>"
 var CardEje = "<div class='card'>    <div class='card-body '>        <label for=' '>¿Cómo usar <strong><span  id='ComoUsarFrt'></span></strong>?</label>        <hr width='75% ' />        <div id='deftraductor'>        </div>    </div></div>"
+var OracionesNo = "<div class='alert alert-warning d-flex align-items-center' role='alert'>    <svg class='bi flex-shrink-0 me-2' width='24' height='24' role='img' aria-label='Warning:'><use xlink:href='#exclamation-triangle-fill'/></svg>    <div>        <strong class=''>Ooops!</strong> <br> Aún no hay ejemplos de esta palabra. <br> <em>¿Quieres contribuir?</em>    </div></div>"
 
 function Mayuscula(palabra) {
     return palabra.map(p => p[0].toUpperCase() + p.slice(1));
@@ -88,54 +89,68 @@ function OracionesDeEjemplo() {
     };
 
 
+    $.get(settings, function(data) {
+        if (data.length > 0) {
+            $.ajax(settings).done(function(response) {
 
-
-    $.ajax(settings).done(function(response) {
-
-        //var PalbraEspanolFrt = $("#PalabraBuscar").val();
-        //$(PalbraEspanolFrt).appendTo("#ComoUsarFrt");
-        //console.log(PalbraEspanolFrt);
-        //console.log(response.TxtOracionIdiomaMaya);
-
-
-        $.each(
-            response,
-            function(index, data) {
-
-
-                var idDiv = data.TxtPalabraEspanol;
-                var OracionEspanol = data.TxOracionEspanol;
-                var OracionMaya = data.TxtOracionIdiomaMaya;
-                var oraciones1234 = "<div id=" + idDiv + "> <small class='text-warning'><em>Q'eqchi'</em></small> " + OracionMaya + " <br> <span class='small text-muted'><em class='text-success'>Espanol </em>" + OracionEspanol + "</span> </div> <br>";
-                var PalbraEspanolFrt = $("#PalabraBuscar").val();
-                //console.log(oraciones1234);
-
-
-                var valor = '';
-
-                //Mostrar cards para ejemplos
-                document.getElementById('CardEjemplos').innerHTML = valor;
-                $(CardEjemplos).prepend(CardEje);
-
-
-                //Mostrar oraciones
-                $(ComoUsarFrt).prepend(PalbraEspanolFrt);
-                $(deftraductor).prepend(oraciones1234);
-                // $(oraciones1234).appendTo("#deftraductor");
-                //document.getElementById('deftraductor').innerHTML = oraciones1234;
-                //$(deftraductor).prepend(oraciones1234);
-
-
-                console.log(response);
+                //var PalbraEspanolFrt = $("#PalabraBuscar").val();
+                //$(PalbraEspanolFrt).appendTo("#ComoUsarFrt");
                 //console.log(PalbraEspanolFrt);
-            }
-        );
+                //console.log(response.TxtOracionIdiomaMaya);
+
+
+                $.each(
+                    response,
+                    function(index, data) {
+
+
+                        //Mostrar cards para ejemplos
+                        var valor = '';
+                        document.getElementById('CardEjemplos').innerHTML = valor;
+                        $(CardEjemplos).prepend(CardEje);
+
+
+
+                        var OracionEspanol = data.TxOracionEspanol;
+                        var OracionMaya = data.TxtOracionIdiomaMaya;
+                        var oraciones1234 = "<div > <small class='text-warning'><em>Q'eqchi'</em></small> " + OracionMaya + " <br> <span class='small text-muted'><em class='text-success'>Espanol </em>" + OracionEspanol + "</span> </div> <br>";
+                        var PalbraEspanolFrt = $("#PalabraBuscar").val();
+                        //console.log(oraciones1234);
+
+
+
+
+
+
+
+                        //Mostrar oraciones
+                        $(ComoUsarFrt).prepend(PalbraEspanolFrt);
+                        $(deftraductor).prepend(oraciones1234);
+                        // $(oraciones1234).appendTo("#deftraductor");
+                        //document.getElementById('deftraductor').innerHTML = oraciones1234;
+                        //$(deftraductor).prepend(oraciones1234);
+
+
+                        console.log(response);
+                        //console.log(PalbraEspanolFrt);
+                    }
+                );
+            });
+        } else {
+            document.getElementById('deftraductor').innerHTML = OracionesNo;
+        }
+
+
     });
+
+
+
+
 }
 
 function PalabrasPopulares() {
     var settings = {
-        "url": "http://localhost:60957/api/ObtenerTopPalabras",
+        "url": urlApi + "ObtenerTopPalabras",
         "method": "GET",
         "timeout": 0,
     };

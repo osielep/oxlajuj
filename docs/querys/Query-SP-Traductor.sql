@@ -82,35 +82,20 @@ BEGIN
 	
 	select
 
-		p.TxtPalabraEspanol,
-		p.TxtPalabraIdiomaMaya,
-		i.TxtNombreIdioma,
-		t.TxtNombreTipoPalabra,
-		c.TxtNombreCtaGramatical,
 		o.TxOracionEspanol,
 		o.TxtOracionIdiomaMaya
-	    
-	
 
 	from
 	
-		Idiomas.TblCtaGramatical c,
-		Idiomas.TblIdioma i,
-		Idiomas.TblPalabra p,
-		Idiomas.TblTipoDePalabra t,
 		Idiomas.TblOracionEjemplo o
 
 	where
 
-		(p.IdCategoriaGramatical	=		c.IdCtaGramatical)	and
-		(p.IdIdioma					=		i.IdIdioma)			and
-		(p.IdTipoPalabra			=		t.IdTipoPalabra)	and
-		(p.TxtPalabraEspanol		LIKE	'%'+@TxtPalabraEspanol+'%')		and
-		(o.TxOracionEspanol			LIKE	'%'+@TxtPalabraEspanol+'%')
+		o.TxOracionEspanol			LIKE	'%'+@TxtPalabraEspanol+'%'
 
 END
 
-exec Idiomas.SPBuscarOracionesDeEjemplo taltuza
+exec Idiomas.SPBuscarOracionesDeEjemplo zapato
 
 CONCAT (o.TxOracionEspanol, ' // ', o.TxtOracionIdiomaMaya) as TxtOracionEjemplo
 
@@ -156,3 +141,31 @@ BEGIN
 				ROLLBACK 
 			END
 END 
+
+
+
+
+/*
+	+---------------------------------------+
+	|	Tipo:	Palabras populares			|
+	+---------------------------------------+
+	|	Autor:	Widman Esquivel				|
+	|	Fecha:	14/09/2021					|
+	+---------------------------------------+
+*/
+
+
+CREATE PROC Idiomas.ObtenerTopPalabras
+AS
+BEGIN
+
+	select 
+			top 5 IdPalabra, TxtPalabraEspanol, TxtPalabraIdiomaMaya
+	from 
+			idiomas.TblPalabra 
+	order by 
+			AcumuladoBusquedas desc
+
+END
+
+exec Idiomas.ObtenerTopPalabras

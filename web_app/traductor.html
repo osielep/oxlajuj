@@ -14,12 +14,27 @@
     <!-- Font awesome-->
     <script src="https://kit.fontawesome.com/02fcd5a7a9.js" crossorigin="anonymous"></script>
 
+    <script>
+        function getParameter(nombre) {
+            let parameters = new URLSearchParams(window.location.search);
+            return parameters.get(nombre);
+        }
+
+        var palabraHeader = getParameter("txtPalabra")
+
+        //$('#PalabraBuscar').html(Palabrita)
+        console.log(palabraHeader);
+
+
+        //(Palabrita).appendTo("#PalabraBuscar");
+    </script>
+
     <title>Traductor Oxlajuj</title>
 
 
 </head>
 
-<body>
+<body onload="PalabrasPopulares();">
 
 
 
@@ -58,7 +73,8 @@
         <div class="container">
             <!--Nav-->
             <div class="text-center">
-                <img src="/img/header-top-traductor.png" class="text-center" alt="">
+                <a class="nav-link link-light" href="#"><strong>TRADUCTOR</strong> / OXLAJUJ <strong>Mi Aula Virtual</strong></a>
+                <!--<img src="/img/header-top-traductor.png" class="text-center" alt="">-->
             </div>
 
             <!--end Nav-->
@@ -90,12 +106,12 @@
                     <div class="col col-lg-5 col-10 ">
                         <!--Row info-->
                         <div class="row">
-                            <div class="col">
+                            <div class="col-3">
                                 <label for="inputPassword5 " class="form-label text-warning "><h6>Q'eqchi'</h6></label>
                             </div>
-                            <div class="col  text-end">
+                            <div class="col-9  text-end">
                                 <span class=" badge rounded-pill bg-success"><i class="fas fa-copy"></i> Copiar</span>
-                                <span class="badge rounded-pill bg-warning"><i class="fas fa-play-circle"></i> Escuchar</span>
+                                <span class="badge rounded-pill bg-warning pronunciacion"><span id="txtPRT"><i class="fas fa-play-circle"></i> Escuchar</span></span>
                             </div>
                         </div>
                         <!--Row info-->
@@ -122,12 +138,14 @@
                 <div class="col-10">
                     <div class="card">
                         <div class="card-body">
-                            <span><small class="text-muted"><em>Búsquedas populares/</em></small></span>
-                            <span class="badge rounded-pill bg-primary">padre</span>
-                            <span class="badge rounded-pill bg-secondary">maestra</span>
-                            <span class="badge rounded-pill bg-success">dios</span>
-                            <span class="badge rounded-pill bg-warning text-dark">zapato</span>
-                            <span class="badge rounded-pill bg-info text-dark">árbol</span>
+                            <div class="row">
+                                <span><small class="text-muted"><em>Búsquedas populares <span id="ViewTopWords"></span></em>
+                                </small>
+                                </span>
+
+                            </div>
+
+
                         </div>
                     </div>
                 </div>
@@ -136,84 +154,20 @@
 
             <br>
             <!--Inicio row datos de busqueda-->
-            <div class="row justify-content-md-center">
+            <div class="form-group">
+                <div class="row justify-content-md-center gy-3">
+                    <div class="col col-lg-5 col-10" id="CardDefiniciones">
 
-                <div class="col col-lg-5 col-10">
-                    <div class="card ">
-                        <div class="card-body ">
-                            <label for=" ">Definiciones</label>
-                            <span class="pronunciacion" style="color: green;">
-                                <i class="fas fa-volume-up"></i>
-                            </span>
-                            <hr width="75% " />
-                            <div id="def-traductor ">
-                                <h6><strong> <span  id="DefPlEsp"></span></strong></h6>
-
-
-
-                                <dl class="row">
-                                    <dt class="col-sm-1"> </dt>
-                                    <dd class="col-sm-11">
-                                        <span><small class="text-muted"><em>nombre masculino</em></small></a></span><br>
-                                        <span><small class="text-muted"><em><span id="CtaGramFrt"></span></em>
-                                        </small>
-                                        </span><br>
-                                        <!--  <span>Def.</span>-->
-                                    </dd>
-                                </dl>
-                                <h6><strong>categoria</strong></h6>
-                                <dl class="row">
-                                    <dt class="col-sm-1"></dt>
-                                    <dd class="col-sm-11">
-                                        <span><small class="text-muted"><em><i class="bi bi-piggy-bank-fill" ></i><span id="TipoPalrabFrt"></span></em>
-                                        </small>
-                                        </span>
-                                    </dd>
-                                </dl>
-                            </div>
-                        </div>
-                        <div class="card-fo">
-
-                        </div>
                     </div>
-                </div>
-                <div class="col col-lg-5 col-10">
-                    <div class="card">
-                        <div class="card-body ">
-                            <label for=" ">¿Cómo usar <strong><span  id="ComoUsarFrt"></span></strong>?</label><span class="ejemplos" style="color: green;">
-                                <i class="fas fa-volume-up"></i>
-                            </span>
-                            <hr width="75% " />
-                            <div id="deftraductor">
-                                <!-- <dl class="row">
-                                    <dt class="col-sm-2">
-                                        <small class="text-warning"><em>q'eqchi'</em></small>
-                                        <small class="text-success "><em>español</em></small>
-                                    </dt>
-                                    <dd class="col-sm-10">
-                                        <span>Xinxk’at li amche’.</span><br>
-                                        <span>El palo brujo me quemó.</span>
-                                    </dd>
-                                </dl>
-                                <dl class="row">
-                                    <dt class="col-sm-2">
-                                        <small class="text-warning"><em>q'eqchi'</em></small>
-                                        <small class="text-success "><em>español</em></small>
-                                    </dt>
-                                    <dd class="col-sm-10">
-                                        <span>Us cho’q si’ li amche’.</span><br>
-                                        <span>El palo brujo es bueno para leña.</span>
-                                    </dd>
-                                </dl>
-                                -->
-                            </div>
-                        </div>
+                    <div class="col col-lg-5 col-10" id="CardEjemplos">
+
                     </div>
+                    <p></p>
+                    <p></p>
                 </div>
 
-                <p></p>
-                <p></p>
             </div>
+
             <!--Fin row datos de busqueda-->
         </div>
     </main>
@@ -223,16 +177,15 @@
             let boton = document.querySelector(".pronunciacion")
 
             boton.addEventListener("click", () => {
+                $('#txtPRT').html('<i class="fas fa-spinner fa-pulse"></i>  Escuchando')
                 let etiquetaAudio = document.createElement("audio")
                 etiquetaAudio.setAttribute("src", "/recursos/pronunciacion/vocabulario/taltuza.mp3")
-                etiquetaAudio.play()
-            })
-            let boton2 = document.querySelector(".ejemplos")
 
-            boton2.addEventListener("click", () => {
-                let etiquetaAudio2 = document.createElement("audio")
-                etiquetaAudio2.setAttribute("src", "/recursos/pronunciacion/ejemplos/taltuza-ej1.mp3")
-                etiquetaAudio2.play()
+                etiquetaAudio.play()
+                setTimeout(() => $('#txtPRT').html('<i class="fas fa-play-circle"></i> Escuchar'), 1500)
+
+
+
             })
         </script>
     </div>
@@ -267,7 +220,7 @@
     <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js "></script>
-    <script src="js/buscar-palabra.js "></script>
+    <script src="js/traductor.js "></script>
 </body>
 
 </html>

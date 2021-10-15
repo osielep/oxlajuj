@@ -23,5 +23,12 @@ namespace ApiRest
         {
             return Datos.TraductorDatos.BuscarOracionDeEjemplo(entidad);
         }
+
+        [HttpGet]
+        [Route("api/ObtenerTopPalabras")]
+        public DataTable ObtenerTopPalabras()
+        {
+            return Datos.TraductorDatos.ObtenerTopPalabras();
+        }
     }
 }

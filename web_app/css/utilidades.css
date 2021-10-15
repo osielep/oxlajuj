@@ -16,6 +16,10 @@ textarea {
     background-image: linear-gradient(to right, #11998e, #38ef7d);
 }
 
+#HeaderTop {
+    background-color: #cccccc;
+}
+
 #TopTraductor {
     background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
 }

@@ -88,33 +88,23 @@ END
 	|	Fecha:	11/10/2021					|
 	+---------------------------------------+
 */
-ALTER PROC Aula.SPObtenerCursos ()
+ALTER PROC Aula.SPObtenerCursos 
 AS
 BEGIN
 
 	select
 		c.IdCursoDetalle, c.TxtNombreCurso, c.TxtDescripcion, 
-		CONCAT(u.TxtNombreUsuario,' ', u.TxtApellidoUsuario) AS Profesor,
-		c.FechaIngreso, c.DuracionHoras, d.TxtNombre, e.TxtNombreEspecializacion,
-		c.TxtImagen, c.IntPrecio
+		d.TxtNombre, c.TxtImagen
 	from
 		Aula.CursoDetalle AS c,
-		Aula.CursoProfesor AS p,
-		Aula.Profesor AS f,
-		Sesion.TblUsuario AS u,
-		Aula.Dificultad AS d,
-		Aula.EspecializacionDetalle e
+		Aula.Dificultad AS d
 	where
-		c.IdCursoDetalle = p.IdCursoDetalle AND
-		p.IdProfesor = f.IdProfesor AND
-		f.IdUsuario = u.IdUsuario AND
-		e.IdEspecializacionDetalle = c.IdEspecialziacionDetalle AND
-		c.IdDificultad = d.IdDificultad AND
+		c.IdDificultad = d.IdDificultad 
 
 END
 
 
-
+exec aula.SPObtenerCursos
 
 
 
@@ -154,7 +144,7 @@ BEGIN
 END
 
 
-
+exec aula.SPObtenerDetalleCurso 1
 
 
 /*

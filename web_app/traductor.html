@@ -2,6 +2,10 @@
 <html lang="en">
 
 <head>
+
+
+
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,7 +31,23 @@
 
 
         //(Palabrita).appendTo("#PalabraBuscar");
+
+        var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+        var popoverList = popoverTriggerList.map(function(popoverTriggerEl) {
+            return new bootstrap.Popover(popoverTriggerEl)
+        })
+
+        var exampleEl = document.getElementById('example')
+        var popover = new bootstrap.Popover(exampleEl, options)
+
+        $(document).ready(function() {
+
+            $('[data-toggle="popover"]').popover();
+
+        });
     </script>
+
+
 
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
         <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
@@ -41,7 +61,16 @@
         </symbol>
     </svg>
 
+
+
     <title>Traductor Oxlajuj</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#ffc40d">
+    <meta name="theme-color" content="#ffffff">
 
 
 </head>
@@ -75,7 +104,7 @@
                 </ul>
             </div>
             <form class="d-flex">
-                <button class="btn btn-dark" type="submit">Iniciar Sesión</button>
+                <button class="btn btn-dark" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Bottom popover">Iniciar Sesión</button>
             </form>
         </div>
     </nav>

@@ -63,7 +63,7 @@
 
 
 
-    <title>Traductor Oxlajuj</title>
+    <title>Traductor - Oxlajuj Mi Aula Virtual</title>
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -124,94 +124,86 @@
 
     </div>
 
-    <main class="flex-shrink-0">
-        <div class="container">
-            <!--Inicio row translate-->
-            <div class="row">
-                <!-- row espacio-->
-                <div class="row">
-                    <p><br></p>
-                </div>
-                <!-- row textarea translate-->
-                <div class="row justify-content-center">
-                    <div class="col col-lg-5 col-12">
-                        <label for="inputPassword5" class="form-label text-success"><h6>Español</h6></label>
 
-                        <div class="form-floating ">
-                            <textarea class="form-control shadow p-3 mb-5 bg-white rounded" placeholder="Busqueda" id="PalabraBuscar" style="height: 170px"></textarea>
-                            <label for="PalabraBuscar">Ingresa una palabra <br></label>
-
-                        </div>
-                    </div>
-
-                    <div class="col col-lg-5 col-12 ">
-                        <!--Row info-->
-                        <div class="row">
-                            <div class="col-3">
-                                <label for="inputPassword5 " class="form-label text-warning "><h6>Q'eqchi'</h6></label>
-                            </div>
-                            <div class="col-9  text-end">
-                                <span class=" badge rounded-pill bg-success"><i class="fas fa-copy"></i> Copiar</span>
-                                <span class="badge rounded-pill bg-warning pronunciacion"><span id="txtPRT"><i class="fas fa-play-circle"></i> Escuchar</span></span>
-                            </div>
-                        </div>
-                        <!--Row info-->
-                        <div class="form-floating">
-                            <textarea class="form-control shadow p-3 mb-5 bg-white rounded" placeholder="Resultado" id="TxtMejorResultado" style="height: 170px" readonly></textarea>
-                            <label for="TxtMejorResultado">Mejor resultado</label>
-                        </div>
-                    </div>
-                </div>
-                <!-- row search button-->
-                <div class="row ">
-
-                    <div class="col text-center">
-                        <button onclick="BuscarPalabra(); OracionesDeEjemplo(); " type="button " class="btn btn-success btn-lg">Traducir</button>
-                    </div>
-                </div>
-            </div>
-            <!--Fin row translate-->
-
-            <br>
-
-            <!-- Inicio row otras busquedas-->
-            <div class="row justify-content-center">
-                <div class="col-lg-10 col-11">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row">
-                                <span><small class="text-muted"><em>Búsquedas populares <span id="ViewTopWords"></span></em>
-                                </small>
-                                </span>
-
-                            </div>
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Fin row otras busquedas-->
-
-            <br>
-            <!--Inicio row datos de busqueda-->
-            <div class="form-group">
-                <div class="row justify-content-center gy-3">
-                    <div class="col col-lg-5 col-11" id="CardDefiniciones">
-
-                    </div>
-                    <div class="col col-lg-5 col-11" id="CardEjemplos">
-
-                    </div>
-                    <p></p>
-                    <p></p>
-                </div>
-
-            </div>
-
-            <!--Fin row datos de busqueda-->
+    <div class="container">
+        <div class="row">
+            <p><br></p>
         </div>
-    </main>
+        <!--Inicio row translate-->
+        <div class="row justify-content-center">
+            <div class="col-lg-5 col-11">
+                <label for="inputPassword5" class="form-label text-success"><h6>Español</h6></label>
+                <div class="form-floating">
+                    <textarea class="form-control shadow p-3 mb-5 bg-white rounded" placeholder="Busqueda" id="PalabraBuscar" style="height: 170px"></textarea>
+                    <label for="PalabraBuscar">Ingresa una palabra <br></label>
+                </div>
+            </div>
+            <div class="col-lg-5 col-11">
+                <!--Row info-->
+                <div class="row">
+                    <div class="col-3">
+                        <label for="inputPassword5 " class="form-label text-warning "><h6>Q'eqchi'</h6></label>
+                    </div>
+                    <div class="col-9  text-end">
+                        <span class=" badge rounded-pill bg-success"><i class="fas fa-copy"></i> Copiar</span>
+                        <span class="badge rounded-pill bg-warning pronunciacion"><span id="txtPRT"><i class="fas fa-play-circle"></i> Escuchar</span></span>
+                    </div>
+                </div>
+                <div class="form-floating">
+                    <textarea class="form-control shadow p-3 mb-5 bg-white rounded" placeholder="Resultado" id="TxtMejorResultado" style="height: 170px" readonly></textarea>
+                    <label for="TxtMejorResultado">Mejor resultado</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-center">
+                <button onclick="BuscarPalabra(); OracionesDeEjemplo(); " type="button " class="btn bg-success btn-lg">Traducir</button>
+            </div>
+        </div>
+        <!--Fin row translate-->
+
+        <br>
+
+
+
+        <!-- Inicio row otras busquedas-->
+        <div class="row justify-content-center">
+            <div class="col-lg-10 col-11">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <span><small class="text-muted"><em>Búsquedas populares <span id="ViewTopWords"></span></em>
+                            </small>
+                            </span>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Fin row otras busquedas-->
+
+        <br>
+        <!--Inicio row datos de busqueda-->
+        <div class="form-group">
+            <div class="row justify-content-center gy-3">
+                <div class="col col-lg-5 col-11" id="CardDefiniciones">
+
+                </div>
+                <div class="col col-lg-5 col-11" id="CardEjemplos">
+
+                </div>
+                <p></p>
+                <p></p>
+            </div>
+
+        </div>
+
+        <!--Fin row datos de busqueda-->
+    </div>
+
 
     <div class="audios-scripts">
         <script>
@@ -234,24 +226,35 @@
 
     <footer class="footer mt-auto py-3 bg-light ">
         <div class="container">
-            <div class="row">
-                <div class="col">
+            <div class="row gy-3">
+                <div class="col-lg-3  col-sm-6">
                     <h4>OXLAJUJ</h4>
                     <span class="small text-muted">Aula virtual para fortalecer el aprendizaje del Idioma Maya Q'eqchi'.</span>
                 </div>
-                <div class="col">
+                <div class="col-lg-3  col-sm-6">
                     <h6>Nosotros</h6>
+                    <ul class="fa-ul">
+                        <li><span class="fa-li"><i class="fas fa-building"></i></span>Acerca de nosotros</li>
+                        <li><span class="fa-li"><i class="fas fa-hand-holding-heart"></i></span>Asociaciones</li>
+                        <li><span class="fa-li"><i class="fas fa-heart"></i></i></span>Fe y Alegria</li>
+                    </ul>
                 </div>
-                <div class="col">
+                <div class="col-lg-3  col-sm-6">
                     <h6>Servicios</h6>
+                    <ul class="fa-ul">
+                        <li><span class="fa-li"><i class="fas fa-globe"></i></span>Servicios en linea</li>
+                        <li><span class="fa-li"><i class="fas fa-graduation-cap"></i></span>Colegio</li>
+                        <li><span class="fa-li"><i class="fab fa-uncharted"></i></span>API</li>
+                    </ul>
                 </div>
-                <div class="col">
+                <div class="col-lg-3  col-sm-6">
                     <h6>Contáctanos</h6>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <span class="small text-muted">Con el apoyo de: </span>
+                    <ul class="fa-ul">
+                        <li><span class="fa-li"><i class="fab fa-facebook"></i></span>Facebook</li>
+                        <li><span class="fa-li"><i class="fab fa-twitter"></i></span>Twitter</li>
+                        <li><span class="fa-li"><i class="fab fa-instagram"></i></span>Instagram</li>
+                        <li><span class="fa-li"><i class="fab fa-youtube"></i></span>Youtube</li>
+                    </ul>
                 </div>
             </div>
         </div>

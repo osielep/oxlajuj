@@ -63,3 +63,7 @@ textarea {
 #opciones {
     height: 100vh;
 }
+
+.footer {
+    bottom: 0;
+}

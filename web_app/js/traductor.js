@@ -161,7 +161,7 @@ function PalabrasPopulares() {
             function(index, data) {
 
                 var cardcolor = colours[Math.floor(Math.random() * colours.length)];
-                var BadgeTOP = "<a href='traductor.html?txtPalabra=" + data.TxtPalabraEspanol + "'><span class='badge rounded-pill bg-" + cardcolor + " '>" + data.TxtPalabraEspanol + "</span></a>";
+                var BadgeTOP = "<span> <a href='traductor.html?txtPalabra=" + data.TxtPalabraEspanol + "'><span class='badge rounded-pill bg-" + cardcolor + " '>" + data.TxtPalabraEspanol + "</span></a></span>";
 
                 $(ViewTopWords).prepend(BadgeTOP);
 

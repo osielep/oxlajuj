@@ -31,11 +31,32 @@ namespace ApiRest.Controllers
             return Datos.CursoDatos.ObtenerMaterialDeCapitulo(entidad);
         }
 
+        [HttpPost]
+        [Route("api/ObtenerMaterialDeCapituloAvances")]
+        public DataTable ObtenerMaterialDeCapituloAvances(Entidades.CursoDetalleEntidad entidad)
+        {
+            return Datos.CursoDatos.ObtenerMaterialDeCapituloAvances(entidad);
+        }
+
         [HttpGet]
         [Route("api/ObtenerCursos")]
         public DataTable ObtenerCursos()
         {
             return Datos.CursoDatos.ObtenerCursos();
+        }
+
+        [HttpPost]
+        [Route("api/MostarPorcentajeTotal")]
+        public DataTable MostarPorcentajeTotal(Entidades.EstudianteAsignacion entidad)
+        {
+            return Datos.CursoDatos.MostarPorcentajeTotal(entidad);
+        }
+
+        [HttpPost]
+        [Route("api/PuntosPorMaterial")]
+        public DataTable PuntosPorMaterial(Entidades.EstudianteAsignacion entidad)
+        {
+            return Datos.CursoDatos.PuntosPorMaterial(entidad);
         }
     }
 }

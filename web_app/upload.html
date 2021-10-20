@@ -47,8 +47,6 @@
                     </li>
                 </ul>
                 <form class="d-flex">
-                    <button class="btn btn-dark" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Bottom popover">Iniciar Sesión</button>
-                    <!--
                     <div class="dropdown ">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                           Hola, Widman
@@ -59,7 +57,6 @@
                             <li><a class="dropdown-item" href="#">Cerrar sesion</a></li>
                         </ul>
                     </div>
-                    -->
                 </form>
             </div>
 
@@ -86,34 +83,19 @@
     </div>
 
     <main>
-
+        <br>
         <div class="container">
-            <div class="d-flex align-items-center">
-                <div class="row text-center  gy-5">
-                    <div class="col-sm-8  col-md-6 col-lg-3 ">
-                        <a href="traductor.html"><img src="recursos/img/traductor.png" width="75%" href></a>
-                        <span class="badge rounded-pill bg-success"><span class="fs-6">Traductor Oxlajuj</span> </span><br>
-                        <span class="small text-muted fw-light">El traductor Oxlajuj es una potente herramienta para que docentes y estudiantes puedan traducir palabras a Qeqchi</span>
-                    </div>
-                    <div class="col-sm-8  col-md-6 col-lg-3">
-                        <a href="/cursos/"><img src="recursos/img/cursos.png" width="75%" alt=""></a>
-                        <span class="badge rounded-pill bg-success"><span class="fs-6">Cursos en línea</span> </span><br>
-                        <span class="small text-muted fw-light">Invierte en conocmiento. Inscríbete a cursos en línea para aprender o mejorar tus habilidades y conocimientos en Qeqchi.</span>
-                    </div>
-                    <div class="col-sm-8  col-md-6 col-lg-3">
-                        <a href=""><img src="recursos/img/material.png" width="75%" alt=""></a>
-                        <span class="badge rounded-pill bg-success"><span class="fs-6">Material didáctico</span> </span><br>
-                        <span class="small text-muted fw-light">¿Eres profesor? Navega entre muchas hojas de trabajo para varios niveles educativos o crea las propias para tu clase.</span>
-                    </div>
-                    <div class="col-sm-8  col-md-6 col-lg-3">
-                        <a href=""><img src="recursos/img/extras.png" width="75%" alt=""></a>
-                        <span class="badge rounded-pill bg-success"><span class="fs-6">Otros recursos</span> </span><br>
-                        <span class="small text-muted fw-light">OXLAJUJ cuenta con muchos recursos que están a tu disposición, navega en la plataforma y conócelas todas.</span>
-                    </div>
+            <form action="" id="form_subir">
+                <div class="form-1-2">
+                    <label for="">Archivo</label>
+                    <input type="file" name="archivo" required>
                 </div>
-            </div>
-
+                <div class="acciones">
+                    <input type="submit" value="Enviar">
+                </div>
+            </form>
         </div>
+
 
     </main>
 
@@ -147,6 +129,7 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js "></script>
     <script src="js/traductor.js "></script>
+    <script src="js/subir-archivo.js"></script>
 
 
 </body>

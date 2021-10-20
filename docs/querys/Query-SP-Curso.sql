@@ -187,3 +187,30 @@ BEGIN
 	and c.IdCursoDetalle = @IdCurso
 
 END
+
+
+
+
+
+/*
+	+-------------------------------------------+
+	|	Tipo:	Obtener material de capitulo	|
+	+-------------------------------------------+
+	|	Autor:	Widman Esquivel					|
+	|	Fecha:	19/10/2021						|
+	+-------------------------------------------+
+*/
+alter PROC Aula.SPObtenerMaterialCapitulo2 (@IdMaterial INT)
+AS
+BEGIN
+
+	select * from Aula.CapituloMaterial
+	where IdCapituloMaterial = @IdMaterial
+
+END
+
+
+
+
+
+exec Aula.SPObtenerMaterialCapitulo2 3

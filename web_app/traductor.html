@@ -79,34 +79,51 @@
 
 
 
-    <nav class="navbar navbar-light navbar-expand-md ">
+    <nav class="navbar navbar-expand-md navbar-light ">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="img/logo-new-g.png" alt="" height="35">
-            </a>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+            <a class="navbar-brand" href="#"><img src="img/logo-new-g.png" alt="" height="35"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Traductor</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Colecciones</a>
+                        <a class="nav-link " href="#">Traductor</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="cursos/">Cursos</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Material didáctico</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Material didáctico</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Colecciones</a></li>
+                            <li><a class="dropdown-item" href="#">Hojas de trabajo</a></li>
+
+                        </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Ayuda</a>
+                        <a class="nav-link" href="#">Ayuda</a>
                     </li>
                 </ul>
+                <form class="d-flex">
+                    <button class="btn btn-dark" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Bottom popover">Iniciar Sesión</button>
+                    <!--
+                    <div class="dropdown ">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                          Hola, Widman
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user"></i>Mi perfil</a></li>
+                            <li><a class="dropdown-item" href="#">Configuracion</a></li>
+                            <li><a class="dropdown-item" href="#">Cerrar sesion</a></li>
+                        </ul>
+                    </div>
+                    -->
+                </form>
             </div>
-            <form class="d-flex">
-                <button class="btn btn-dark" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Bottom popover">Iniciar Sesión</button>
-            </form>
+
         </div>
+
     </nav>
 
     <div class="container-fluid bg-success" id="HeaderCurso">

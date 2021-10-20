@@ -166,7 +166,6 @@
     <Compile Include="Models\LoginRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\TraductorController.cs" />
-    <Compile Include="Controllers\WorksheetController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
   </ItemGroup>
   <ItemGroup>

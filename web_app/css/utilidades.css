@@ -67,3 +67,10 @@ textarea {
 .footer {
     bottom: 0;
 }
+
+.pdfview {
+    margin: auto;
+    display: block;
+    width: 100vh;
+    height: 100vh;
+}

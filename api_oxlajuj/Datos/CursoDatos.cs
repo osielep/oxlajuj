@@ -46,11 +46,49 @@ namespace Datos
             return DT;
         }
 
+        public static DataTable ObtenerMaterialDeCapituloAvances(Entidades.CursoDetalleEntidad Entidad)
+        {
+            DataTable DT = new DataTable();
+
+            SqlCommand Comando = Conexion.EjecutarPA("Aula.SPObtenerMaterialCapitulo2");
+            Comando.Parameters.AddWithValue("@IdCurso", Entidad.IdCursoDetalle);
+
+            DT = Conexion.EjecutarComandoSelect(Comando);
+
+            return DT;
+        }
+
         public static DataTable ObtenerCursos()
         {
             DataTable DT = new DataTable();
 
             SqlCommand Comando = Conexion.EjecutarPA("Aula.SPObtenerCursos");
+
+            DT = Conexion.EjecutarComandoSelect(Comando);
+
+            return DT;
+        }
+
+        public static DataTable MostarPorcentajeTotal(Entidades.EstudianteAsignacion Entidad)
+        {
+            DataTable DT = new DataTable();
+
+            SqlCommand Comando = Conexion.EjecutarPA("Aula.MostrarPorcentajeAvance");
+            Comando.Parameters.AddWithValue("@IdCursoCapitulo", Entidad.IdCursoCapitulo);
+            Comando.Parameters.AddWithValue("@IdEstudianteAsignacion", Entidad.IdEstudianteAsignacion);
+
+            DT = Conexion.EjecutarComandoSelect(Comando);
+
+            return DT;
+        }
+
+
+        public static DataTable PuntosPorMaterial(Entidades.EstudianteAsignacion Entidad)
+        {
+            DataTable DT = new DataTable();
+
+            SqlCommand Comando = Conexion.EjecutarPA("Aula.PuntosPorMaterial");
+            Comando.Parameters.AddWithValue("@IdEstudianteAsignacion", Entidad.IdEstudianteAsignacion);
 
             DT = Conexion.EjecutarComandoSelect(Comando);
 

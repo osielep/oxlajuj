@@ -143,9 +143,6 @@ function OracionesDeEjemplo() {
 
     });
 
-
-
-
 }
 
 function PalabrasPopulares() {

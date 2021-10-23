@@ -189,6 +189,7 @@ BEGIN
 END
 
 
+exec aula.SPObtenerMaterialCapitulo 1
 
 
 
@@ -200,17 +201,47 @@ END
 	|	Fecha:	19/10/2021						|
 	+-------------------------------------------+
 */
-alter PROC Aula.SPObtenerMaterialCapitulo2 (@IdMaterial INT)
+alter PROC Aula.SPObtenerMaterialCapitulo2 (@IdCurso INT)
 AS
 BEGIN
 
-	select * from Aula.CapituloMaterial
-	where IdCapituloMaterial = @IdMaterial
+	select c.IdCursoCapitulo, m.IdCapituloMaterial, m.TxtNombreMaterial, t.IdTipoMaterial, t.TxtTipoMaterial, m.IntPuntos, m.TxtUbicacionMaterial
+	from aula.CursoDetalle as p, aula.CursoCapitulo as c, aula.CapituloMaterial as m, aula.TipoMaterial t
+	where m.IdCursoCapitulo = t.IdTipoMaterial
+	and m.IdCursoCapitulo = c.IdCursoCapitulo
+	and c.IdCursoDetalle = p.IdCursoDetalle
+	and c.IdCursoDetalle = @IdCurso
 
 END
 
 
 
+/*
+	+-------------------------------------------+
+	|	Tipo:	Obtener puntaje de material		|
+	+-------------------------------------------+
+	|	Autor:	Widman Esquivel					|
+	|	Fecha:	19/10/2021						|
+	+-------------------------------------------+
+*/
+create PROC Aula.PuntosPorMaterial (@IdEstudianteAsignacion INT)
+AS
+BEGIN
+
+	select IdCapituloMaterial, IntPuntajeObtenido
+	from aula.EstudianteResultados
+	where IdEstudianteAsignacion = @IdEstudianteAsignacion
+
+END
 
 
-exec Aula.SPObtenerMaterialCapitulo2 3
+exec aula.PuntosPorMaterial 1
+
+
+
+
+
+
+
+exec Aula.SPObtenerMaterialCapitulo2 1
+select * from aula.EstudianteResultados where IdEstudianteAsignacion = 1

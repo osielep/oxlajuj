@@ -18,6 +18,7 @@ namespace Entidades
         public int IdInstitucion { get; set; }
         public string TxtNombreUsuario { get; set; }
         public string TxtApellidoUsuario { get; set; }
+        
         public string TxtEmailUsuario { get; set; }
         public string TxtPasswordUsuario { get; set; }
         public int IdGenero { get; set; }

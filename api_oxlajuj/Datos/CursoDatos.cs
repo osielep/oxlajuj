@@ -82,7 +82,6 @@ namespace Datos
             return DT;
         }
 
-
         public static DataTable PuntosPorMaterial(Entidades.EstudianteAsignacion Entidad)
         {
             DataTable DT = new DataTable();

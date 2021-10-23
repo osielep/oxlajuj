@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Web.Http;
 using ApiRest.Models;
+using Entidades;
 
 namespace ApiRest.Controllers
 {
@@ -26,6 +27,26 @@ namespace ApiRest.Controllers
         {
             var identity = Thread.CurrentPrincipal.Identity;
             return Ok($" IPrincipal-user: {identity.Name} - IsAuthenticated: {identity.IsAuthenticated}");
+        }
+
+
+        [HttpPost]
+        [Route("login")]
+        public IHttpActionResult Login(Entidades.UsuarioEntidad entidad)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            bool isCredentialValid = (entidad.TxtPasswordUsuario == "123456");
+            if (isCredentialValid)
+            {
+                var token = TokenGenerator.GenerateTokenJwt(entidad.TxtEmailUsuario);
+                return Ok(token);
+            }
+            else
+            {
+                return Unauthorized();
+            }
         }
 
         [HttpPost]

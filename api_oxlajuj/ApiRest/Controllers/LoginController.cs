@@ -49,24 +49,55 @@ namespace ApiRest.Controllers
             }
         }
 
+        //[HttpPost]
+        //[Route("authenticate")]
+        //public IHttpActionResult Authenticate(LoginRequest login)
+        //{
+        //     if (login == null)
+        //        throw new HttpResponseException(HttpStatusCode.BadRequest);
+
+        //    //TODO: Validate credentials Correctly, this code is only for demo !!
+        //    bool isCredentialValid = (login.Password == "123456");
+
+        //    if (isCredentialValid)
+        //    {
+        //        var token = TokenGenerator.GenerateTokenJwt(login.Username);
+        //        return Ok(token);
+        //    }
+        //    else
+        //    {
+        //        return Unauthorized();
+        //    }
+        //}
+
         [HttpPost]
         [Route("authenticate")]
-        public IHttpActionResult Authenticate(LoginRequest login)
+        public IHttpActionResult Authenticate(Clases.ValidaUsuario plogin)
         {
-            if (login == null)
+            if (plogin == null)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
             //TODO: Validate credentials Correctly, this code is only for demo !!
-            bool isCredentialValid = (login.Password == "123456");
-            if (isCredentialValid)
+            //bool isCredentialValid = (login.Password == "123456");
+            //creamos la conexion a la base de datos
+
+            Clases.ValidaUsuario usrvalido = new Clases.ValidaUsuario();
+
+            usrvalido = Clases.ValidaUsuario.Login(plogin);
+
+            if(usrvalido.codigo == 200)
             {
-                var token = TokenGenerator.GenerateTokenJwt(login.Username);
+                var token = TokenGenerator.GenerateTokenJwt(usrvalido.nombre_usuario);
                 return Ok(token);
             }
             else
             {
                 return Unauthorized();
             }
+
+            //fin de la creacion de la conexion a la db
+
+           
         }
     }
 }

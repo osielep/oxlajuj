@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Datos
 {
-    class Funciones
+    public class Funciones
     {
         public string lblStatus = "";
         private string CodPassword = "C0pern!c0";

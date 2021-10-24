@@ -1,5 +1,5 @@
-var urlApi = "http://api.oxlajuj.com/api/"
-var urlApi2 = "http://localhost:60957/api/"
+var urlApi = "https://api.oxlajuj.com/api/"
+
 var LimpiarDiv = "";
 var scriptAudio = "<span class='ejemplos' style='color: green;'><i class='fas fa-volume-up'></i></span>";
 var colours = ["primary", "secondary", "success", "warning", "danger", "info"];

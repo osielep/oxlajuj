@@ -2,6 +2,10 @@ var Mensaje404 = '<div class="alert alert-danger alert-dismissible fade show" ro
 var Mensaje405 = '<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Oops!</strong> tu cuenta fue desactivada.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
 var Mensaje200 = '<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>Hooray!</strong> inicio de sesion exitoso.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
 
+var CorreoUsuario = document.getElementById("EmailForm").value;
+var PasswordUsuario = document.getElementById("PasswordForm").value;
+
+
 function syncDelay(milliseconds) {
     var start = new Date().getTime();
     var end = 0;
@@ -10,10 +14,31 @@ function syncDelay(milliseconds) {
     }
 }
 
-function LoginUsers() {
+function LoginUserToken() {
+    var settings = {
+        "url": "http://localhost:60957/api/login/authenticate",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "data": JSON.stringify({
+            "usuario": "osielep@gmail.com",
+            "clave": "1234"
+        }),
+    };
 
-    var CorreoUsuario = document.getElementById("EmailForm").value;
-    var PasswordUsuario = document.getElementById("PasswordForm").value;
+    $.ajax(settings).done(function(response) {
+
+        if (response.leg) {
+
+        }
+        console.log(response);
+        window.alert(response);
+    });
+}
+
+function LoginUsers() {
 
     var settings = {
         "url": "http://localhost:60957/api/IniciarSesion",
@@ -49,7 +74,6 @@ function LoginUsers() {
 
                 if (Codigo == '200') {
                     $(AlertaError).prepend(Mensaje200);
-                    setTimeout(window.location.href, 5000);
                 }
 
             }

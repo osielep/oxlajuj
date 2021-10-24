@@ -143,39 +143,54 @@
         <div class="row">
             <p><br></p>
         </div>
-        <!--Inicio row translate-->
-        <div class="row justify-content-center">
-            <div class="col-lg-5 col-11">
-                <label for="inputPassword5" class="form-label text-success"><h6>Español</h6></label>
-                <div class="form-floating">
-                    <textarea class="form-control shadow p-3 mb-5 bg-white rounded" placeholder="Busqueda" id="PalabraBuscar" style="height: 170px"></textarea>
-                    <label for="PalabraBuscar">Ingresa una palabra <br></label>
-                </div>
-            </div>
-            <div class="col-lg-5 col-11">
-                <!--Row info-->
-                <div class="row">
-                    <div class="col-3">
-                        <label for="inputPassword5 " class="form-label text-warning "><h6>Q'eqchi'</h6></label>
-                    </div>
-                    <div class="col-9  text-end">
-                        <span class=" badge rounded-pill bg-success"><i class="fas fa-copy"></i> Copiar</span>
-                        <span class="badge rounded-pill bg-warning pronunciacion"><span id="txtPRT"><i class="fas fa-play-circle"></i> Escuchar</span></span>
-                        <a href="" data-bs-toggle="modal" data-bs-target="#AutorModal"><span class=" badge rounded-pill bg-success" ><i class="fas fa-copy" ></i> Autor</span></a>
+        <script type="text/javascript">
+            var error = '<textarea class="form-control shadow p-3 mb-5 bg-white rounded is-invalid" placeholder="Busqueda" id="PalabraBuscar" style="height: 170px" pattern="hola"></textarea><label for="PalabraBuscar">Ingresa una palabra <br></label> <div class="invalid-feedback">Por favor, ingresa una palabra válida.</div>'
 
+            function validate() {
+                if (document.getElementById("PalabraBuscar").value == "") {
+                    alert("Debe ingresar una palabra");
+                    document.getElementById("PalabraBuscar").focus();
+                } else {
+                    BuscarPalabra();
+                    OracionesDeEjemplo();
+                }
+            }
+        </script>
+        <!--Start row translate-->
+        <form class="needs-validation" novalidate>
+            <div class="row justify-content-center">
+                <!--Row Búsqueda-->
+                <div class="col-lg-5 col-11">
+                    <label for="inputPassword5" class="form-label text-success"><h6>Español</h6></label>
+                    <div class="form-floating" id="MensajeError">
+                        <textarea class="form-control shadow p-3 mb-5 bg-white rounded " placeholder="Busqueda" id="PalabraBuscar" style="height: 170px"></textarea>
+                        <label for="PalabraBuscar">Ingresa una palabra <br></label>
                     </div>
                 </div>
-                <div class="form-floating">
-                    <textarea class="form-control shadow p-3 mb-5 bg-white rounded" placeholder="Resultado" id="TxtMejorResultado" style="height: 170px" readonly></textarea>
-                    <label for="TxtMejorResultado">Mejor resultado</label>
+                <!--Row Traduccion-->
+                <div class="col-lg-5 col-11">
+                    <div class="row">
+                        <div class="col-3">
+                            <label for="inputPassword5 " class="form-label text-warning "><h6>Q'eqchi'</h6></label>
+                        </div>
+                        <div class="col-9  text-end">
+                            <span class=" badge rounded-pill bg-success"><i class="fas fa-copy"></i> Copiar</span>
+                            <span class="badge rounded-pill bg-warning pronunciacion"><span id="txtPRT"><i class="fas fa-play-circle"></i> Escuchar</span></span>
+                            <a href="" data-bs-toggle="modal" data-bs-target="#AutorModal"><span class=" badge rounded-pill bg-success" ><i class="fas fa-copy" ></i> Autor</span></a>
+                        </div>
+                    </div>
+                    <div class="form-floating">
+                        <textarea class="form-control shadow p-3 mb-5 bg-white rounded" placeholder="Resultado" id="TxtMejorResultado" style="height: 170px" readonly></textarea>
+                        <label for="TxtMejorResultado">Mejor resultado</label>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col text-center">
-                <button onclick="BuscarPalabra(); OracionesDeEjemplo(); " type="button " class="btn bg-success btn-lg text-light">Traducir</button>
+            <div class="row">
+                <div class="col text-center">
+                    <button type="button" onclick="javascript:validate(); " class="btn bg-success btn-lg text-light">Traducir</button>
+                </div>
             </div>
-        </div>
+        </form>
         <!--Fin row translate-->
 
         <br>
@@ -239,7 +254,7 @@
                             <label for="floatingPassword">Contraseña</label>
                         </div>
 
-                        <button class="w-100 mb-2 btn btn-lg rounded-4 btn-success text-light" type="submit" onclick="LoginUsers();">Ingresar</button>
+                        <button class="w-100 mb-2 btn btn-lg rounded-4 btn-success text-light" type="submit" onclick="LoginUserToken();">Ingresar</button>
                         <div id="AlertaError">
 
                         </div>

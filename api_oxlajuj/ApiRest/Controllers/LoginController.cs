@@ -30,24 +30,24 @@ namespace ApiRest.Controllers
         }
 
 
-        [HttpPost]
-        [Route("login")]
-        public IHttpActionResult Login(Entidades.UsuarioEntidad entidad)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+        //[HttpPost]
+        //[Route("login")]
+        //public IHttpActionResult Login(Entidades.UsuarioEntidad entidad)
+        //{
+        //    if (!ModelState.IsValid)
+        //        return BadRequest(ModelState);
 
-            bool isCredentialValid = (entidad.TxtPasswordUsuario == "123456");
-            if (isCredentialValid)
-            {
-                var token = TokenGenerator.GenerateTokenJwt(entidad.TxtEmailUsuario);
-                return Ok(token);
-            }
-            else
-            {
-                return Unauthorized();
-            }
-        }
+        //    bool isCredentialValid = (entidad.TxtPasswordUsuario == "123456");
+        //    if (isCredentialValid)
+        //    {
+        //        var token = TokenGenerator.GenerateTokenJwt(entidad.TxtEmailUsuario);
+        //        return Ok(token);
+        //    }
+        //    else
+        //    {
+        //        return Unauthorized();
+        //    }
+        //}
 
         //[HttpPost]
         //[Route("authenticate")]
@@ -74,20 +74,20 @@ namespace ApiRest.Controllers
         [Route("authenticate")]
         public IHttpActionResult Authenticate(Clases.ValidaUsuario plogin)
         {
+            
             if (plogin == null)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
-            //TODO: Validate credentials Correctly, this code is only for demo !!
-            //bool isCredentialValid = (login.Password == "123456");
-            //creamos la conexion a la base de datos
 
             Clases.ValidaUsuario usrvalido = new Clases.ValidaUsuario();
 
             usrvalido = Clases.ValidaUsuario.Login(plogin);
 
-            if(usrvalido.codigo == 200)
+            string iduser = usrvalido.id_usuario.ToString();
+
+            if (usrvalido.codigo == 200)
             {
-                var token = TokenGenerator.GenerateTokenJwt(usrvalido.nombre_usuario);
+                var token = TokenGenerator.GenerateTokenJwt(usrvalido.nombre_usuario, iduser);
                 return Ok(token);
             }
             else

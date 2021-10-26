@@ -18,6 +18,7 @@ namespace ApiRest
             return Datos.UsuariosDatos.RegistroUsuarios(entidad);
         }
 
+        [Authorize]
         [HttpGet]
         [Route("api/ObtenerUsuarios")]
         public DataTable ObtenerUsuarios()

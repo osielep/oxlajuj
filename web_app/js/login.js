@@ -2,8 +2,8 @@ var Mensaje404 = '<div class="alert alert-danger alert-dismissible fade show" ro
 var Mensaje405 = '<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Oops!</strong> tu cuenta fue desactivada.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
 var Mensaje200 = '<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>Hooray!</strong> inicio de sesion exitoso.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
 
-var CorreoUsuario = document.getElementById("EmailForm").value;
-var PasswordUsuario = document.getElementById("PasswordForm").value;
+var CorreoUsuario = $("#EmailForm").val()
+var PasswordUsuario = $("#PasswordForm").val()
 
 
 function syncDelay(milliseconds) {
@@ -15,6 +15,7 @@ function syncDelay(milliseconds) {
 }
 
 function LoginUserToken() {
+
     var settings = {
         "url": "http://localhost:60957/api/login/authenticate",
         "method": "POST",
@@ -23,18 +24,23 @@ function LoginUserToken() {
             "Content-Type": "application/json"
         },
         "data": JSON.stringify({
-            "usuario": "osielep@gmail.com",
-            "clave": "1234"
+            "usuario": $("#EmailForm").val(),
+            "clave": $("#PasswordForm").val()
         }),
     };
 
     $.ajax(settings).done(function(response) {
-
-        if (response.leg) {
-
-        }
+        document.getElementById('AlertaError').innerHTML = '';
         console.log(response);
         window.alert(response);
+        LoginUsers();
+
+    });
+
+    $.ajax(settings).fail(function(response) {
+
+        LoginUsers();
+
     });
 }
 
@@ -48,8 +54,8 @@ function LoginUsers() {
             "Content-Type": "application/json"
         },
         "data": JSON.stringify({
-            "TxtEmailUsuario": CorreoUsuario,
-            "TxtPasswordUsuario": PasswordUsuario
+            "TxtEmailUsuario": $("#EmailForm").val(),
+            "TxtPasswordUsuario": $("#PasswordForm").val()
         }),
     };
 

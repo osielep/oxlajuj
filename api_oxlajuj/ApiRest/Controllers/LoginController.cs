@@ -30,46 +30,6 @@ namespace ApiRest.Controllers
         }
 
 
-        //[HttpPost]
-        //[Route("login")]
-        //public IHttpActionResult Login(Entidades.UsuarioEntidad entidad)
-        //{
-        //    if (!ModelState.IsValid)
-        //        return BadRequest(ModelState);
-
-        //    bool isCredentialValid = (entidad.TxtPasswordUsuario == "123456");
-        //    if (isCredentialValid)
-        //    {
-        //        var token = TokenGenerator.GenerateTokenJwt(entidad.TxtEmailUsuario);
-        //        return Ok(token);
-        //    }
-        //    else
-        //    {
-        //        return Unauthorized();
-        //    }
-        //}
-
-        //[HttpPost]
-        //[Route("authenticate")]
-        //public IHttpActionResult Authenticate(LoginRequest login)
-        //{
-        //     if (login == null)
-        //        throw new HttpResponseException(HttpStatusCode.BadRequest);
-
-        //    //TODO: Validate credentials Correctly, this code is only for demo !!
-        //    bool isCredentialValid = (login.Password == "123456");
-
-        //    if (isCredentialValid)
-        //    {
-        //        var token = TokenGenerator.GenerateTokenJwt(login.Username);
-        //        return Ok(token);
-        //    }
-        //    else
-        //    {
-        //        return Unauthorized();
-        //    }
-        //}
-
         [HttpPost]
         [Route("authenticate")]
         public IHttpActionResult Authenticate(Clases.ValidaUsuario plogin)

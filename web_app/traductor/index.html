@@ -83,7 +83,7 @@
 
 </head>
 
-<body class="d-flex flex-column min-vh-100" onload="PalabrasPopulares();">
+<body class="d-flex flex-column min-vh-100" onload="autenticacionUser(); PalabrasPopulares();">
 
 
 
@@ -112,7 +112,7 @@
                         <a class="nav-link" href="#">Ayuda</a>
                     </li>
                 </ul>
-                <form class="d-flex">
+                <form class="d-flex" id="SesionGlobalButton">
                     <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#LoginModal">
                         Iniciar Sesion
                     </button>
@@ -188,6 +188,7 @@
             <div class="row">
                 <div class="col text-center">
                     <button type="button" onclick="javascript:validate(); " class="btn bg-success btn-lg text-light">Traducir</button>
+                    <button type="submit" onclick="sessionLogout(); " class="btn bg-danger btn-lg text-light">Cerrar sesión</button>
                 </div>
             </div>
         </form>

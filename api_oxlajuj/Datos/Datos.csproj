@@ -57,6 +57,7 @@
     <Compile Include="Conexion.cs" />
     <Compile Include="CursoDatos.cs" />
     <Compile Include="Funciones.cs" />
+    <Compile Include="MaterialDidacticoDatos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TraductorDatos.cs" />
     <Compile Include="UsuariosDatos.cs" />

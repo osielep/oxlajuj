@@ -1,5 +1,160 @@
 var urlApi = "http://localhost:60957/api/"
 
+
+
+
+function GuardarEncabezadoWorksheet() {
+    var settings = {
+        "url": "http://localhost:60957/api/AgregarHojaEncabezado",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "data": JSON.stringify({
+            "TxtTitulo": $("#TituloWorksheet").val(),
+            "RefLogo": "logo.png",
+            "TxtDocente": $("#NombreDocente").val(),
+            "FechaAplicacion": $("#FechaWorksheet").val(),
+            "TxtTipoHoja": $("#SelectTipo").val(),
+            "IntPrivacidad": 1,
+            "IdUsuario": 1
+        }),
+    };
+
+    $.ajax(settings).done(function(response) {
+        console.log(response);
+        $.each(
+            response,
+            function(index, data) {
+
+                var ComprobarResultado = data.Resultado;
+
+                if (ComprobarResultado != 0) {
+                    window.alert("Encabezado guardado");
+                    //Guardando dato en almacenamiento local
+                    localStorage.setItem('IdHeaderWorksheet', ComprobarResultado);
+                    VerEncabezado();
+                } else {
+                    window.alert("Error al guardar el encabezado");
+                }
+            }
+        );
+    });
+}
+
+function VerEncabezado() {
+
+    var IdHG = localStorage.getItem('IdHeaderWorksheet');
+
+    var settings = {
+        "url": "http://localhost:60957/api/VerHojaEncabezado",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "data": JSON.stringify({
+            "IdHojaEncabezado": IdHG
+        }),
+    };
+
+    $.ajax(settings).done(function(response) {
+
+        if (response.length == 0) {
+            window.alert("Error, no existen datos");
+        } else {
+            document.getElementById("FormInputHojaEncabezado").style.display = "none";
+            document.getElementById("FormViewHojaEncabezado").style.display = "block";
+            $.each(
+                response,
+                function(index, data) {
+                    var TituloH = data.TxtTitulo;
+                    var DocenteH = data.TxtDocente;
+                    var TipoH = data.TxtTipoHoja;
+                    var FechaH = data.FechaAplicacion;
+
+                    $(ListaTituloHoja).prepend(TituloH);
+                    $(ListaNombreProfesor).prepend(DocenteH);
+                    $(ListaTipoEvaluacion).prepend(TipoH);
+                    $(ListaFechaAplicacion).prepend(FechaH);
+
+                }
+            );
+
+        }
+
+        document.getElementById("FormInputHojaCUerpo").style.display = "block";
+    });
+
+}
+
+function GuardarCuerpoWorksheet() {
+    var settings = {
+        "url": "http://localhost:60957/api/AgregarHojaCuerpo",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "data": JSON.stringify({
+            "IdHojaEncabezado": localStorage.getItem('IdHeaderWorksheet'),
+            "TxtDescripcion": $("#DescripcionWorksheet").val()
+        }),
+    };
+
+    $.ajax(settings).done(function(response) {
+        $.each(
+            response,
+            function(index, data) {
+
+                var CResultadoBody = data.Resultado;
+
+                if (CResultadoBody != 0) {
+                    window.alert("Descripcion guardada");
+                    //Guardando dato en almacenamiento local
+                    localStorage.setItem('IdBodyWorksheet', CResultadoBody);
+                    VerCuerpo();
+                } else {
+                    window.alert("Error al guardar el encabezado");
+                }
+            }
+        );
+    });
+}
+
+function VerCuerpo() {
+    var settings = {
+        "url": "http://localhost:60957/api/VerHojaCuerpo",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "data": JSON.stringify({
+            "IdHojaCuerpo": localStorage.getItem('IdBodyWorksheet')
+        }),
+    };
+
+    $.ajax(settings).done(function(response) {
+
+        if (response.length == 0) {
+            window.alert("Error, no existen datos");
+        } else {
+            document.getElementById("FormInputHojaCUerpo").style.display = "none";
+            document.getElementById("FormViewHojaCuerpo").style.display = "block";
+            $.each(
+                response,
+                function(index, data) {
+                    var DescripcionH = data.TxtDescripcion;
+                    $(DescripcionHoja).prepend(DescripcionH);
+                }
+            );
+        }
+
+    });
+}
+
 function VerWorksheetHeader() {
     var settings = {
         "url": urlApi + "VerWorksheetHeader",

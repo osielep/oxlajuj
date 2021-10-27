@@ -51,4 +51,36 @@ namespace Entidades
         public string UbicacionCertificado { get; set; }
         public int IdCursoCapitulo { get; set; }
     }
+
+    public class HojaEncabezado : TokenEntidad
+    {
+        public int IdHojaEncabezado { get; set; }
+        public string TxtTitulo { get; set; }
+        public string RefLogo { get; set; }
+        public string TxtDocente { get; set; }
+        public string FechaAplicacion { get; set; }
+        public string TxtTipoHoja { get; set; }
+        public int IntPrivacidad { get; set; }
+    }
+
+    public class HojaCuerpo : TokenEntidad
+    {
+        public int IdHojaCuerpo { get; set; }
+        public int IdHojaEncabezado { get; set; }
+        public string TxtDescripcion { get; set; }
+    }
+
+    public class HojaSeccion : TokenEntidad
+    {
+        public int IdHojaSeccion { get; set; }
+        public int IdHojaCuerpo { get; set; }
+        public int IdTipoEvaluacion { get; set; }
+    }
+
+    public class HojaPalabras : TokenEntidad
+    {
+        public int IdHojaPalabra { get; set; }
+        public int IdHojaSeccion { get; set; }
+        public int IdPalabra { get; set; }
+    }
 }

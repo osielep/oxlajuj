@@ -157,6 +157,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Clases\ValidaUsuario.cs" />
     <Compile Include="Controllers\CostumersController.cs" />
+    <Compile Include="Controllers\MaterialDidacticoController.cs" />
     <Compile Include="Controllers\CursoController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\TokenGenerator.cs" />

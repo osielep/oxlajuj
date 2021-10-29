@@ -91,5 +91,29 @@ namespace Datos
 
             return DT;
         }
+
+
+        public static DataTable TopCincoPalabras(Entidades.TipoDepalabraEntidad Entidad)
+        {
+            DataTable DT = new DataTable();
+
+            SqlCommand Comando = Conexion.EjecutarPA("Idiomas.SP_CincoPalabrasAleatorias");
+            Comando.Parameters.AddWithValue("@IdTipoPalabra", Entidad.IdTipoPalabra);
+
+            DT = Conexion.EjecutarComandoSelect(Comando);
+
+            return DT;
+        }
+
+        public static DataTable ObtenerCategorias()
+        {
+            DataTable DT = new DataTable();
+
+            SqlCommand Comando = Conexion.EjecutarPA("Idiomas.SP_ObtenerCategorias");
+
+            DT = Conexion.EjecutarComandoSelect(Comando);
+
+            return DT;
+        }
     }
 }

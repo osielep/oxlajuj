@@ -19,7 +19,7 @@
 
 </head>
 
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100" onload="ObtenerCategoriasPalabras();">
 
     <nav class="navbar navbar-expand-md navbar-light ">
         <div class="container-fluid">
@@ -74,125 +74,162 @@
     <main>
         <br>
         <div class="container">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <h2 class="pb-2">Crear nueva hoja de trabajo</h2>
-                    </div>
+            <div class="row">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <h2 class="pb-2">Crear nueva hoja de trabajo</h2>
+                        </div>
 
-                    <p>Crea contenido para ti y para otrxs. Explora entre todo el contenido de la plataforma y crea el contenido perfecto para tu clase. <br><strong><span class="small">Por favor, no recargues la pagina.</span></strong></p>
+                        <p>Crea contenido para ti y para otrxs. Explora entre todo el contenido de la plataforma y crea el contenido perfecto para tu clase. <br><strong><span class="small">Por favor, no recargues la pagina.</span></strong></p>
+                    </div>
                 </div>
             </div>
             <br>
-            <div class="card">
-                <div class="card-body">
-                    <h6>Agrega el contenido a tu hoja de trabajo</h6>
-                    <hr>
-                    <div id="FormInputHojaEncabezado" style="display: block;">
-                        <form>
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label"><strong>Agrega un título</strong></label>
-                                <input type="text" class="form-control" id="TituloWorksheet">
-                            </div>
-                            <div class="mb-3">
-                                <div class="row">
-                                    <div class="col">
-                                        <label for="formFile" class="form-label"><strong>Agrega el logotipo</strong></label>
-                                        <input class="form-control" type="file" id="DirLogotipo">
-                                    </div>
-                                    <div class="col">
-                                        <label for="exampleInputEmail1" class="form-label"><strong>Nombre del docente</strong></label>
-                                        <input type="text" class="form-control" id="NombreDocente">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <div class="row">
-                                    <div class="col">
-                                        <label for="formFile" class="form-label"><strong>Selecciona el tipo de hoja</strong></label>
-                                        <select class="form-select" id="SelectTipo" aria-label="Default select example">
-                                            <option value="Hoja de trabajo" selected>Hoja de trabajo</option>
-                                            <option value="Test">Test</option>
-                                            <option value="Práctica">Práctica</option>
-                                            <option value="Exámen final">Exámen final</option>
-                                          </select>
-                                    </div>
-                                    <div class="col">
-                                        <label for="exampleInputEmail1" class="form-label"><strong>Fecha de aplicación</strong></label>
-                                        <input type="text" class="form-control" id="FechaWorksheet">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-grid gap-2 col-6 mx-auto">
-                                <button class="btn btn-success text-light" type="button" onclick="GuardarEncabezadoWorksheet();">Guardar encabezado</button>
-                            </div>
-                        </form>
-                    </div>
-                    <div id="FormViewHojaEncabezado" style="display: none;">
-                        <form>
-                            <div class="alert alert-success" role="alert">
-                                <h4 class="alert-heading"><span id="ListaTituloHoja"></span></h4>
-                                <ul class="fa-ul">
-                                    <li><span class="fa-li"><i class="far fa-user"></i></span>Docente: <strong><span id="ListaNombreProfesor"></span></strong>
-                                    </li>
-                                    <li><span class="fa-li"><i class="fas fa-tasks"></i></span>Tipo: <strong><span id="ListaTipoEvaluacion"></span></strong></li>
-                                    <li><span class="fa-li"><i class="far fa-calendar-minus"></i></span>Fecha: <strong><span id="ListaFechaAplicacion"></span></strong></li>
-                                </ul>
-                                <hr>
-                                <p class="mb-0 small">Datos almacenados en la base de datos.</p>
-                            </div>
-                        </form>
-                    </div>
-                    <div id="FormInputHojaCUerpo" style="display: none;">
-                        <form>
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label"><strong>Agrega una descripción</strong></label>
-                                <textarea class="form-control" id="DescripcionWorksheet" rows="3"></textarea>
-                            </div>
-                            <div class="d-grid gap-2 col-6 mx-auto">
-                                <button class="btn btn-success text-light" type="button" onclick="GuardarCuerpoWorksheet();">Guardar descripción</button>
-                            </div>
-                        </form>
-                    </div>
-                    <div id="FormViewHojaCuerpo" style="display: none;">
-                        <h6>Descripcion:</h6>
-                        <p id="DescripcionHoja"></p>
-                    </div>
-                    <hr>
-                    <div class="FormInputHojaPalabras" style="display: none;">
-                        <div class="row">
-                            <div class="col">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5>Serie I</h5>
-                                        <hr width="60%">
-                                        <form class="row g-3">
-                                            <div class="col-auto">
-                                                <label for="inputPassword2" class="visually-hidden">Palabra</label>
-                                                <input type="text" class="form-control" id="inputPassword2" placeholder="Password">
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-8">
+                    <div class="row">
+                        <div class="container">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h6>Agrega el contenido a tu hoja de trabajo</h6>
+                                    <hr>
+                                    <div id="FormInputHojaEncabezado" style="display: none;">
+                                        <form>
+                                            <div class="mb-3">
+                                                <label for="exampleInputEmail1" class="form-label"><strong>Agrega un título</strong></label>
+                                                <input type="text" class="form-control" id="TituloWorksheet">
                                             </div>
-                                            <div class="col-auto">
-                                                <button type="button" class="btn btn-primary mb-3">Buscar palabra</button>
+                                            <div class="mb-3">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <label for="formFile" class="form-label"><strong>Agrega el logotipo</strong></label>
+                                                        <input class="form-control" type="file" id="DirLogotipo">
+                                                    </div>
+                                                    <div class="col">
+                                                        <label for="exampleInputEmail1" class="form-label"><strong>Nombre del docente</strong></label>
+                                                        <input type="text" class="form-control" id="NombreDocente">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <label for="formFile" class="form-label"><strong>Selecciona el tipo de hoja</strong></label>
+                                                        <select class="form-select" id="SelectTipo" aria-label="Default select example">
+                                                            <option value="Hoja de trabajo" selected>Hoja de trabajo</option>
+                                                            <option value="Test">Test</option>
+                                                            <option value="Práctica">Práctica</option>
+                                                            <option value="Exámen final">Exámen final</option>
+                                                          </select>
+                                                    </div>
+                                                    <div class="col">
+                                                        <label for="exampleInputEmail1" class="form-label"><strong>Fecha de aplicación</strong></label>
+                                                        <input type="text" class="form-control" id="FechaWorksheet">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="d-grid gap-2 col-6 mx-auto">
+                                                <button class="btn btn-success text-light" type="button" onclick="GuardarEncabezadoWorksheet();">Guardar encabezado</button>
                                             </div>
                                         </form>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5>Serie II</h5>
-                                        <hr width="60%">
+                                    <div id="FormViewHojaEncabezado" style="display: block;">
+                                        <form>
+                                            <div class="alert alert-success" role="alert">
+                                                <h4 class="alert-heading"><span id="ListaTituloHoja"></span></h4>
+                                                <ul class="fa-ul">
+                                                    <li><span class="fa-li"><i class="far fa-user"></i></span>Docente: <strong><span id="ListaNombreProfesor"></span></strong>
+                                                    </li>
+                                                    <li><span class="fa-li"><i class="fas fa-tasks"></i></span>Tipo: <strong><span id="ListaTipoEvaluacion"></span></strong></li>
+                                                    <li><span class="fa-li"><i class="far fa-calendar-minus"></i></span>Fecha: <strong><span id="ListaFechaAplicacion"></span></strong></li>
+                                                </ul>
+                                                <hr>
+                                                <p class="mb-0 small">Datos almacenados en la base de datos.</p>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div id="FormInputHojaCUerpo" style="display: none;">
+                                        <form>
+                                            <div class="mb-3">
+                                                <label for="exampleInputEmail1" class="form-label"><strong>Agrega una descripción</strong></label>
+                                                <textarea class="form-control" id="DescripcionWorksheet" rows="3"></textarea>
+                                            </div>
+                                            <div class="d-grid gap-2 col-6 mx-auto">
+                                                <button class="btn btn-success text-light" type="button" onclick="GuardarCuerpoWorksheet();">Guardar descripción</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div id="FormViewHojaCuerpo" style="display: block;">
+                                        <h6>Descripcion:</h6>
+                                        <p id="DescripcionHoja">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                                    </div>
+                                    <hr>
+                                    <div class="FormInputHojaPalabras" style="display: block;">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5>Serie I</h5>
+                                                        <span class="small">Selecione una categoría para aregar palabras</span>
+                                                        <hr width="60%">
+                                                        <form class="row g-3">
+                                                            <div class="col">
+                                                                <select class="form-select" id="SelectTipoAll" aria-label="Default select example">
+                                                                    
+                                                                </select>
+                                                            </div>
+                                                            <div class="col">
+                                                                <button type="button" class="btn btn-primary mb-3" onclick="PalabrasAleatoriasPorCategoria();">Buscar palabras</button>
+                                                            </div>
+                                                            <table id="TablaTopPalabras" class="table table-hover">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th scope="col">Español</th>
+                                                                        <th scope="col">Q'eqchi'</th>
+                                                                        <th scope="col">Opciones</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+
+                                                                </tbody>
+                                                            </table>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5>Serie II</h5>
+                                                        <hr width="60%">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="col-4">
+                    <div class="row">
+                        <div class="container">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h3>Previsualizacion</h3>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
         </div>
-
     </main>
 
     <!-- Modal Login-->

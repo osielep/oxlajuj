@@ -53,6 +53,19 @@ namespace ApiRest.Controllers
             return Datos.MaterialDidacticoDatos.VerHojaCuerpo(entidad);
         }
 
+        [HttpPost]
+        [Route("api/TopCincoPalabras")]
+        public DataTable TopCincoPalabras(Entidades.TipoDepalabraEntidad entidad)
+        {
+            return Datos.MaterialDidacticoDatos.TopCincoPalabras(entidad);
+        }
+
+        [HttpGet]
+        [Route("api/ObtenerCategorias")]
+        public DataTable ObtenerCategorias()
+        {
+            return Datos.MaterialDidacticoDatos.ObtenerCategorias();
+        }
 
     }
 }

@@ -1,6 +1,55 @@
 var urlApi = "http://localhost:60957/api/"
 
 
+function ObtenerCategoriasPalabras() {
+    var settings = {
+        "url": "http://localhost:60957/api/ObtenerCategorias",
+        "method": "GET",
+        "timeout": 0,
+    };
+
+    $.ajax(settings).done(function(response) {
+        //console.log(response);
+        $.each(
+            response,
+            function(index, data) {
+                var IdCategoria = data.IdTipoPalabra;
+                var NombreCategoria = data.TxtNombreTipoPalabra;
+                var CategoriaSelect = "<option value='" + IdCategoria + "'>" + NombreCategoria + "</option>";
+                $(CategoriaSelect).appendTo("#SelectTipoAll");
+            }
+        );
+    });
+}
+
+function PalabrasAleatoriasPorCategoria() {
+    var settings = {
+        "url": "http://localhost:60957/api/TopCincoPalabras",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "data": JSON.stringify({
+            "IdTipoPalabra": $("#SelectTipoAll").val(),
+        }),
+    };
+
+    $.ajax(settings).done(function(response) {
+        var vacio = ""
+        $.each(
+            response,
+            function(index, data) {
+                $(vacio).appendTo("#TablaTopPalabras");
+                var fila = "<tr><td>" + data.TxtPalabraEspanol +
+                    "</td><td>" + data.TxtPalabraIdiomaMaya +
+                    "</td><td><a href='#' '>  <span class='badge bg-success'><i class='fas fa-plus-square'></i> Agregar</span></a> </td></tr>";
+                $(fila).appendTo("#TablaTopPalabras");
+            }
+        );
+
+    });
+}
 
 
 function GuardarEncabezadoWorksheet() {

@@ -1,6 +1,6 @@
 var urlApi = "http://localhost:60957/api/"
 
-
+//Se ejecuta en onload
 function ObtenerCategoriasPalabras() {
     var settings = {
         "url": "http://localhost:60957/api/ObtenerCategorias",
@@ -22,6 +22,7 @@ function ObtenerCategoriasPalabras() {
     });
 }
 
+//Se ejecuta en onload
 function ObtenerTipoEvaluacion() {
     var settings = {
         "url": "http://localhost:60957/api/ObtenerTipoEvaluacion",
@@ -42,6 +43,7 @@ function ObtenerTipoEvaluacion() {
         );
     });
 }
+
 
 function AgregarNuevaSeccion() {
     var settings = {
@@ -114,6 +116,7 @@ function PalabrasAleatoriasPorCategoria(IdSeccionPr) {
 
                 console.log("IdPalabra:", IdPalabraP, " IdSeccion:", IdSeccionP)
                 AgregarPalabraSeccion(IdPalabraP, IdSeccionP)
+                RecuperarPalabras(IdSeccionP);
             }
         );
         console.log(response)
@@ -183,7 +186,7 @@ function RecuperarPalabras(IdSeccionPalabras) {
 
                 var fila = "<tr><td>" + data.TxtPalabraEspanol +
                     "</td><td>" + data.TxtPalabraIdiomaMaya +
-                    "</td><td><a href='#' '>  <span class='badge bg-success'><i class='fas fa-plus-square'></i> Agregar</span></a> </td></tr>";
+                    "</td><td><a href='#' '>  <span class='badge bg-danger'><i class='fas fa-plus-square'></i> Eliminar</span></a> </td></tr>";
                 $(fila).appendTo("#TablaTopPalabras");
 
 

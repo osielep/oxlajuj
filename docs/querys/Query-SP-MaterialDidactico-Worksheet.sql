@@ -128,8 +128,8 @@ END
 	+---------------------------------------+
 */
 
-CREATE PROC Aula.AgregarHojaSeccion (
-										@IdHojaSeccion int,
+ALTER PROC Aula.AgregarHojaSeccion (
+										
 										@IdHojaCuerpo int,
 										@IdTipoEvaluacion int
 								)
@@ -140,7 +140,7 @@ DECLARE @FilasAfectadas	TINYINT,
 BEGIN
 	BEGIN TRAN
 
-		SELECT @UltimoID = ISNULL(MAX(a.IdHojaCuerpo),0) 
+		SELECT @UltimoID = ISNULL(MAX(a.IdHojaSeccion),0) 
 		FROM Aula.HojaSeccion AS a
 
 	BEGIN TRY
@@ -181,8 +181,8 @@ END
 	+---------------------------------------+
 */
 
-CREATE PROC Aula.AgregarHojaPalabras (
-										@IdHojaPalabra int,
+ALTER PROC Aula.AgregarHojaPalabras (
+										
 										@IdHojaSeccion int,
 										@IdPalabra int
 								)

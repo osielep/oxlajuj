@@ -116,12 +116,23 @@ namespace Datos
             return DT;
         }
 
-
         public static DataTable ObtenerTipoEvaluacion()
         {
             DataTable DT = new DataTable();
 
             SqlCommand Comando = Conexion.EjecutarPA("Aula.SP_ObtenerTipoEvaluacion");
+
+            DT = Conexion.EjecutarComandoSelect(Comando);
+
+            return DT;
+        }
+
+        public static DataTable ObtenerPalabrasPorSeccion(Entidades.HojaSeccion Entidad)
+        {
+            DataTable DT = new DataTable();
+
+            SqlCommand Comando = Conexion.EjecutarPA("Aula.SP_ObtenerPalabrasPorSeccion");
+            Comando.Parameters.AddWithValue("@IdSeccion", Entidad.IdHojaSeccion);
 
             DT = Conexion.EjecutarComandoSelect(Comando);
 

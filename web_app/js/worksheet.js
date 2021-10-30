@@ -43,7 +43,47 @@ function ObtenerTipoEvaluacion() {
     });
 }
 
-function PalabrasAleatoriasPorCategoria() {
+function AgregarNuevaSeccion() {
+    var settings = {
+        "url": "http://localhost:60957/api/AgregarHojaSeccion",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "data": JSON.stringify({
+            "IdHojaCuerpo": 2,
+            "IdTipoEvaluacion": $("#SelectTipoSeccionAll").val(),
+        }),
+    };
+
+    $.ajax(settings).done(function(response) {
+
+        $.each(
+            response,
+            function(index, data) {
+
+                if (data.Resultado == 0) {
+                    window.alert("Error agregando la sección");
+                    console.log(data.Resultado)
+
+                } else {
+                    window.alert("Sección agregada con éxito");
+                    console.log(data.Resultado)
+                    PalabrasAleatoriasPorCategoria(data.Resultado);
+                    RecuperarPalabras(data.Resultado);
+                }
+            }
+        );
+
+    }).fail(function(response) {
+
+        window.alert("Error inesperado");
+        console.log(response)
+    });
+}
+
+function PalabrasAleatoriasPorCategoria(IdSeccionPr) {
     var settings = {
         "url": "http://localhost:60957/api/TopCincoPalabras",
         "method": "POST",
@@ -56,22 +96,101 @@ function PalabrasAleatoriasPorCategoria() {
         }),
     };
 
+    var IdSeccionP = IdSeccionPr;
+
     $.ajax(settings).done(function(response) {
         var vacio = ""
         $.each(
             response,
             function(index, data) {
-                $(vacio).appendTo("#TablaTopPalabras");
+
+                // $(vacio).appendTo("#TablaTopPalabras");
+                // var fila = "<tr><td>" + data.TxtPalabraEspanol +
+                //     "</td><td>" + data.TxtPalabraIdiomaMaya +
+                //     "</td><td><a href='#' '>  <span class='badge bg-success'><i class='fas fa-plus-square'></i> Agregar</span></a> </td></tr>";
+                // $(fila).appendTo("#TablaTopPalabras");
+
+                var IdPalabraP = data.IdPalabra;
+
+                console.log("IdPalabra:", IdPalabraP, " IdSeccion:", IdSeccionP)
+                AgregarPalabraSeccion(IdPalabraP, IdSeccionP)
+            }
+        );
+        console.log(response)
+    });
+}
+
+//Se ejecuta 5 veces
+function AgregarPalabraSeccion(IdPalabraPq, IdSeccionPq) {
+    var settings = {
+        "url": "http://localhost:60957/api/AgregarHojaPalabras",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "data": JSON.stringify({
+            "IdHojaSeccion": IdSeccionPq,
+            "IdPalabra": IdPalabraPq
+        }),
+    };
+
+    console.log("IdPalabra_PR:", IdPalabraPq, "IdSeccion_PR:", IdSeccionPq)
+
+    $.ajax(settings).done(function(response) {
+
+        $.each(
+            response,
+            function(index, data) {
+                if (data.Resultado == 0) {
+                    //window.alert("Error guardando el vocabulario");
+                    console.log(response)
+
+                } else {
+                    //window.alert("Vocabulario agregado con éxito");
+                    console.log(response)
+
+                }
+            }
+        );
+
+
+    }).fail(function(response) {
+
+        window.alert("Error inesperado");
+        console.log(response)
+    });
+}
+
+function RecuperarPalabras(IdSeccionPalabras) {
+    var settings = {
+        "url": "http://localhost:60957/api/ObtenerPalabrasPorSeccion",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "data": JSON.stringify({
+            "IdHojaSeccion": IdSeccionPalabras
+        }),
+    };
+
+    $.ajax(settings).done(function(response) {
+        $.each(
+            response,
+            function(index, data) {
+
+
                 var fila = "<tr><td>" + data.TxtPalabraEspanol +
                     "</td><td>" + data.TxtPalabraIdiomaMaya +
                     "</td><td><a href='#' '>  <span class='badge bg-success'><i class='fas fa-plus-square'></i> Agregar</span></a> </td></tr>";
                 $(fila).appendTo("#TablaTopPalabras");
+
+
             }
         );
-
     });
 }
-
 
 function GuardarEncabezadoWorksheet() {
     var settings = {

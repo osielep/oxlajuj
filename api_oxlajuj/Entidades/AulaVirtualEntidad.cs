@@ -38,7 +38,6 @@ namespace Entidades
         public int IdProfesor { get; set; }
     }
 
-
     public class EstudianteAsignacion : TokenEntidad
     {
         public int IdEstudianteAsignacion { get; set; }

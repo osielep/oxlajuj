@@ -43,5 +43,24 @@ BEGIN
 
 END
 
-exec idiomas.SP_ObtenerCategorias
 
+
+/*
+	+-------------------------------------------+
+	|	Tipo:	Obtener tipos de evaluación		|
+	+-------------------------------------------+
+	|	Autor:	Widman Esquivel					|
+	|	Fecha:	29/10/2021						|
+	+-------------------------------------------+
+*/
+CREATE PROC Aula.SP_ObtenerTipoEvaluacion
+AS
+BEGIN
+
+	select IdTipoEvaluacion, TxtNombreEvaluacion, TxtDescripcion
+	from Aula.TipoEvaluacion
+
+END
+
+
+exec idiomas.

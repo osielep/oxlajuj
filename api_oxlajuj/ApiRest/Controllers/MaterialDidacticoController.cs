@@ -74,5 +74,12 @@ namespace ApiRest.Controllers
             return Datos.MaterialDidacticoDatos.ObtenerTipoEvaluacion();
         }
 
+        [HttpPost]
+        [Route("api/ObtenerPalabrasPorSeccion")]
+        public DataTable ObtenerPalabrasPorSeccion(Entidades.HojaSeccion entidad)
+        {
+            return Datos.MaterialDidacticoDatos.ObtenerPalabrasPorSeccion(entidad);
+        }
+
     }
 }

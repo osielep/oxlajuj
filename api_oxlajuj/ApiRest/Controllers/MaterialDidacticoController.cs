@@ -67,5 +67,12 @@ namespace ApiRest.Controllers
             return Datos.MaterialDidacticoDatos.ObtenerCategorias();
         }
 
+        [HttpGet]
+        [Route("api/ObtenerTipoEvaluacion")]
+        public DataTable ObtenerTipoEvaluacion()
+        {
+            return Datos.MaterialDidacticoDatos.ObtenerTipoEvaluacion();
+        }
+
     }
 }

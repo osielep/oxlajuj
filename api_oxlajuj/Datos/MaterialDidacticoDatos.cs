@@ -115,5 +115,17 @@ namespace Datos
 
             return DT;
         }
+
+
+        public static DataTable ObtenerTipoEvaluacion()
+        {
+            DataTable DT = new DataTable();
+
+            SqlCommand Comando = Conexion.EjecutarPA("Aula.SP_ObtenerTipoEvaluacion");
+
+            DT = Conexion.EjecutarComandoSelect(Comando);
+
+            return DT;
+        }
     }
 }

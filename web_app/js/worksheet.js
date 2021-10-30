@@ -22,6 +22,27 @@ function ObtenerCategoriasPalabras() {
     });
 }
 
+function ObtenerTipoEvaluacion() {
+    var settings = {
+        "url": "http://localhost:60957/api/ObtenerTipoEvaluacion",
+        "method": "GET",
+        "timeout": 0,
+    };
+
+    $.ajax(settings).done(function(response) {
+        //console.log(response);
+        $.each(
+            response,
+            function(index, data) {
+                var IdTipoEv = data.IdTipoEvaluacion;
+                var NombreTipoEv = data.TxtNombreEvaluacion;
+                var TipoPalabra = "<option value='" + IdTipoEv + "'>" + NombreTipoEv + "</option>";
+                $(TipoPalabra).appendTo("#SelectTipoSeccionAll");
+            }
+        );
+    });
+}
+
 function PalabrasAleatoriasPorCategoria() {
     var settings = {
         "url": "http://localhost:60957/api/TopCincoPalabras",

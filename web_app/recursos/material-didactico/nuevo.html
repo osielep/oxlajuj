@@ -19,7 +19,7 @@
 
 </head>
 
-<body class="d-flex flex-column min-vh-100" onload="ObtenerCategoriasPalabras();">
+<body class="d-flex flex-column min-vh-100" onload="ObtenerCategoriasPalabras(); ObtenerTipoEvaluacion();">
 
     <nav class="navbar navbar-expand-md navbar-light ">
         <div class="container-fluid">
@@ -140,15 +140,18 @@
                                     <div id="FormViewHojaEncabezado" style="display: block;">
                                         <form>
                                             <div class="alert alert-success" role="alert">
-                                                <h4 class="alert-heading"><span id="ListaTituloHoja"></span></h4>
+                                                <h4 class="alert-heading"><span id="ListaTituloHoja"></span>Los colores en qeqchi</h4>
                                                 <ul class="fa-ul">
                                                     <li><span class="fa-li"><i class="far fa-user"></i></span>Docente: <strong><span id="ListaNombreProfesor"></span></strong>
                                                     </li>
                                                     <li><span class="fa-li"><i class="fas fa-tasks"></i></span>Tipo: <strong><span id="ListaTipoEvaluacion"></span></strong></li>
                                                     <li><span class="fa-li"><i class="far fa-calendar-minus"></i></span>Fecha: <strong><span id="ListaFechaAplicacion"></span></strong></li>
+                                                    <li><span class="fa-li"><i class="fas fa-shield-alt"></i></span>Privacidad: <strong><span id="ListaPrivacidad"></span></strong></li>
                                                 </ul>
                                                 <hr>
-                                                <p class="mb-0 small">Datos almacenados en la base de datos.</p>
+                                                <div id="FormViewHojaCuerpo" style="display: block;">
+                                                    <p id="DescripcionHoja" class="small">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                                                </div>
                                             </div>
                                         </form>
                                     </div>
@@ -163,12 +166,70 @@
                                             </div>
                                         </form>
                                     </div>
-                                    <div id="FormViewHojaCuerpo" style="display: block;">
-                                        <h6>Descripcion:</h6>
-                                        <p id="DescripcionHoja">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="card-title bi-text-center">
+                                                <span class="fs-6"> Agregar nueva sección.</span>
+
+                                            </div>
+                                            <div class="row align-items-center">
+
+                                                <div class="col 4">
+                                                    <label for="exampleInputEmail1" class="form-label"><strong>Tipo</strong></label>
+                                                    <select class="form-select" id="SelectTipoSeccionAll" aria-label="Default select example">
+                                                    </select>
+                                                </div>
+                                                <div class="col 4">
+                                                    <label for="exampleInputEmail1" class="form-label"><strong>Categoria</strong></label>
+                                                    <select class="form-select" id="SelectTipoAll" aria-label="Default select example">
+                                                    </select>
+                                                </div>
+                                                <div class="col 4">
+                                                    <label for="exampleInputEmail1" class="form-label"><strong>Guardar</strong></label><br>
+                                                    <div class="d-grid gap-2">
+                                                        <button type="button" class="btn btn-warning " onclick="PalabrasAleatoriasPorCategoria();">Agregar</button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><br>
+                                    <div class="row row-cols-1 row-cols-md-2 gy-3">
+                                        <div class="col">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="card-title">
+                                                        <span class="badge rounded-pill bg-success"><span ><i class="fas fa-book-open"></i><strong> SERIE 1</strong></span></span>
+                                                        <br>
+                                                        <span class="small text-warning"><strong>Traducir palabras de español a qeqchi</strong> </span><br>
+                                                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
+
+                                                    </div>
+                                                    <div class="row align-items-center">
+                                                        <table id="TablaTopPalabras" class="table table-hover">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th scope="col">Español</th>
+                                                                    <th scope="col">Q'eqchi'</th>
+                                                                    <th scope="col">Opciones</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
-                                    <hr>
-                                    <div class="FormInputHojaPalabras" style="display: block;">
+                                    <br>
+                                    <div class="d-grid gap-2 col-6 mx-auto ">
+                                        <button class="btn btn-success text-light" type="button">Guardar e imprimir</button>
+                                    </div>
+
+                                    <div class="FormInputHojaPalabras" style="display: none;">
                                         <div class="row">
                                             <div class="col">
                                                 <div class="card">
@@ -178,9 +239,7 @@
                                                         <hr width="60%">
                                                         <form class="row g-3">
                                                             <div class="col">
-                                                                <select class="form-select" id="SelectTipoAll" aria-label="Default select example">
-                                                                    
-                                                                </select>
+
                                                             </div>
                                                             <div class="col">
                                                                 <button type="button" class="btn btn-primary mb-3" onclick="PalabrasAleatoriasPorCategoria();">Buscar palabras</button>

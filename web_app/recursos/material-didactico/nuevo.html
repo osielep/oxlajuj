@@ -186,28 +186,62 @@
                                             <div class="card-body">
                                                 <div class="card-title bi-text-center">
                                                     <span class="fs-6"> Agregar nueva sección.</span>
-
                                                 </div>
-                                                <div class="row align-items-center">
-
-                                                    <div class="col 4">
-                                                        <label for="exampleInputEmail1" class="form-label"><strong>Tipo</strong></label>
-                                                        <select class="form-select" id="SelectTipoSeccionAll" aria-label="Default select example">
-                                                        </select>
-                                                    </div>
-                                                    <div class="col 4">
-                                                        <label for="exampleInputEmail1" class="form-label"><strong>Categoria</strong></label>
-                                                        <select class="form-select" id="SelectTipoAll" aria-label="Default select example">
-                                                        </select>
-                                                    </div>
-                                                    <div class="col 4">
-                                                        <label for="exampleInputEmail1" class="form-label"><strong>Guardar</strong></label><br>
-                                                        <div class="d-grid gap-2">
-                                                            <button type="button" class="btn btn-warning " onclick="AgregarNuevaSeccion();">Agregar</button>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <div class="row align-items-center" id="DivAuxiliar">
+                                                            <div class="col-9" id="1">
+                                                                <label for="exampleInputEmail1" class="form-label"><strong>Tipo</strong></label>
+                                                                <select class="form-select" id="SelectTipoSeccionAll" aria-label="Default select example">
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-3" id="2">
+                                                                <label for="exampleInputEmail1" class="form-label"><strong>Guardar</strong></label><br>
+                                                                <div class="d-grid gap-2">
+                                                                    <button type="button" id="BtnAgregarSeccion" class="btn btn-warning " onclick="AgregarNuevaSeccion();">Agregar</button>
+                                                                </div>
+                                                            </div>
                                                         </div>
-
                                                     </div>
+                                                    <div class="col-6">
+                                                        <div class="row align-items-center" id="DivAuxiliar2">
+                                                            <div class="col-9" id="1">
+                                                                <label for="exampleInputEmail1" class="form-label"><strong>Catergoría de palabras</strong></label>
+                                                                <select class="form-select" id="SelectTipoAll" aria-label="Default select example">
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-3" id="2">
+                                                                <label for="exampleInputEmail1" class="form-label"><strong>Agregar</strong></label><br>
+                                                                <div class="d-grid gap-2">
+                                                                    <button type="button" id="BtnAgregarPalabras" class="btn btn-warning " onclick="PalabrasAleatoriasPorCategoria();">Buscar</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div><br>
+                                                <div class="row" id="TblPalabras" style="display: none;">
+                                                    <div class="container">
+                                                        <div class="alert alert-warning" role="alert">
+                                                            <div class="row align-items-center">
+                                                                <table id="TblTopPalabrasCabecera" class="table table-hover">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th scope="col">Español</th>
+                                                                            <th scope="col">Q'eqchi'</th>
+                                                                            <th scope="col">Categoria</th>
+                                                                            <th scope="col">Opciones</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
                                                 </div>
+
                                             </div>
                                         </div><br>
                                     </div>
@@ -215,13 +249,13 @@
                                     <div id="FormViewSeccion" style="display: block;">
                                         <div class="row row-cols-1 row-cols-md-2 gy-3" id="SeccionesTablas">
 
-
                                         </div>
                                     </div>
                                     <br>
+                                    <!--Imprimir-->
                                     <div id="BtnImprimir" style="display: none;">
                                         <div class="d-grid gap-2 col-6 mx-auto ">
-                                            <button class="btn btn-success text-light" type="button" disabled>Guardar e imprimir</button>
+                                            <button class="btn btn-success text-light" type="button">Guardar e imprimir</button>
                                         </div>
                                     </div>
                                 </div>

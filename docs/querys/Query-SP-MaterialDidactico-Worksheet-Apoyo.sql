@@ -76,13 +76,55 @@ ALTER PROC Aula.SP_ObtenerPalabrasPorSeccion (@IdSeccion INT)
 AS
 BEGIN
 
-	select l.TxtPalabraEspanol, l.TxtPalabraIdiomaMaya
-	from Aula.HojaPalabra AS p, Idiomas.TblPalabra AS l
-	where p.IdPalabra = l.IdPalabra and
-	IdHojaSeccion = @IdSeccion
+	select c.IdHojaCuerpo, t.IdHojaSeccion, p.IdHojaPalabra, l.TxtPalabraEspanol, l.TxtPalabraIdiomaMaya
+
+	from Aula.HojaPalabra AS p, Idiomas.TblPalabra AS l,  Aula.HojaSeccion AS t, Aula.HojaCuerpo AS c
+
+	where	p.IdPalabra = l.IdPalabra and
+			p.IdHojaSeccion = t.IdHojaSeccion and
+			t.IdHojaSeccion = @IdSeccion and
+			t.IdHojaCuerpo = c.IdHojaCuerpo
 
 END
 
+exec Aula.SP_ObtenerPalabrasPorSeccion 7
 
 
-exec idiomas.
+	select c.IdHojaCuerpo, t.IdHojaSeccion, p.IdHojaPalabra, l.TxtPalabraEspanol, l.TxtPalabraIdiomaMaya
+
+	from Aula.HojaPalabra AS p, Idiomas.TblPalabra AS l,  Aula.HojaSeccion AS t, Aula.HojaCuerpo AS c
+
+	where	p.IdPalabra = l.IdPalabra and
+			p.IdHojaSeccion = t.IdHojaSeccion and
+			t.IdHojaSeccion = 7 and
+			t.IdHojaCuerpo = c.IdHojaCuerpo
+
+
+
+/*
+	+-------------------------------------------+
+	|	Tipo:	Obtener titulo seccion			|
+	+-------------------------------------------+
+	|	Autor:	Widman Esquivel					|
+	|	Fecha:	31/10/2021						|
+	+-------------------------------------------+
+*/
+ALTER PROC Aula.SP_ObtenerTituloSeccion (@IdCuerpo INT,  @IdSeccion INT)
+AS
+BEGIN
+
+	select
+		c.IdHojaCuerpo, IdHojaSeccion, e.TxtNombreEvaluacion, e.TxtDescripcion
+	from
+			Aula.HojaSeccion as c, Aula.HojaCuerpo as t, aula.TipoEvaluacion as e
+	where
+			c.IdHojaCuerpo = t.IdHojaCuerpo and
+			c. IdTipoEvaluacion = e.IdTipoEvaluacion
+			and t.IdHojaCuerpo = @IdCuerpo
+			and c.IdHojaSeccion = @IdSeccion
+END
+
+exec aula.SP_ObtenerTituloSeccion 6, 12
+exec Aula.SP_ObtenerPalabrasPorSeccion 12
+
+

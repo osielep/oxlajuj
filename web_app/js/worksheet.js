@@ -1,7 +1,10 @@
 var urlApi = "http://localhost:60957/api/"
-var PalabrasFor = []
-    //Se ejecuta en onload
+
+//Se ejecuta en onload
 function ObtenerCategoriasPalabras() {
+    document.getElementById("SelectTipoAll").setAttribute('disabled', 'disabled');
+    document.getElementById("BtnAgregarPalabras").setAttribute('disabled', 'disabled');
+
     var settings = {
         "url": "http://localhost:60957/api/ObtenerCategorias",
         "method": "GET",
@@ -189,6 +192,7 @@ function VerCuerpo() {
             document.getElementById("FormInputHojaCUerpo").style.display = "none";
             document.getElementById("FormInputSeccion").style.display = "block";
             document.getElementById("FormViewSeccion").style.display = "block";
+
             $.each(
                 response,
                 function(index, data) {
@@ -203,6 +207,15 @@ function VerCuerpo() {
 
 //3. Funcion para agregar secciones (El ID se envia como parametro)
 function AgregarNuevaSeccion() {
+    document.getElementById('SelectTipoAll').removeAttribute('disabled');
+    document.getElementById('BtnAgregarPalabras').removeAttribute('disabled');
+
+    document.getElementById("SelectTipoSeccionAll").setAttribute('disabled', 'disabled');
+    document.getElementById("BtnAgregarSeccion").setAttribute('disabled', 'disabled');
+
+    document.getElementById("TblPalabras").style.display = "block";
+
+
     var settings = {
         "url": "http://localhost:60957/api/AgregarHojaSeccion",
         "method": "POST",
@@ -229,24 +242,26 @@ function AgregarNuevaSeccion() {
                 if (data.Resultado == 0) {
                     window.alert("Error agregando la sección");
                     localStorage.setItem('IdSeccionTmp', 0);
-                    console.log(data.Resultado)
+                    //console.log(data.Resultado)
 
                 } else {
                     window.alert("Sección agregada con éxito");
                     localStorage.setItem('IdSeccionTmp', resultado);
-                    console.log(data.Resultado)
+                    VerTituloSecciones();
+                    //PalabrasAleatoriasPorCategoria();
+
                 }
             }
         );
 
-        var Comprobacion = localStorage.getItem('IdSeccionTmp');
+        // var Comprobacion = localStorage.getItem('IdSeccionTmp');
 
-        if (Comprobacion == 0) {
-            window.alert("No se puede continuar");
-        } else {
-            PalabrasAleatoriasPorCategoria();
-            VerTituloSecciones();
-        }
+        // if (Comprobacion == 0) {
+        //     window.alert("No se puede continuar");
+        // } else {
+        //     PalabrasAleatoriasPorCategoria();
+        //     //VerTituloSecciones();
+        // }
 
     }).fail(function(response) {
 
@@ -258,6 +273,9 @@ function AgregarNuevaSeccion() {
 
 //3.1 Genera 5 palabras de forma aleatoria
 function PalabrasAleatoriasPorCategoria() {
+    //$("#TblTopPalabrasCabecera").val("");
+    $("#TblTopPalabrasCabecera td").remove();
+
     var settings = {
         "url": "http://localhost:60957/api/TopCincoPalabras",
         "method": "POST",
@@ -270,35 +288,32 @@ function PalabrasAleatoriasPorCategoria() {
         }),
     };
 
-    var SeccionTempral = localStorage.getItem('IdSeccionTmp');
-
     $.ajax(settings).done(function(response) {
 
         $.each(
             response,
             function(index, data) {
 
-                // $(vacio).appendTo("#TablaTopPalabras");
-                // var fila = "<tr><td>" + data.TxtPalabraEspanol +
-                //     "</td><td>" + data.TxtPalabraIdiomaMaya +
-                //     "</td><td><a href='#' '>  <span class='badge bg-success'><i class='fas fa-plus-square'></i> Agregar</span></a> </td></tr>";
-                // $(fila).appendTo("#TablaTopPalabras");
+
 
                 var IdPalabraP = data.IdPalabra;
 
-                setTimeout(AgregarPalabraSeccion(IdPalabraP, SeccionTempral), 500);
-                console.log("Se ejecuto")
-                    //console.log("IdPalabra:", IdPalabraP, " IdSeccion:", IdSeccionP);
-                    //AgregarPalabraSeccion(IdPalabraP, IdSeccionP)
-                    //RecuperarPalabras(IdSeccionP);
+                var fila = "<tr><td>" + data.TxtPalabraEspanol +
+                    "</td><td>" + data.TxtPalabraIdiomaMaya +
+                    "</td><td>" + data.TxtNombreTipoPalabra +
+                    "</td><td><button type='button' class='btn btn-success btn-sm text-light' onclick='AgregarPalabraSeccion(" + IdPalabraP + ");'><i class='fas fa-plus-square'></i>  Agregar</button> </td></tr>";
+                $(fila).appendTo("#TblTopPalabrasCabecera");
+
+                //AgregarPalabraSeccion(IdPalabraP);
+
             }
         );
         console.log(response)
     });
 }
 
-//3.1.1 Se ejecuta 5 veces 
-function AgregarPalabraSeccion(IdPalabraPq, IdSeccionPq) {
+//3.1.1 
+function AgregarPalabraSeccion(IdPalabraPq) {
     var settings = {
         "url": "http://localhost:60957/api/AgregarHojaPalabras",
         "method": "POST",
@@ -307,12 +322,12 @@ function AgregarPalabraSeccion(IdPalabraPq, IdSeccionPq) {
             "Content-Type": "application/json"
         },
         "data": JSON.stringify({
-            "IdHojaSeccion": IdSeccionPq,
+            "IdHojaSeccion": localStorage.getItem('IdSeccionTmp'),
             "IdPalabra": IdPalabraPq
         }),
     };
 
-    console.log("IdPalabra_PR:", IdPalabraPq, "IdSeccion_PR:", IdSeccionPq)
+    console.log("IdPalabra_PR:", IdPalabraPq, "IdSeccion_PR:", localStorage.getItem('IdSeccionTmp'))
 
     $.ajax(settings).done(function(response) {
 
@@ -320,13 +335,14 @@ function AgregarPalabraSeccion(IdPalabraPq, IdSeccionPq) {
             response,
             function(index, data) {
                 if (data.Resultado == 0) {
-                    //window.alert("Error guardando el vocabulario");
-                    console.log(response)
+                    window.alert("Error guardando el vocabulario");
+
+                    console.log("Error", response)
 
                 } else {
-                    //window.alert("Vocabulario agregado con éxito");
-                    console.log(response)
-
+                    window.alert("Vocabulario agregado con éxito");
+                    console.log("Exito", response)
+                    VerPalbrasSeccion();
                 }
             }
         );
@@ -336,11 +352,15 @@ function AgregarPalabraSeccion(IdPalabraPq, IdSeccionPq) {
         console.log(response)
     });
 
+
+
 }
 
 function VerTituloSecciones() {
     var rBody = localStorage.getItem('IdBodyWorksheet');
     var rSeccion = localStorage.getItem('IdSeccionTmp');
+    document.getElementById("BtnImprimir").style.display = "block";
+
 
     var settings = {
         "url": "http://localhost:60957/api/ObtenerTituloSeccion",
@@ -361,16 +381,19 @@ function VerTituloSecciones() {
             function(index, data) {
 
                 var idTabla = data.IdHojaCuerpo + data.IdHojaSeccion
+                localStorage.setItem('TablaTmp', idTabla);
                 var nombreSerie = data.TxtNombreEvaluacion
                 var descripcionSerie = data.TxtDescripcion
-                var cardTbl = '<div class="col"><div class="card"><div class="card-body"><div class="card-title"><span class="badge rounded-pill bg-success"><span ><i class="fas fa-book-open"></i><strong> SERIE </strong></span></span><br><span class="small text-warning"><strong><span id="TituloSerie">' + nombreSerie + '</span></strong></span><br><span><span id="DescripcionSerie">' + descripcionSerie + '</span></span></div><div class="row align-items-center"><table id="TablaTopPalabras' + idTabla + '" class="table table-hover"><thead><tr><th scope="col">Español</th><th scope="col">Qeqchi</th><th scope="col">Opciones</th></tr></thead><tbody></tbody></table></div></div></div></div>'
+                    //var cardTbl = '<div class="col"><div class="card"><div class="card-body"><div class="card-title"><span class="badge rounded-pill bg-success"><span ><i class="fas fa-book-open"></i><strong> SERIE </strong></span></span><br><span class="small text-warning"><strong><span id="TituloSerie">' + nombreSerie + '</span></strong></span><br><span><span id="DescripcionSerie">' + descripcionSerie + '</span></span></div><div class="row align-items-center"><table id="TablaTopPalabras' + idTabla + '" class="table table-hover"><thead><tr><th scope="col">Español</th><th scope="col">Qeqchi</th><th scope="col">Opciones</th></tr></thead><tbody></tbody></table></div></div></div></div>'
+                var cardTbl = '<div class="col"><div class="card"><div class="card-body"><div class="card-title"><span class="badge rounded-pill bg-success"><span ><i class="fas fa-book-open"></i><strong> SERIE </strong></span></span><br><span class="small text-warning"><strong><span id="TituloSerie">' + nombreSerie + '</span></strong></span><br><span><span id="DescripcionSerie">' + descripcionSerie + '</span></span></div><div class="row"><div class="container"><div class="alert alert-secondary" role="alert"><table id="TablaTopPalabras' + idTabla + '" class="table table-hover"><thead><tr><th scope="col">Español</th><th scope="col">Qeqchi</th></thead><tbody></tbody></table></div></div></div><div id="BtnGuardarTop' + idTabla + '" style="display: block;"><div class="d-grid gap-2" ><button class="btn btn-success text-light" id="BtnGuardarSeccion' + idTabla + '" type="button" onclick="TerminarSeccion();" disabled>Guardar</button></div></div></div></div></div>'
                 $(cardTbl).appendTo("#SeccionesTablas");
 
             }
         );
-        console.log(response)
-        VerPalbrasSeccion();
+        //console.log(response)
+
     });
+
 
 }
 
@@ -378,6 +401,9 @@ function VerTituloSecciones() {
 function VerPalbrasSeccion() {
 
     var rSeccion = localStorage.getItem('IdSeccionTmp');
+    var TblTmp = localStorage.getItem('TablaTmp');
+    document.getElementById('BtnGuardarSeccion' + TblTmp + '').removeAttribute('disabled');
+    $("#TablaTopPalabras" + TblTmp + " td").remove();
 
     var settings = {
         "url": "http://localhost:60957/api/ObtenerPalabrasPorSeccion",
@@ -398,13 +424,35 @@ function VerPalbrasSeccion() {
 
                 var idTabla = data.IdHojaCuerpo + data.IdHojaSeccion
 
+
+
                 var fila = "<tr><td>" + data.TxtPalabraEspanol +
-                    "</td><td>" + data.TxtPalabraIdiomaMaya +
-                    "</td><td><a href='#' '>  <span class='badge bg-success'><i class='fas fa-plus-square'></i> Agregar</span></a> </td></tr>";
+                    "</td><td>" + data.TxtPalabraIdiomaMaya + "</td></tr>";
+                //"</td><td><a href='#' '>  <span class='badge bg-success'><i class='fas fa-plus-square'></i> Agregar</span></a> </td></tr>";
                 $(fila).appendTo("#TablaTopPalabras" + idTabla + "");
 
             }
         );
         console.log(response)
     });
+
+
+
+}
+
+function TerminarSeccion() {
+
+    var TblTmpS = localStorage.getItem('TablaTmp');
+
+    localStorage.removeItem('IdSeccionTmp');
+    $("#TblTopPalabrasCabecera td").remove();
+
+    document.getElementById('SelectTipoSeccionAll').removeAttribute('disabled');
+    document.getElementById('BtnAgregarSeccion').removeAttribute('disabled');
+
+    document.getElementById("SelectTipoAll").setAttribute('disabled', 'disabled');
+    document.getElementById("BtnAgregarPalabras").setAttribute('disabled', 'disabled');
+
+    document.getElementById("BtnGuardarTop" + TblTmpS + "").style.display = "none";
+
 }

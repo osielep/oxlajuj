@@ -75,6 +75,13 @@ namespace ApiRest.Controllers
         }
 
         [HttpPost]
+        [Route("api/ObtenerTituloSeccion")]
+        public DataTable ObtenerTituloSeccion(Entidades.HojaSeccion entidad)
+        {
+            return Datos.MaterialDidacticoDatos.ObtenerTituloSeccion(entidad);
+        }
+
+        [HttpPost]
         [Route("api/ObtenerPalabrasPorSeccion")]
         public DataTable ObtenerPalabrasPorSeccion(Entidades.HojaSeccion entidad)
         {

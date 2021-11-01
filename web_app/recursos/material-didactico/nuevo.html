@@ -87,7 +87,6 @@
             </div>
             <br>
         </div>
-
         <div class="container">
             <div class="row">
                 <div class="col-8">
@@ -97,11 +96,24 @@
                                 <div class="card-body">
                                     <h6>Agrega el contenido a tu hoja de trabajo</h6>
                                     <hr>
-                                    <div id="FormInputHojaEncabezado" style="display: none;">
+                                    <!--Agregar encabezado-->
+                                    <div id="FormInputHojaEncabezado" style="display: block;">
                                         <form>
                                             <div class="mb-3">
-                                                <label for="exampleInputEmail1" class="form-label"><strong>Agrega un título</strong></label>
-                                                <input type="text" class="form-control" id="TituloWorksheet">
+                                                <div class="row">
+                                                    <div class="col-10">
+                                                        <label for="exampleInputEmail1" class="form-label"><strong>Agrega un título</strong></label>
+                                                        <input type="text" class="form-control" id="TituloWorksheet">
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <label for="exampleInputEmail1" class="form-label"><strong>Privacidad</strong></label><br>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                                            <label class="form-check-label" for="inlineCheckbox1">Privada</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                             </div>
                                             <div class="mb-3">
                                                 <div class="row">
@@ -137,10 +149,11 @@
                                             </div>
                                         </form>
                                     </div>
-                                    <div id="FormViewHojaEncabezado" style="display: block;">
+                                    <!--Ver encabezado-->
+                                    <div id="FormViewHojaEncabezado" style="display: none;">
                                         <form>
                                             <div class="alert alert-success" role="alert">
-                                                <h4 class="alert-heading"><span id="ListaTituloHoja"></span>Los colores en qeqchi</h4>
+                                                <h4 class="alert-heading"><span id="ListaTituloHoja"></span></h4>
                                                 <ul class="fa-ul">
                                                     <li><span class="fa-li"><i class="far fa-user"></i></span>Docente: <strong><span id="ListaNombreProfesor"></span></strong>
                                                     </li>
@@ -150,11 +163,12 @@
                                                 </ul>
                                                 <hr>
                                                 <div id="FormViewHojaCuerpo" style="display: block;">
-                                                    <p id="DescripcionHoja" class="small">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                                                    <p id="DescripcionHoja" class="small"></p>
                                                 </div>
                                             </div>
                                         </form>
                                     </div>
+                                    <!--Agregar cuerpo-->
                                     <div id="FormInputHojaCUerpo" style="display: none;">
                                         <form>
                                             <div class="mb-3">
@@ -166,108 +180,48 @@
                                             </div>
                                         </form>
                                     </div>
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="card-title bi-text-center">
-                                                <span class="fs-6"> Agregar nueva sección.</span>
+                                    <!--Agregar secciones-->
+                                    <div id="FormInputSeccion" style="display: none;">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="card-title bi-text-center">
+                                                    <span class="fs-6"> Agregar nueva sección.</span>
 
-                                            </div>
-                                            <div class="row align-items-center">
+                                                </div>
+                                                <div class="row align-items-center">
 
-                                                <div class="col 4">
-                                                    <label for="exampleInputEmail1" class="form-label"><strong>Tipo</strong></label>
-                                                    <select class="form-select" id="SelectTipoSeccionAll" aria-label="Default select example">
-                                                    </select>
-                                                </div>
-                                                <div class="col 4">
-                                                    <label for="exampleInputEmail1" class="form-label"><strong>Categoria</strong></label>
-                                                    <select class="form-select" id="SelectTipoAll" aria-label="Default select example">
-                                                    </select>
-                                                </div>
-                                                <div class="col 4">
-                                                    <label for="exampleInputEmail1" class="form-label"><strong>Guardar</strong></label><br>
-                                                    <div class="d-grid gap-2">
-                                                        <button type="button" class="btn btn-warning " onclick="AgregarNuevaSeccion();">Agregar</button>
+                                                    <div class="col 4">
+                                                        <label for="exampleInputEmail1" class="form-label"><strong>Tipo</strong></label>
+                                                        <select class="form-select" id="SelectTipoSeccionAll" aria-label="Default select example">
+                                                        </select>
                                                     </div>
+                                                    <div class="col 4">
+                                                        <label for="exampleInputEmail1" class="form-label"><strong>Categoria</strong></label>
+                                                        <select class="form-select" id="SelectTipoAll" aria-label="Default select example">
+                                                        </select>
+                                                    </div>
+                                                    <div class="col 4">
+                                                        <label for="exampleInputEmail1" class="form-label"><strong>Guardar</strong></label><br>
+                                                        <div class="d-grid gap-2">
+                                                            <button type="button" class="btn btn-warning " onclick="AgregarNuevaSeccion();">Agregar</button>
+                                                        </div>
 
+                                                    </div>
                                                 </div>
                                             </div>
+                                        </div><br>
+                                    </div>
+                                    <!--Ver secciones-->
+                                    <div id="FormViewSeccion" style="display: block;">
+                                        <div class="row row-cols-1 row-cols-md-2 gy-3" id="SeccionesTablas">
+
+
                                         </div>
-                                    </div><br>
-                                    <div class="row row-cols-1 row-cols-md-2 gy-3">
-                                        <div class="col">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <div class="card-title">
-                                                        <span class="badge rounded-pill bg-success"><span ><i class="fas fa-book-open"></i><strong> SERIE 1</strong></span></span>
-                                                        <br>
-                                                        <span class="small text-warning"><strong>Traducir palabras de español a qeqchi</strong> </span><br>
-                                                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
-
-                                                    </div>
-                                                    <div class="row align-items-center">
-                                                        <table id="TablaTopPalabras" class="table table-hover">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th scope="col">Español</th>
-                                                                    <th scope="col">Q'eqchi'</th>
-                                                                    <th scope="col">Opciones</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
                                     </div>
                                     <br>
-                                    <div class="d-grid gap-2 col-6 mx-auto ">
-                                        <button class="btn btn-success text-light" type="button">Guardar e imprimir</button>
-                                    </div>
-
-                                    <div class="FormInputHojaPalabras" style="display: none;">
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        <h5>Serie I</h5>
-                                                        <span class="small">Selecione una categoría para aregar palabras</span>
-                                                        <hr width="60%">
-                                                        <form class="row g-3">
-                                                            <div class="col">
-
-                                                            </div>
-                                                            <div class="col">
-                                                                <button type="button" class="btn btn-primary mb-3" onclick="PalabrasAleatoriasPorCategoria();">Buscar palabras</button>
-                                                            </div>
-                                                            <table id="TablaTopPalabras" class="table table-hover">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th scope="col">Español</th>
-                                                                        <th scope="col">Q'eqchi'</th>
-                                                                        <th scope="col">Opciones</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-
-                                                                </tbody>
-                                                            </table>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        <h5>Serie II</h5>
-                                                        <hr width="60%">
-                                                    </div>
-                                                </div>
-                                            </div>
+                                    <div id="BtnImprimir" style="display: none;">
+                                        <div class="d-grid gap-2 col-6 mx-auto ">
+                                            <button class="btn btn-success text-light" type="button" disabled>Guardar e imprimir</button>
                                         </div>
                                     </div>
                                 </div>

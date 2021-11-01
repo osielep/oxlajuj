@@ -138,5 +138,18 @@ namespace Datos
 
             return DT;
         }
+
+        public static DataTable ObtenerTituloSeccion(Entidades.HojaSeccion Entidad)
+        {
+            DataTable DT = new DataTable();
+
+            SqlCommand Comando = Conexion.EjecutarPA("Aula.SP_ObtenerTituloSeccion");
+            Comando.Parameters.AddWithValue("@IdCuerpo", Entidad.IdHojaCuerpo);
+            Comando.Parameters.AddWithValue("@IdSeccion", Entidad.IdHojaSeccion);
+
+            DT = Conexion.EjecutarComandoSelect(Comando);
+
+            return DT;
+        }
     }
 }

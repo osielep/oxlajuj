@@ -1,6 +1,6 @@
 var urlApi = "http://localhost:60957/api/"
-
-//Se ejecuta en onload
+var PalabrasFor = []
+    //Se ejecuta en onload
 function ObtenerCategoriasPalabras() {
     var settings = {
         "url": "http://localhost:60957/api/ObtenerCategorias",
@@ -44,157 +44,7 @@ function ObtenerTipoEvaluacion() {
     });
 }
 
-
-function AgregarNuevaSeccion() {
-    var settings = {
-        "url": "http://localhost:60957/api/AgregarHojaSeccion",
-        "method": "POST",
-        "timeout": 0,
-        "headers": {
-            "Content-Type": "application/json"
-        },
-        "data": JSON.stringify({
-            "IdHojaCuerpo": 2,
-            "IdTipoEvaluacion": $("#SelectTipoSeccionAll").val(),
-        }),
-    };
-
-    $.ajax(settings).done(function(response) {
-
-        $.each(
-            response,
-            function(index, data) {
-
-                if (data.Resultado == 0) {
-                    window.alert("Error agregando la sección");
-                    console.log(data.Resultado)
-
-                } else {
-                    window.alert("Sección agregada con éxito");
-                    console.log(data.Resultado)
-                    PalabrasAleatoriasPorCategoria(data.Resultado);
-                    RecuperarPalabras(data.Resultado);
-                }
-            }
-        );
-
-    }).fail(function(response) {
-
-        window.alert("Error inesperado");
-        console.log(response)
-    });
-}
-
-function PalabrasAleatoriasPorCategoria(IdSeccionPr) {
-    var settings = {
-        "url": "http://localhost:60957/api/TopCincoPalabras",
-        "method": "POST",
-        "timeout": 0,
-        "headers": {
-            "Content-Type": "application/json"
-        },
-        "data": JSON.stringify({
-            "IdTipoPalabra": $("#SelectTipoAll").val(),
-        }),
-    };
-
-    var IdSeccionP = IdSeccionPr;
-
-    $.ajax(settings).done(function(response) {
-        var vacio = ""
-        $.each(
-            response,
-            function(index, data) {
-
-                // $(vacio).appendTo("#TablaTopPalabras");
-                // var fila = "<tr><td>" + data.TxtPalabraEspanol +
-                //     "</td><td>" + data.TxtPalabraIdiomaMaya +
-                //     "</td><td><a href='#' '>  <span class='badge bg-success'><i class='fas fa-plus-square'></i> Agregar</span></a> </td></tr>";
-                // $(fila).appendTo("#TablaTopPalabras");
-
-                var IdPalabraP = data.IdPalabra;
-
-                console.log("IdPalabra:", IdPalabraP, " IdSeccion:", IdSeccionP)
-                AgregarPalabraSeccion(IdPalabraP, IdSeccionP)
-                RecuperarPalabras(IdSeccionP);
-            }
-        );
-        console.log(response)
-    });
-}
-
-//Se ejecuta 5 veces
-function AgregarPalabraSeccion(IdPalabraPq, IdSeccionPq) {
-    var settings = {
-        "url": "http://localhost:60957/api/AgregarHojaPalabras",
-        "method": "POST",
-        "timeout": 0,
-        "headers": {
-            "Content-Type": "application/json"
-        },
-        "data": JSON.stringify({
-            "IdHojaSeccion": IdSeccionPq,
-            "IdPalabra": IdPalabraPq
-        }),
-    };
-
-    console.log("IdPalabra_PR:", IdPalabraPq, "IdSeccion_PR:", IdSeccionPq)
-
-    $.ajax(settings).done(function(response) {
-
-        $.each(
-            response,
-            function(index, data) {
-                if (data.Resultado == 0) {
-                    //window.alert("Error guardando el vocabulario");
-                    console.log(response)
-
-                } else {
-                    //window.alert("Vocabulario agregado con éxito");
-                    console.log(response)
-
-                }
-            }
-        );
-
-
-    }).fail(function(response) {
-
-        window.alert("Error inesperado");
-        console.log(response)
-    });
-}
-
-function RecuperarPalabras(IdSeccionPalabras) {
-    var settings = {
-        "url": "http://localhost:60957/api/ObtenerPalabrasPorSeccion",
-        "method": "POST",
-        "timeout": 0,
-        "headers": {
-            "Content-Type": "application/json"
-        },
-        "data": JSON.stringify({
-            "IdHojaSeccion": IdSeccionPalabras
-        }),
-    };
-
-    $.ajax(settings).done(function(response) {
-        $.each(
-            response,
-            function(index, data) {
-
-
-                var fila = "<tr><td>" + data.TxtPalabraEspanol +
-                    "</td><td>" + data.TxtPalabraIdiomaMaya +
-                    "</td><td><a href='#' '>  <span class='badge bg-danger'><i class='fas fa-plus-square'></i> Eliminar</span></a> </td></tr>";
-                $(fila).appendTo("#TablaTopPalabras");
-
-
-            }
-        );
-    });
-}
-
+//1. Guardar encabezado de la hoja (El ID se guarda en localStorage)
 function GuardarEncabezadoWorksheet() {
     var settings = {
         "url": "http://localhost:60957/api/AgregarHojaEncabezado",
@@ -235,6 +85,7 @@ function GuardarEncabezadoWorksheet() {
     });
 }
 
+//1.1 Se muestran los datos del encabezado
 function VerEncabezado() {
 
     var IdHG = localStorage.getItem('IdHeaderWorksheet');
@@ -281,6 +132,7 @@ function VerEncabezado() {
 
 }
 
+//2. Guardar cuerpo de la hoja (El ID se guarda en localStorage)
 function GuardarCuerpoWorksheet() {
     var settings = {
         "url": "http://localhost:60957/api/AgregarHojaCuerpo",
@@ -315,6 +167,7 @@ function GuardarCuerpoWorksheet() {
     });
 }
 
+//2.1 Se muestra la descripcion en el encabezado
 function VerCuerpo() {
     var settings = {
         "url": "http://localhost:60957/api/VerHojaCuerpo",
@@ -334,7 +187,8 @@ function VerCuerpo() {
             window.alert("Error, no existen datos");
         } else {
             document.getElementById("FormInputHojaCUerpo").style.display = "none";
-            document.getElementById("FormViewHojaCuerpo").style.display = "block";
+            document.getElementById("FormInputSeccion").style.display = "block";
+            document.getElementById("FormViewSeccion").style.display = "block";
             $.each(
                 response,
                 function(index, data) {
@@ -347,67 +201,210 @@ function VerCuerpo() {
     });
 }
 
-function VerWorksheetHeader() {
+//3. Funcion para agregar secciones (El ID se envia como parametro)
+function AgregarNuevaSeccion() {
     var settings = {
-        "url": urlApi + "VerWorksheetHeader",
+        "url": "http://localhost:60957/api/AgregarHojaSeccion",
         "method": "POST",
         "timeout": 0,
         "headers": {
             "Content-Type": "application/json"
         },
         "data": JSON.stringify({
-            "IdWorksheetHeader": 1
+            "IdHojaCuerpo": localStorage.getItem('IdBodyWorksheet'),
+            "IdTipoEvaluacion": $("#SelectTipoSeccionAll").val(),
         }),
     };
 
-    VerWorksheetBody();
+
 
     $.ajax(settings).done(function(response) {
-        console.log(response);
+
         $.each(
             response,
             function(index, data) {
-                var fila = "<tr><td>" + data.ImgLogo +
-                    "</td><td>" + data.FechaAplicacion +
-                    "</td><td>" + data.TxtDocente +
-                    "</td><td>" + data.TxtTipoWorksheet +
-                    "</td></tr>";
-                $(fila).appendTo("#TblWorksheetHeader");
+
+                var resultado = data.Resultado
+
+                if (data.Resultado == 0) {
+                    window.alert("Error agregando la sección");
+                    localStorage.setItem('IdSeccionTmp', 0);
+                    console.log(data.Resultado)
+
+                } else {
+                    window.alert("Sección agregada con éxito");
+                    localStorage.setItem('IdSeccionTmp', resultado);
+                    console.log(data.Resultado)
+                }
             }
         );
+
+        var Comprobacion = localStorage.getItem('IdSeccionTmp');
+
+        if (Comprobacion == 0) {
+            window.alert("No se puede continuar");
+        } else {
+            PalabrasAleatoriasPorCategoria();
+            VerTituloSecciones();
+        }
+
+    }).fail(function(response) {
+
+        window.alert("Error inesperado");
+        console.log(response)
+    });
+
+}
+
+//3.1 Genera 5 palabras de forma aleatoria
+function PalabrasAleatoriasPorCategoria() {
+    var settings = {
+        "url": "http://localhost:60957/api/TopCincoPalabras",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "data": JSON.stringify({
+            "IdTipoPalabra": $("#SelectTipoAll").val(),
+        }),
+    };
+
+    var SeccionTempral = localStorage.getItem('IdSeccionTmp');
+
+    $.ajax(settings).done(function(response) {
+
+        $.each(
+            response,
+            function(index, data) {
+
+                // $(vacio).appendTo("#TablaTopPalabras");
+                // var fila = "<tr><td>" + data.TxtPalabraEspanol +
+                //     "</td><td>" + data.TxtPalabraIdiomaMaya +
+                //     "</td><td><a href='#' '>  <span class='badge bg-success'><i class='fas fa-plus-square'></i> Agregar</span></a> </td></tr>";
+                // $(fila).appendTo("#TablaTopPalabras");
+
+                var IdPalabraP = data.IdPalabra;
+
+                setTimeout(AgregarPalabraSeccion(IdPalabraP, SeccionTempral), 500);
+                console.log("Se ejecuto")
+                    //console.log("IdPalabra:", IdPalabraP, " IdSeccion:", IdSeccionP);
+                    //AgregarPalabraSeccion(IdPalabraP, IdSeccionP)
+                    //RecuperarPalabras(IdSeccionP);
+            }
+        );
+        console.log(response)
     });
 }
 
-function VerWorksheetBody() {
+//3.1.1 Se ejecuta 5 veces 
+function AgregarPalabraSeccion(IdPalabraPq, IdSeccionPq) {
     var settings = {
-        "url": urlApi + "VerWorksheetBody",
+        "url": "http://localhost:60957/api/AgregarHojaPalabras",
         "method": "POST",
         "timeout": 0,
         "headers": {
             "Content-Type": "application/json"
         },
         "data": JSON.stringify({
-            "IdWorksheetHeader": 1
+            "IdHojaSeccion": IdSeccionPq,
+            "IdPalabra": IdPalabraPq
+        }),
+    };
+
+    console.log("IdPalabra_PR:", IdPalabraPq, "IdSeccion_PR:", IdSeccionPq)
+
+    $.ajax(settings).done(function(response) {
+
+        $.each(
+            response,
+            function(index, data) {
+                if (data.Resultado == 0) {
+                    //window.alert("Error guardando el vocabulario");
+                    console.log(response)
+
+                } else {
+                    //window.alert("Vocabulario agregado con éxito");
+                    console.log(response)
+
+                }
+            }
+        );
+    }).fail(function(response) {
+
+        window.alert("Error inesperado");
+        console.log(response)
+    });
+
+}
+
+function VerTituloSecciones() {
+    var rBody = localStorage.getItem('IdBodyWorksheet');
+    var rSeccion = localStorage.getItem('IdSeccionTmp');
+
+    var settings = {
+        "url": "http://localhost:60957/api/ObtenerTituloSeccion",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "data": JSON.stringify({
+            "IdHojaCuerpo": rBody,
+            "IdHojaSeccion": rSeccion
         }),
     };
 
     $.ajax(settings).done(function(response) {
-        console.log(response);
         $.each(
             response,
             function(index, data) {
 
-                var TotalPalabras = data.Palabras;
-                var separadorPalabras = TotalPalabras.split('---');
-                //var PalabrasIndividual = separadorPalabras.split('/');
+                var idTabla = data.IdHojaCuerpo + data.IdHojaSeccion
+                var nombreSerie = data.TxtNombreEvaluacion
+                var descripcionSerie = data.TxtDescripcion
+                var cardTbl = '<div class="col"><div class="card"><div class="card-body"><div class="card-title"><span class="badge rounded-pill bg-success"><span ><i class="fas fa-book-open"></i><strong> SERIE </strong></span></span><br><span class="small text-warning"><strong><span id="TituloSerie">' + nombreSerie + '</span></strong></span><br><span><span id="DescripcionSerie">' + descripcionSerie + '</span></span></div><div class="row align-items-center"><table id="TablaTopPalabras' + idTabla + '" class="table table-hover"><thead><tr><th scope="col">Español</th><th scope="col">Qeqchi</th><th scope="col">Opciones</th></tr></thead><tbody></tbody></table></div></div></div></div>'
+                $(cardTbl).appendTo("#SeccionesTablas");
 
-                var fila = "<tr><td>" + data.NoSerie +
-                    "</td><td>" + data.TxtNombreEvaluacion +
-                    "</td><td>" + data.TxtDescripcion +
-                    "</td><td>" + separadorPalabras[0] +
-                    "</td></tr>";
-                $(fila).appendTo("#TblWorksheetBody");
             }
         );
+        console.log(response)
+        VerPalbrasSeccion();
+    });
+
+}
+
+
+function VerPalbrasSeccion() {
+
+    var rSeccion = localStorage.getItem('IdSeccionTmp');
+
+    var settings = {
+        "url": "http://localhost:60957/api/ObtenerPalabrasPorSeccion",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "data": JSON.stringify({
+            "IdHojaSeccion": rSeccion
+        }),
+    };
+
+    $.ajax(settings).done(function(response) {
+        $.each(
+            response,
+            function(index, data) {
+
+                var idTabla = data.IdHojaCuerpo + data.IdHojaSeccion
+
+                var fila = "<tr><td>" + data.TxtPalabraEspanol +
+                    "</td><td>" + data.TxtPalabraIdiomaMaya +
+                    "</td><td><a href='#' '>  <span class='badge bg-success'><i class='fas fa-plus-square'></i> Agregar</span></a> </td></tr>";
+                $(fila).appendTo("#TablaTopPalabras" + idTabla + "");
+
+            }
+        );
+        console.log(response)
     });
 }

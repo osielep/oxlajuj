@@ -1,3 +1,4 @@
+var urlApi = "https://api.oxlajuj.com/api/"
 var tokenGloabl = localStorage.getItem('tokenuser');
 
 var Mensaje404 = '<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Oops!</strong> los datos son incorrectos o no existen.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
@@ -14,7 +15,7 @@ var datos = '';
 function autenticacionUser() {
 
     var settings = {
-        "url": "http://localhost:60957/api/login/echoping",
+        "url": urlApi + "login/echoping",
         "method": "GET",
         "timeout": 0,
         "headers": {
@@ -43,7 +44,7 @@ function sessionLogout() {
 function LoginUserToken() {
 
     var settings = {
-        "url": "http://localhost:60957/api/login/authenticate",
+        "url": urlApi + "login/authenticate",
         "method": "POST",
         "timeout": 0,
         "headers": {
@@ -75,7 +76,7 @@ function LoginUserToken() {
 function LoginUsers() {
 
     var settings = {
-        "url": "http://localhost:60957/api/IniciarSesion",
+        "url": urlApi + "IniciarSesion",
         "method": "POST",
         "timeout": 0,
         "headers": {

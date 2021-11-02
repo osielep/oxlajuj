@@ -165,7 +165,7 @@ function AutorTexto(IdPalabraP) {
     document.getElementById('AutorTextoTA').textContent = "";
 
     var settings = {
-        "url": "http://localhost:60957/api/AutorTexto",
+        "url": urlApi + "AutorTexto",
         "method": "POST",
         "timeout": 0,
         "headers": {
@@ -209,7 +209,7 @@ function RecuperarAudio(DDDAudio) {
     document.getElementById('AutorAudioTA').textContent = "";
 
     var settings = {
-        "url": "http://localhost:60957/api/OtenerAudio",
+        "url": urlApi + "OtenerAudio",
         "method": "POST",
         "timeout": 0,
         "headers": {

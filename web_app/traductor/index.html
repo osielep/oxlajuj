@@ -148,11 +148,12 @@
 
             function validate() {
                 if (document.getElementById("PalabraBuscar").value == "") {
-                    alert("Debe ingresar una palabra");
+                    // alert("Debe ingresar una palabra");
+                    Notificacion();
                     document.getElementById("PalabraBuscar").focus();
                 } else {
                     BuscarPalabra();
-                    OracionesDeEjemplo();
+                    //OracionesDeEjemplo();
                 }
             }
         </script>
@@ -174,7 +175,7 @@
                             <label for="inputPassword5 " class="form-label text-warning "><h6>Q'eqchi'</h6></label>
                         </div>
                         <div class="col-9  text-end">
-                            <span class=" badge rounded-pill bg-success"><i class="fas fa-copy"></i> Copiar</span>
+                            <a href="#" onclick="CopiarPortapapeles();" id="liveToastBtn"><span class=" badge rounded-pill bg-success"><i class="fas fa-copy"></i> Copiar</span></a>
                             <span class="badge rounded-pill bg-warning pronunciacion"><span id="txtPRT"><i class="fas fa-play-circle"></i> Escuchar</span></span>
                             <a href="" data-bs-toggle="modal" data-bs-target="#AutorModal"><span class=" badge rounded-pill bg-success" ><i class="fas fa-copy" ></i> Autor</span></a>
                         </div>
@@ -188,7 +189,7 @@
             <div class="row">
                 <div class="col text-center">
                     <button type="button" onclick="javascript:validate(); " class="btn bg-success btn-lg text-light">Traducir</button>
-                    <button type="submit" onclick="sessionLogout(); " class="btn bg-danger btn-lg text-light">Cerrar sesión</button>
+                    <!-- <button type="submit" onclick="sessionLogout(); " class="btn bg-danger btn-lg text-light">Cerrar sesión</button> -->
                 </div>
             </div>
         </form>
@@ -281,15 +282,16 @@
                         <li class="d-flex gap-4">
                             <svg class="bi text-success flex-shrink-0" width="48" height="48"><use xlink:href="#autor-text"/></svg>
                             <div>
-                                <h5 class="mb-0">Edvin Alballero</h5>
-                                Traduccion textual.
+                                <div class="h5 mb-0" id="AutorTextoT"></div>
+                                <div class="mb-0" id="AutorTextoTA"></div>
+                                <!-- <small>Traduccion textual.</small> -->
                             </div>
                         </li>
                         <li class="d-flex gap-4">
                             <svg class="bi text-warning flex-shrink-0" width="48" height="48"><use xlink:href="#autor-audio"/></svg>
                             <div>
-                                <h5 class="mb-0">David Rodriguez</h5>
-                                Traduccion auditiva.
+                                <div class="h5 mb-0" id="AutorAudioT"></div>
+                                <!-- Traduccion auditiva. -->
                             </div>
                         </li>
                     </ul>
@@ -298,6 +300,21 @@
                     </div>
                     <button type="button" class="btn btn-lg  mt-5 w-100 btn-success text-light" data-bs-dismiss="modal">Gracias!</button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Nofiticacion-->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="../favicon-16x16.png" class="rounded me-2" alt="...">
+                <strong class="me-auto">Traductor Oxlajuj</strong>
+                <small>Ahora</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body" id="toastMensaje">
+
             </div>
         </div>
     </div>
@@ -321,11 +338,34 @@
     </div>
 
 
-    <footer class="footer mt-auto py-3 bg-light ">
+
+    <div class="container-fluid footer mt-auto py-3 bg-light">
+        <div class="container">
+            <footer class="py-1 my-2">
+                <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Inicio</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Sobre nosotros</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Fe y Alegría</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Ayuda</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Contacto</a></li>
+                </ul>
+                <div class="text-center">
+                    <p class="text-center text-muted small">&copy; 2021 OXLAJUJ Mi Aula Virtual - Fe y Alegría No. 41</p>
+
+                    <img src="../img/logo-new-g-bn2.png" alt="" height="35"><br>
+                </div>
+
+            </footer>
+        </div>
+    </div>
+
+
+
+    <!-- <footer class="footer mt-auto py-3 bg-light ">
         <div class="container">
             <div class="row gy-3">
                 <div class="col-lg-3  col-sm-6">
-                    <h4>OXLAJUJ</h4>
+                    <img src="../img/logo-new-g-bn2.png" alt="" height="35"><br>
                     <span class="small text-muted">Aula virtual para fortalecer el aprendizaje del Idioma Maya Q'eqchi'.</span>
                 </div>
                 <div class="col-lg-3  col-sm-6">
@@ -355,7 +395,7 @@
                 </div>
             </div>
         </div>
-    </footer>
+    </footer> -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="../libs/bootstrap/dist/js/bootstrap.min.js"></script>

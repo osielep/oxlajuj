@@ -97,7 +97,7 @@
                                     <h6>Agrega el contenido a tu hoja de trabajo</h6>
                                     <hr>
                                     <!--Agregar encabezado-->
-                                    <div id="FormInputHojaEncabezado" style="display: block;">
+                                    <div id="FormInputHojaEncabezado" style="display: none;">
                                         <form>
                                             <div class="mb-3">
                                                 <div class="row">
@@ -150,20 +150,20 @@
                                         </form>
                                     </div>
                                     <!--Ver encabezado-->
-                                    <div id="FormViewHojaEncabezado" style="display: none;">
+                                    <div id="FormViewHojaEncabezado" style="display: block;">
                                         <form>
                                             <div class="alert alert-success" role="alert">
-                                                <h4 class="alert-heading"><span id="ListaTituloHoja"></span></h4>
+                                                <h4 class="alert-heading"><span id="ListaTituloHoja">Los colores en Qeqchi</span></h4>
                                                 <ul class="fa-ul">
-                                                    <li><span class="fa-li"><i class="far fa-user"></i></span>Docente: <strong><span id="ListaNombreProfesor"></span></strong>
+                                                    <li><span class="fa-li"><i class="far fa-user"></i></span>Docente: <strong><span id="ListaNombreProfesor">Osiel Esquivel Pinto</span></strong>
                                                     </li>
-                                                    <li><span class="fa-li"><i class="fas fa-tasks"></i></span>Tipo: <strong><span id="ListaTipoEvaluacion"></span></strong></li>
-                                                    <li><span class="fa-li"><i class="far fa-calendar-minus"></i></span>Fecha: <strong><span id="ListaFechaAplicacion"></span></strong></li>
-                                                    <li><span class="fa-li"><i class="fas fa-shield-alt"></i></span>Privacidad: <strong><span id="ListaPrivacidad"></span></strong></li>
+                                                    <li><span class="fa-li"><i class="fas fa-tasks"></i></span>Tipo: <strong><span id="ListaTipoEvaluacion">Test</span></strong></li>
+                                                    <li><span class="fa-li"><i class="far fa-calendar-minus"></i></span>Fecha: <strong><span id="ListaFechaAplicacion">25 de agosto</span></strong></li>
+                                                    <li><span class="fa-li"><i class="fas fa-shield-alt"></i></span>Privacidad: <strong><span id="ListaPrivacidad">Publica</span></strong></li>
                                                 </ul>
                                                 <hr>
                                                 <div id="FormViewHojaCuerpo" style="display: block;">
-                                                    <p id="DescripcionHoja" class="small"></p>
+                                                    <p id="DescripcionHoja" class="small">UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async</p>
                                                 </div>
                                             </div>
                                         </form>
@@ -248,12 +248,81 @@
                                     <!--Ver secciones-->
                                     <div id="FormViewSeccion" style="display: block;">
                                         <div class="row row-cols-1 row-cols-md-2 gy-3" id="SeccionesTablas">
+                                            <div class="col">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <div class="card-title">
+                                                            <span class="badge rounded-pill bg-success"><span ><i class="fas fa-book-open"></i><strong> SERIE </strong></span></span>
+                                                            <br>
+                                                            <span class="small text-warning"><strong><span id="TituloSerie">Falso y verdadero</span></strong>
+                                                            </span><br>
+                                                            <span><span id="DescripcionSerie">Los estudiantes deben realizar esta operacion.</span></span>
 
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="container">
+                                                                <div class="alert alert-secondary" role="alert">
+                                                                    <table id="TablaTopPalabras1" class="table table-hover">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th scope="col">Español</th>
+                                                                                <th scope="col">Q'eqchi'</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td>Hola</td>
+                                                                                <td>QQsds</td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="BtnGuardarSeccion"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <div class="card-title">
+                                                            <span class="badge rounded-pill bg-success"><span ><i class="fas fa-book-open"></i><strong> SERIE </strong></span></span>
+                                                            <br>
+                                                            <span class="small text-warning"><strong><span id="TituloSerie">Falso y verdadero</span></strong>
+                                                            </span><br>
+                                                            <span><span id="DescripcionSerie">Los estudiantes deben realizar esta operacion.</span></span>
+
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="container">
+                                                                <div class="alert alert-secondary" role="alert">
+                                                                    <table id="TablaTopPalabras1" class="table table-hover">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th scope="col">Español</th>
+                                                                                <th scope="col">Q'eqchi'</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td>Hola</td>
+                                                                                <td>QQsds</td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="BtnGuardarSeccion"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <br>
                                     <!--Imprimir-->
-                                    <div id="BtnImprimir" style="display: none;">
+                                    <div id="BtnImprimir" style="display: block;">
                                         <div class="d-grid gap-2 col-6 mx-auto ">
                                             <button class="btn btn-success text-light" type="button">Guardar e imprimir</button>
                                         </div>

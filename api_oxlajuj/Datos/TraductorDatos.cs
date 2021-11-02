@@ -45,5 +45,18 @@ namespace Datos
 
             return DT;
         }
+
+        public static DataTable AutorTexto(Entidades.PalabraEntidad Entidad)
+        {
+            DataTable DT = new DataTable();
+
+            SqlCommand Comando = Conexion.EjecutarPA("Idiomas.SP_AutorTexto");
+            Comando.Parameters.AddWithValue("@IdPalabra", Entidad.IdPalabra);
+
+            DT = Conexion.EjecutarComandoSelect(Comando);
+
+            return DT;
+        }
+
     }
 }

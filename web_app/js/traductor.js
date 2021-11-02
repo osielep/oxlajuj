@@ -13,6 +13,14 @@ function Mayuscula(palabra) {
 }
 
 function BuscarPalabra() {
+    //Mostrar cards para informacion
+    var valor = '';
+    document.getElementById('CardDefiniciones').innerHTML = valor;
+    $(CardDefiniciones).prepend(CardInfo);
+    document.getElementById('CardEjemplos').innerHTML = valor;
+    $(CardEjemplos).prepend(CardEje);
+    document.getElementById('ComoUsarFrt').textContent = $("#PalabraBuscar").val();
+
     var settings = {
         "url": urlApi + "BuscarPalabra",
         "method": "POST",
@@ -39,9 +47,11 @@ function BuscarPalabra() {
 
             var valor = '';
 
-            //Mostrar cards para informacion
-            document.getElementById('CardDefiniciones').innerHTML = valor;
-            $(CardDefiniciones).prepend(CardInfo);
+            // //Mostrar cards para informacion
+            // document.getElementById('CardDefiniciones').innerHTML = valor;
+            // $(CardDefiniciones).prepend(CardInfo);
+            // document.getElementById('CardEjemplos').innerHTML = valor;
+            // $(CardEjemplos).prepend(CardEje);
 
 
             //Mostrar traduccion
@@ -53,11 +63,13 @@ function BuscarPalabra() {
             $(listaPalabra).prepend(listaPalabrasD, CategoriaGramatical);
             $(listaPalabraCTA).prepend(TipoPalabra);
 
+            AutorTexto(data.IdPalabra);
 
         });
 
-        //OracionesDeEjemplo()
+
     });
+    OracionesDeEjemplo()
 }
 
 function LimpiarSpan() {
@@ -165,5 +177,61 @@ function PalabrasPopulares() {
 
             }
         );
+    });
+}
+
+function CopiarPortapapeles() {
+    document.getElementById('toastMensaje').textContent = "Elemento copiado al portapapeles";
+    var content = document.getElementById('TxtMejorResultado');
+    content.select();
+    document.execCommand('copy');
+    var toastLiveExample = document.getElementById('liveToast')
+    var toast = new bootstrap.Toast(toastLiveExample)
+    toast.show()
+}
+
+function Notificacion() {
+
+    var TipoError = "¡Debes ingresar una palabra para traducir!"
+    var error = '<span class="text-danger"><strong>' + TipoError + '</strong></span>'
+    document.getElementById('toastMensaje').innerHTML = error;
+    var toastLiveExample = document.getElementById('liveToast')
+    var toast = new bootstrap.Toast(toastLiveExample)
+    toast.show()
+}
+
+function AutorTexto(IdPalabraP) {
+    // var v = ""
+    // $(AutorTextoT).prepend(v);
+    // $(AutorTextoTA).prepend(v);
+    document.getElementById('AutorTextoT').textContent = "";
+    document.getElementById('AutorTextoTA').textContent = "";
+
+    var settings = {
+        "url": "http://localhost:60957/api/AutorTexto",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "data": JSON.stringify({
+            "IdPalabra": IdPalabraP
+        }),
+    };
+
+    $.ajax(settings).done(function(response) {
+        $.each(
+            response,
+            function(index, data) {
+
+                var nombre = data.TxtNombreAutor
+                var apellido = data.TxtApellidoAutor
+                    //$(nombre).appendTo("#AutorTextoT");
+                $(AutorTextoT).prepend(nombre);
+                $(AutorTextoTA).prepend(apellido);
+            }
+
+        );
+        console.log(response)
     });
 }

@@ -30,5 +30,12 @@ namespace ApiRest
         {
             return Datos.TraductorDatos.ObtenerTopPalabras();
         }
+
+        [HttpPost]
+        [Route("api/AutorTexto")]
+        public DataTable AutorTexto(Entidades.PalabraEntidad entidad)
+        {
+            return Datos.TraductorDatos.AutorTexto(entidad);
+        }
     }
 }

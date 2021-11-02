@@ -18,20 +18,19 @@
     <!-- Font awesome-->
     <script src="https://kit.fontawesome.com/02fcd5a7a9.js" crossorigin="anonymous"></script>
 
-    <!--<script>
+    <script>
         function getParameter(nombre) {
             let parameters = new URLSearchParams(window.location.search);
             return parameters.get(nombre);
         }
 
         var palabraHeader = getParameter("txtPalabra")
+        localStorage.setItem('PalabraTmp', palabraHeader);
 
         //$('#PalabraBuscar').html(Palabrita)
-        console.log(palabraHeader);
-
-
-        //(Palabrita).appendTo("#PalabraBuscar");
-    </script>-->
+        // console.log(palabraHeader);
+        // document.getElementById('PalabraBuscar').innerHTML = palabraHeader;
+    </script>
 
 
 
@@ -83,7 +82,7 @@
 
 </head>
 
-<body class="d-flex flex-column min-vh-100" onload="autenticacionUser(); PalabrasPopulares();">
+<body class="d-flex flex-column min-vh-100" onload="autenticacionUser(); PalabrasPopulares(); ComprobarParametro();">
 
 
 
@@ -151,6 +150,7 @@
                     // alert("Debe ingresar una palabra");
                     Notificacion();
                     document.getElementById("PalabraBuscar").focus();
+
                 } else {
                     BuscarPalabra();
                     //OracionesDeEjemplo();
@@ -190,6 +190,7 @@
                 <div class="col text-center">
                     <button type="button" onclick="javascript:validate(); " class="btn bg-success btn-lg text-light">Traducir</button>
                     <!-- <button type="submit" onclick="sessionLogout(); " class="btn bg-danger btn-lg text-light">Cerrar sesión</button> -->
+                    <input type="text" value="" name="" id="Palabra101" disabled style="display: none;">
                 </div>
             </div>
         </form>

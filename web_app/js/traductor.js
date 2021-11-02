@@ -21,6 +21,8 @@ function BuscarPalabra() {
     $(CardEjemplos).prepend(CardEje);
     document.getElementById('ComoUsarFrt').textContent = $("#PalabraBuscar").val();
 
+
+
     var settings = {
         "url": urlApi + "BuscarPalabra",
         "method": "POST",
@@ -46,13 +48,6 @@ function BuscarPalabra() {
             var listaPalabrasD = "<span class='fa-li'><i class='fas fa-venus-mars'></i></span><small class='text-muted'> <em>Nombre masculino</em></small></span></span>"
 
             var valor = '';
-
-            // //Mostrar cards para informacion
-            // document.getElementById('CardDefiniciones').innerHTML = valor;
-            // $(CardDefiniciones).prepend(CardInfo);
-            // document.getElementById('CardEjemplos').innerHTML = valor;
-            // $(CardEjemplos).prepend(CardEje);
-
 
             //Mostrar traduccion
             document.getElementById('TxtMejorResultado').innerHTML = MejorResultado;
@@ -84,8 +79,6 @@ function LimpiarSpan() {
     //$(ResultadoBusquedaEjemplos).prepend(" ");
 
 }
-var palabra = 'pasdas \' \' '
-
 
 function OracionesDeEjemplo() {
     var settings = {
@@ -104,47 +97,15 @@ function OracionesDeEjemplo() {
     $.get(settings, function(data) {
         if (data.length > 0) {
             $.ajax(settings).done(function(response) {
-
-                //var PalbraEspanolFrt = $("#PalabraBuscar").val();
-                //$(PalbraEspanolFrt).appendTo("#ComoUsarFrt");
-                //console.log(PalbraEspanolFrt);
-                //console.log(response.TxtOracionIdiomaMaya);
-
-
                 $.each(
                     response,
                     function(index, data) {
 
-
-                        //Mostrar cards para ejemplos
-                        var valor = '';
-                        document.getElementById('CardEjemplos').innerHTML = valor;
-                        $(CardEjemplos).prepend(CardEje);
-
-
-
                         var OracionEspanol = data.TxOracionEspanol;
                         var OracionMaya = data.TxtOracionIdiomaMaya;
-                        var oraciones1234 = "<div > <small class='text-warning'><em>Q'eqchi'</em></small> " + OracionMaya + " <br> <span class='small text-muted'><em class='text-success'>Espanol </em>" + OracionEspanol + "</span> </div> <br>";
-                        var PalbraEspanolFrt = $("#PalabraBuscar").val();
-                        //console.log(oraciones1234);
 
-
-
-
-
-
-
-                        //Mostrar oraciones
-                        $(ComoUsarFrt).prepend(PalbraEspanolFrt);
-                        $(deftraductor).prepend(oraciones1234);
-                        // $(oraciones1234).appendTo("#deftraductor");
-                        //document.getElementById('deftraductor').innerHTML = oraciones1234;
-                        //$(deftraductor).prepend(oraciones1234);
-
-
-                        console.log(response);
-                        //console.log(PalbraEspanolFrt);
+                        var oraciones1234 = '<div > <small class="text-warning"><em>Q"eqchi"</em></small> ' + OracionMaya + ' <br> <span class="small text-muted"><em class="text-success">Espanol </em>' + OracionEspanol + '</span> </div> <br>'
+                        $(oraciones1234).appendTo("#deftraductor");
                     }
                 );
             });
@@ -232,6 +193,18 @@ function AutorTexto(IdPalabraP) {
             }
 
         );
-        console.log(response)
     });
+}
+
+function ComprobarParametro() {
+    var Pr = localStorage.getItem('PalabraTmp')
+    var vr = ""
+
+    if (Pr !== 'null') {
+        //$(Pr).appendTo("#PalabraBuscar");
+        $(PalabraBuscar).prepend(Pr);
+        BuscarPalabra();
+    } else {
+        //$(PalabraBuscar).prepend(Pr);
+    }
 }

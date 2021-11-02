@@ -37,5 +37,12 @@ namespace ApiRest
         {
             return Datos.TraductorDatos.AutorTexto(entidad);
         }
+
+        [HttpPost]
+        [Route("api/OtenerAudio")]
+        public DataTable OtenerAUdio(Entidades.PalabraEntidad entidad)
+        {
+            return Datos.TraductorDatos.OtenerAUdio(entidad);
+        }
     }
 }

@@ -124,7 +124,52 @@ BEGIN
 			and c.IdHojaSeccion = @IdSeccion
 END
 
-exec aula.SP_ObtenerTituloSeccion 6, 12
-exec Aula.SP_ObtenerPalabrasPorSeccion 12
 
+
+/*
+	+-------------------------------------------+
+	|	Tipo:	Autor traudcción textual		|
+	+-------------------------------------------+
+	|	Autor:	Widman Esquivel					|
+	|	Fecha:	01/11/2021						|
+	+-------------------------------------------+
+*/
+CREATE PROC Idiomas.SP_AutorTexto (@IdPalabra INT)
+AS
+BEGIN
+
+	select
+		a.IdAutor, a.TxtNombreAutor, a.TxtApellidoAutor
+	from
+			Idiomas.TblAutor AS a, Idiomas.TblPalabra AS p
+	where
+			p.IdAutor = a.IdAutor and
+			p.IdPalabra = @IdPalabra
+
+END
+
+
+
+
+/*
+	+-------------------------------------------+
+	|	Tipo:	Autor traudcción auditiva		|
+	+-------------------------------------------+
+	|	Autor:	Widman Esquivel					|
+	|	Fecha:	02/11/2021						|
+	+-------------------------------------------+
+*/
+CREATE PROC Idiomas.SP_ObtenerAUdio (@IdPalabra INT)
+AS
+BEGIN
+
+	select
+		e.IdAudioEspecial, e.Direccion, a.TxtNombreAutor, a.TxtApellidoAutor
+	from
+			Idiomas.AudioEspecial AS e, Idiomas.TblPalabra AS p, Idiomas.TblAutor AS a
+	where
+			e.IdPalabra = p.IdPalabra and
+			e.IdAutor = a.IdAutor and
+			p.IdPalabra = @IdPalabra
+END
 

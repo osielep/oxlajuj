@@ -58,5 +58,17 @@ namespace Datos
             return DT;
         }
 
+        public static DataTable OtenerAUdio(Entidades.PalabraEntidad Entidad)
+        {
+            DataTable DT = new DataTable();
+
+            SqlCommand Comando = Conexion.EjecutarPA("Idiomas.SP_ObtenerAUdio");
+            Comando.Parameters.AddWithValue("@IdPalabra", Entidad.IdPalabra);
+
+            DT = Conexion.EjecutarComandoSelect(Comando);
+
+            return DT;
+        }
+
     }
 }

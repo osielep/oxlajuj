@@ -176,7 +176,7 @@
                         </div>
                         <div class="col-9  text-end">
                             <a href="#" onclick="CopiarPortapapeles();" id="liveToastBtn"><span class=" badge rounded-pill bg-success"><i class="fas fa-copy"></i> Copiar</span></a>
-                            <span class="badge rounded-pill bg-warning pronunciacion"><span id="txtPRT"><i class="fas fa-play-circle"></i> Escuchar</span></span>
+                            <a href="#"><span id="Audio101"></span></a>
                             <a href="" data-bs-toggle="modal" data-bs-target="#AutorModal"><span class=" badge rounded-pill bg-success" ><i class="fas fa-copy" ></i> Autor</span></a>
                         </div>
                     </div>
@@ -292,6 +292,7 @@
                             <svg class="bi text-warning flex-shrink-0" width="48" height="48"><use xlink:href="#autor-audio"/></svg>
                             <div>
                                 <div class="h5 mb-0" id="AutorAudioT"></div>
+                                <div class="mb-0" id="AutorAudioTA"></div>
                                 <!-- Traduccion auditiva. -->
                             </div>
                         </li>
@@ -322,19 +323,19 @@
 
     <div class="audios-scripts">
         <script>
-            let boton = document.querySelector(".pronunciacion")
+            // let boton = document.querySelector(".pronunciacion")
 
-            boton.addEventListener("click", () => {
-                $('#txtPRT').html('<i class="fas fa-spinner fa-pulse"></i>  Escuchando')
-                let etiquetaAudio = document.createElement("audio")
-                etiquetaAudio.setAttribute("src", "../recursos/pronunciacion/vocabulario/taltuza.mp3")
+            // boton.addEventListener("click", () => {
+            //     $('#txtPRT').html('<i class="fas fa-spinner fa-pulse"></i>  Escuchando')
+            //     let etiquetaAudio = document.createElement("audio")
+            //     etiquetaAudio.setAttribute("src", "../recursos/pronunciacion/vocabulario/taltuza.mp3")
 
-                etiquetaAudio.play()
-                setTimeout(() => $('#txtPRT').html('<i class="fas fa-play-circle"></i> Escuchar'), 1500)
+            //     etiquetaAudio.play()
+            //     setTimeout(() => $('#txtPRT').html('<i class="fas fa-play-circle"></i> Escuchar'), 1500)
 
 
 
-            })
+            // })
         </script>
     </div>
 

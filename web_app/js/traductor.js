@@ -59,7 +59,7 @@ function BuscarPalabra() {
             $(listaPalabraCTA).prepend(TipoPalabra);
 
             AutorTexto(data.IdPalabra);
-
+            RecuperarAudio(data.IdPalabra);
         });
 
 
@@ -112,8 +112,6 @@ function OracionesDeEjemplo() {
         } else {
             document.getElementById('deftraductor').innerHTML = OracionesNo;
         }
-
-
     });
 
 }
@@ -162,9 +160,7 @@ function Notificacion() {
 }
 
 function AutorTexto(IdPalabraP) {
-    // var v = ""
-    // $(AutorTextoT).prepend(v);
-    // $(AutorTextoTA).prepend(v);
+
     document.getElementById('AutorTextoT').textContent = "";
     document.getElementById('AutorTextoTA').textContent = "";
 
@@ -187,7 +183,6 @@ function AutorTexto(IdPalabraP) {
 
                 var nombre = data.TxtNombreAutor
                 var apellido = data.TxtApellidoAutor
-                    //$(nombre).appendTo("#AutorTextoT");
                 $(AutorTextoT).prepend(nombre);
                 $(AutorTextoTA).prepend(apellido);
             }
@@ -207,4 +202,67 @@ function ComprobarParametro() {
     } else {
         //$(PalabraBuscar).prepend(Pr);
     }
+}
+
+function RecuperarAudio(DDDAudio) {
+    document.getElementById('AutorAudioT').textContent = "";
+    document.getElementById('AutorAudioTA').textContent = "";
+
+    var settings = {
+        "url": "http://localhost:60957/api/OtenerAudio",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "data": JSON.stringify({
+            "IdPalabra": DDDAudio
+        }),
+    };
+
+
+
+    $.get(settings, function(data) {
+        if (data.length > 0) {
+            $.ajax(settings).done(function(response) {
+                $.each(
+                    response,
+                    function(index, data) {
+                        var idA = data.IdAudioEspecial
+                        var direccion = data.Direccion
+                        var nombreA = data.TxtNombreAutor
+                        var apellidoA = data.TxtApellidoAutor
+                        $(AutorAudioT).prepend(nombreA);
+                        $(AutorAudioTA).prepend(apellidoA);
+
+
+                        console.log(direccion)
+                        var Audio102 = '<span class="badge rounded-pill bg-warning pronunciacion"><span id="txtPRT"><i class="fas fa-play-circle"></i> Escuchar</span></span>';
+                        document.getElementById('Audio101').innerHTML = Audio102
+
+                        ReproducirAudio(direccion);
+                    }
+
+                );
+            });
+        } else {
+
+            var Audio404 = '<span></span>'
+            document.getElementById('Audio101').innerHTML = Audio404
+        }
+    });
+}
+
+function ReproducirAudio(Direccion101) {
+    let boton = document.querySelector(".pronunciacion")
+
+    boton.addEventListener("click", () => {
+        $('#txtPRT').html('<i class="fas fa-spinner fa-pulse"></i>  Escuchando')
+        let etiquetaAudio = document.createElement("audio")
+        etiquetaAudio.setAttribute("src", "" + Direccion101 + "")
+
+        etiquetaAudio.play()
+        setTimeout(() => $('#txtPRT').html('<i class="fas fa-play-circle"></i> Escuchar'), 1500)
+        $("txtPRT").css("pointer-events", "none");
+    })
 }

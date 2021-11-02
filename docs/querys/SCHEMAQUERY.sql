@@ -8,6 +8,8 @@ ALTER SCHEMA Idiomas TRANSFER Aula.TblPalabra
 ALTER SCHEMA Idiomas TRANSFER Aula.TblIdioma
 ALTER SCHEMA Idiomas TRANSFER Aula.TblTipoDePalabra
 ALTER SCHEMA Idiomas TRANSFER Aula.TblCtaGramatical
+ALTER SCHEMA Idiomas TRANSFER dbo.Audio
+ALTER SCHEMA Idiomas TRANSFER dbo.AudioEspecial
 
 ALTER SCHEMA Aula TRANSFER dbo.TblTipoDeEvaluacion
 ALTER SCHEMA Aula TRANSFER dbo.TblWorksheetHeader

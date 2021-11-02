@@ -74,5 +74,20 @@ namespace ApiRest
                 return "pp.png";
             }
         }
+
+
+        [HttpGet]
+        [Route("api/ReporteUsuariosActivos")]
+        public DataTable ReporteUsuariosActivos()
+        {
+            return Datos.UsuariosDatos.ReporteUsuariosActivos();
+        }
+
+        [HttpGet]
+        [Route("api/ReporteUsuariosInactivos")]
+        public DataTable ReporteUsuariosInactivos()
+        {
+            return Datos.UsuariosDatos.ReporteUsuariosInactivos();
+        }
     }
 }

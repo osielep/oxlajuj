@@ -108,6 +108,24 @@ namespace Datos
             return Convert.ToInt32(DT.Rows[0][0].ToString());
         }
 
-       
+        public static DataTable ReporteUsuariosActivos()
+        {
+            DataTable DT = new DataTable();
+
+            SqlCommand Comando = Conexion.EjecutarPA("Sesion.SP_RUsuariosActivos");
+            DT = Conexion.EjecutarComandoSelect(Comando);
+
+            return DT;
+        }
+
+        public static DataTable ReporteUsuariosInactivos()
+        {
+            DataTable DT = new DataTable();
+
+            SqlCommand Comando = Conexion.EjecutarPA("Sesion.SP_RUsuariosInactivos");
+            DT = Conexion.EjecutarComandoSelect(Comando);
+
+            return DT;
+        }
     }
 }

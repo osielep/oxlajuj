@@ -173,3 +173,42 @@ BEGIN
 			p.IdPalabra = @IdPalabra
 END
 
+
+
+/*
+	+-------------------------------------------+
+	|	Tipo:	R.Usuarios activos				|
+	+-------------------------------------------+
+	|	Autor:	Widman Esquivel					|
+	|	Fecha:	02/11/2021						|
+	+-------------------------------------------+
+*/
+CREATE PROC Sesion.SP_RUsuariosActivos 
+AS
+BEGIN
+
+	select u.IdUsuario, u.TxtNombreUsuario, u.TxtApellidoUsuario, u.TxtEmailUsuario, g.TxtNombreGenero
+	from sesion.TblUsuario AS u, Idiomas.Genero AS g
+	where u.IdGenero = g.IdGenero and
+		u.IntEstado	= 1
+END
+
+
+
+/*
+	+-------------------------------------------+
+	|	Tipo:	R.Usuarios inactivos			|
+	+-------------------------------------------+
+	|	Autor:	Widman Esquivel					|
+	|	Fecha:	02/11/2021						|
+	+-------------------------------------------+
+*/
+CREATE PROC Sesion.SP_RUsuariosInactivos 
+AS
+BEGIN
+
+	select u.IdUsuario, u.TxtNombreUsuario, u.TxtApellidoUsuario, u.TxtEmailUsuario, g.TxtNombreGenero
+	from sesion.TblUsuario AS u, Idiomas.Genero AS g
+	where u.IdGenero = g.IdGenero and
+		u.IntEstado	= 0
+END

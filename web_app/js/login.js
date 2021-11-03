@@ -1,4 +1,5 @@
-var urlApi = "https://api.oxlajuj.com/api/"
+//var urlApi = "https://api.oxlajuj.com/api/"
+var urlApi = "http://localhost:60957/api/"
 var tokenGloabl = localStorage.getItem('tokenuser');
 
 var Mensaje404 = '<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Oops!</strong> los datos son incorrectos o no existen.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'

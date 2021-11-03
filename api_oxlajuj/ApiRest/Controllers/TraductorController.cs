@@ -44,5 +44,12 @@ namespace ApiRest
         {
             return Datos.TraductorDatos.OtenerAUdio(entidad);
         }
+
+        [HttpPost]
+        [Route("api/PalabrasPorCategoria")]
+        public DataTable PalabrasPorCategoria(Entidades.PalabraEntidad entidad)
+        {
+            return Datos.TraductorDatos.PalabrasPorCategoria(entidad);
+        }
     }
 }

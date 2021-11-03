@@ -212,3 +212,161 @@ BEGIN
 	where u.IdGenero = g.IdGenero and
 		u.IntEstado	= 0
 END
+
+
+
+
+
+
+/*
+	+-------------------------------------------+
+	|	Tipo:	R.Top 50 palabras				|
+	+-------------------------------------------+
+	|	Autor:	Widman Esquivel					|
+	|	Fecha:	02/11/2021						|
+	+-------------------------------------------+
+*/
+ALTER PROC Idiomas.SP_RTopLPalabras
+AS
+BEGIN
+
+	select top 50
+			p.IdPalabra, p.TxtPalabraEspanol, p.TxtPalabraIdiomaMaya, 
+			i.TxtNombreIdioma, CONCAT(a.TxtNombreAutor, ' ', a.TxtApellidoAutor) AS Autor, 
+			c.TxtNombreCtaGramatical, t.TxtNombreTipoPalabra, p.AcumuladoBusquedas
+	from
+			Idiomas.TblPalabra as p, Idiomas.TblIdioma as i, idiomas.TblCtaGramatical as c, 
+			idiomas.TblTipoDePalabra as t, idiomas.TblAutor as a
+	where
+			p.IdIdioma = i.IdIdioma and
+			p.IdCategoriaGramatical = c.IdCtaGramatical and
+			p.IdTipoPalabra = t.IdTipoPalabra and
+			p.IdAutor = a.IdAutor
+
+END
+
+exec Idiomas.SP_RTopLPalabras
+
+
+
+/*
+	+-------------------------------------------+
+	|	Tipo:	R.Palabras populares			|
+	+-------------------------------------------+
+	|	Autor:	Widman Esquivel					|
+	|	Fecha:	02/11/2021						|
+	+-------------------------------------------+
+*/
+CREATE PROC Idiomas.SP_RPalabrasPopulares
+AS
+BEGIN
+
+	select top 20
+			p.IdPalabra, p.TxtPalabraEspanol, p.TxtPalabraIdiomaMaya, 
+			i.TxtNombreIdioma, CONCAT(a.TxtNombreAutor, ' ', a.TxtApellidoAutor) AS Autor, 
+			c.TxtNombreCtaGramatical, t.TxtNombreTipoPalabra, p.AcumuladoBusquedas
+	from
+			Idiomas.TblPalabra as p, Idiomas.TblIdioma as i, idiomas.TblCtaGramatical as c, 
+			idiomas.TblTipoDePalabra as t, idiomas.TblAutor as a
+	where
+			p.IdIdioma = i.IdIdioma and
+			p.IdCategoriaGramatical = c.IdCtaGramatical and
+			p.IdTipoPalabra = t.IdTipoPalabra and
+			p.IdAutor = a.IdAutor
+	order by p.AcumuladoBusquedas desc
+
+END
+
+exec idiomas.SP_RPalabrasPopulares
+
+
+
+
+/*
+	+-------------------------------------------+
+	|	Tipo:	R.Palabras por cateogría		|
+	+-------------------------------------------+
+	|	Autor:	Widman Esquivel					|
+	|	Fecha:	02/11/2021						|
+	+-------------------------------------------+
+*/
+CREATE PROC Idiomas.SP_RPalabrasPorCategoria (@IdCategoria INT)
+AS
+BEGIN
+
+	select top 50
+			p.IdPalabra, p.TxtPalabraEspanol, p.TxtPalabraIdiomaMaya, 
+			i.TxtNombreIdioma, CONCAT(a.TxtNombreAutor, ' ', a.TxtApellidoAutor) AS Autor, 
+			c.TxtNombreCtaGramatical, t.TxtNombreTipoPalabra, p.AcumuladoBusquedas
+	from
+			Idiomas.TblPalabra as p, Idiomas.TblIdioma as i, idiomas.TblCtaGramatical as c, 
+			idiomas.TblTipoDePalabra as t, idiomas.TblAutor as a
+	where
+			p.IdIdioma = i.IdIdioma and
+			p.IdCategoriaGramatical = c.IdCtaGramatical and
+			p.IdTipoPalabra = t.IdTipoPalabra and
+			p.IdAutor = a.IdAutor and
+			t.IdTipoPalabra = @IdCategoria
+
+END
+
+	
+
+exec Idiomas.SP_RPalabrasPorCategoria 10
+
+
+
+/*
+	+---------------------------------------+
+	|	Tipo:	Agregar audio				|
+	+---------------------------------------+
+	|	Autor:	Widman Esquivel				|
+	|	Fecha:	02/11/2021					|
+	+---------------------------------------+
+*/
+
+CREATE PROC Idiomas.SP_AgregarAudio (
+										@Direccion nvarchar(max),
+										@IdPalabra int,
+										@IdAutor int
+								)
+AS
+DECLARE @FilasAfectadas	TINYINT,
+		@Resultado		SMALLINT,
+		@UltimoID		SMALLINT,
+		@IdHojaEncabezado INT
+BEGIN
+	BEGIN TRAN
+
+		SELECT @UltimoID = ISNULL(MAX(a.IdAudioEspecial),0) 
+		FROM Idiomas.AudioEspecial AS a
+
+	BEGIN TRY
+
+		INSERT INTO idiomas.AudioEspecial (IdAudioEspecial, Direccion, IdPalabra, IdAutor)
+		VALUES( @UltimoID + 1, '../recursos/pronunciacion/vocabulario/'+@Direccion+'.mp3', @IdPalabra, @IdAutor)
+
+		SET @FilasAfectadas			= @@ROWCOUNT
+
+	END TRY
+
+	BEGIN CATCH
+		SET @FilasAfectadas			= 0
+	END CATCH
+
+	--COMPROBAR EL ÉXITO O FRACASO DE LA TRANSACCION --
+
+	IF (@FilasAfectadas > 0)
+		BEGIN
+			SET @Resultado			= @UltimoID + 1
+			COMMIT
+		END
+	ELSE
+		BEGIN
+			SET @Resultado			= 0
+			ROLLBACK
+		END
+
+		SELECT Resultado			= @Resultado
+END
+

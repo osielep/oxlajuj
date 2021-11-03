@@ -70,5 +70,18 @@ namespace Datos
             return DT;
         }
 
+
+        public static DataTable PalabrasPorCategoria(Entidades.PalabraEntidad Entidad)
+        {
+            DataTable DT = new DataTable();
+
+            SqlCommand Comando = Conexion.EjecutarPA("Idiomas.SP_RPalabrasPorCategoria");
+            Comando.Parameters.AddWithValue("@IdCategoria", Entidad.IdTipoPalabra);
+
+            DT = Conexion.EjecutarComandoSelect(Comando);
+
+            return DT;
+        }
+
     }
 }

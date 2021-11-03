@@ -7,12 +7,12 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
-    <title>Usuarios - Oxlajuj Administracion</title>
+    <title>Palabras - Oxlajuj Administracion</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/">
     <!-- Font awesome-->
     <script src="https://kit.fontawesome.com/02fcd5a7a9.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
+
 
     <!-- Bootstrap core CSS -->
     <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -38,7 +38,7 @@
     <link href="dashboard.css" rel="stylesheet">
 </head>
 
-<body onload="UsuariosActivos();">
+<body onload="TopLPalabras(); ObtenerCategoriasPalabras();">
 
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
         <!-- <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">OXLAJUJ Mi Aula Virtual</a> -->
@@ -71,13 +71,13 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="usuarios.html">
+                            <a class="nav-link" href="usuarios.html">
                                 <span data-feather="users"></span> Usuarios
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="palabras.html">
-                                <span data-feather="file-text"></span> Palabras
+                            <a class="nav-link active" aria-current="page" href="palabras.html">
+                                <span data-feather="file-text"><i class="fas fa-file-alt"></i></span> Palabras
                             </a>
                         </li>
                         <li class="nav-item">
@@ -125,10 +125,12 @@
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <span class="badge bg-success"><h1 class="h2">Usuarios</h1></span>
+                    <span class="badge bg-success"><h1 class="h2">Palabras</h1></span>
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <div class="btn-group me-2">
                             <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fas fa-search"></i>  Buscar</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#AgregarPalabra"><i class="fas fa-plus-circle"></i>  Agregar</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fas fa-info-circle"></i>  Info</button>
                         </div>
 
                         <div class="dropdown">
@@ -136,8 +138,10 @@
                                 <i class="fas fa-filter"></i> Filtros
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <li><a class="dropdown-item" href="#" onclick="UsuariosActivos();">Activos</a></li>
-                                <li><a class="dropdown-item" href="#" onclick="UsuariosInactivos();">Inactivos</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="TopLPalabras();">Top 50 palabras</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="PalabrasPopulares();">Más populares</a></li>
+                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Por categoría</a></li>
+                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Con audio</a></li>
                             </ul>
                         </div>
                     </div>
@@ -149,14 +153,16 @@
                     <div id="TituloTabla"></div>
                 </h2>
                 <div class="table-responsive">
-                    <table class="table table-striped table-sm" id="TblUsuarios">
+                    <table class="table table-striped table-sm" id="TblPalabras">
                         <thead>
                             <tr>
                                 <th scope="col">Id</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Apellido</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Genero</th>
+                                <th scope="col">Español</th>
+                                <th scope="col">Q'eqchi'</th>
+                                <th scope="col">Autor</th>
+                                <th scope="col">Gramatica</th>
+                                <th scope="col">Categoria</th>
+                                <th scope="col">Total Búsquedas</th>
                                 <th scope="col">Opciones</th>
                             </tr>
                         </thead>
@@ -169,6 +175,80 @@
         </div>
     </div>
 
+    <!-- Modal busqueda categoria-->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Palabras por categoria</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <select class="form-select" id="SelectTipoAll"></select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" onclick="PalabrasCateogria();" data-bs-dismiss="modal"><i class="fas fa-search"></i> Buscar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Agregar palabra-->
+    <div class="modal fade" id="AgregarPalabra" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="AgregarPalabraLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="AgregarPalabraLabel">Agregar palabra</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Español</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Q'eqchi'</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Tipo de palabra</label>
+                            <select class="form-select" id="SelectTipoAll2"></select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Categoría gramatical</label>
+                                <select class="form-select" id=""></select>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Autor</label>
+                                <select class="form-select" id=""></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Agregar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    </script>
+
 
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../"></script>
@@ -176,7 +256,8 @@
     <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js "></script>
     <script src="dashboard.js"></script>
-    <script src="js/reportes.js"></script>
+    <script src="js/palabras.js"></script>
+
 </body>
 
 </html>

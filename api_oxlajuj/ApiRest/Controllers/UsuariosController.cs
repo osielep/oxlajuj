@@ -89,5 +89,20 @@ namespace ApiRest
         {
             return Datos.UsuariosDatos.ReporteUsuariosInactivos();
         }
+
+
+        [HttpGet]
+        [Route("api/ReporteTopLPalabras")]
+        public DataTable ReporteTopLPalabras()
+        {
+            return Datos.UsuariosDatos.ReporteTopLPalabras();
+        }
+
+        [HttpGet]
+        [Route("api/ReportePalabrasPopulares")]
+        public DataTable ReportePalabrasPopulares()
+        {
+            return Datos.UsuariosDatos.ReportePalabrasPopulares();
+        }
     }
 }

@@ -127,5 +127,26 @@ namespace Datos
 
             return DT;
         }
+
+
+        public static DataTable ReporteTopLPalabras()
+        {
+            DataTable DT = new DataTable();
+
+            SqlCommand Comando = Conexion.EjecutarPA("Idiomas.SP_RTopLPalabras");
+            DT = Conexion.EjecutarComandoSelect(Comando);
+
+            return DT;
+        }
+
+        public static DataTable ReportePalabrasPopulares()
+        {
+            DataTable DT = new DataTable();
+
+            SqlCommand Comando = Conexion.EjecutarPA("Idiomas.SP_RPalabrasPopulares");
+            DT = Conexion.EjecutarComandoSelect(Comando);
+
+            return DT;
+        }
     }
 }

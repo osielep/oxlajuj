@@ -6,6 +6,8 @@ function UsuariosActivos() {
     document.getElementById('TituloTabla').innerText = ""
     $("#TblUsuarios td").remove();
 
+
+
     var settings = {
         "url": urlApi + "ReporteUsuariosActivos",
         "method": "GET",
@@ -42,10 +44,14 @@ function UsuariosActivos() {
 
     var tx1 = "Usuarios activos"
     $(TituloTabla).prepend(tx1);
+
+
 }
 
 
 function UsuariosInactivos() {
+
+
     document.getElementById('TituloTabla').innerText = ""
 
     $("#TblUsuarios td").remove();

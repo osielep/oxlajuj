@@ -1,7 +1,13 @@
 //var urlApi = "https://api.oxlajuj.com/api/"
 var urlApi = "http://localhost:60957/api/"
 
+
+
+
 function NuevoUsuario() {
+
+
+
     var settings = {
         "url": urlApi + "RegistroUsuarios",
         "method": "POST",

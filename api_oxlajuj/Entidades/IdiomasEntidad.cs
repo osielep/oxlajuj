@@ -13,8 +13,11 @@ namespace Entidades
     public class PalabraEntidad : TokenEntidad
     {
         public int IdPalabra { get; set; }
+
         public string TxtPalabraEspanol { get; set; }
         public string TxtPalabraIdiomaMaya { get; set; }
+
+
         public int IdIdioma { get; set; }
         public string TxtDefinicion { get; set; }
         public string TxtDefTemp { get; set; }

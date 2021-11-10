@@ -82,7 +82,7 @@ namespace ApiRest.Controllers
         }
 
         [HttpPost]
-        [Route("api/ObtenerPalabrasPorSeccion ")]
+        [Route("api/ObtenerPalabrasPorSeccion")]
         public DataTable ObtenerPalabrasPorSeccion(Entidades.HojaSeccion entidad)
         {
             return Datos.MaterialDidacticoDatos.ObtenerPalabrasPorSeccion(entidad);

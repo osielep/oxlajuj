@@ -19,39 +19,37 @@
 
 </head>
 
-<body class="d-flex flex-column min-vh-100" onload="ObtenerCategoriasPalabras(); ObtenerTipoEvaluacion();">
+<body class="d-flex flex-column min-vh-100" onload="autenticacionUser(); ObtenerCategoriasPalabras(); ObtenerTipoEvaluacion();">
 
     <nav class="navbar navbar-expand-md navbar-light ">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="../../../img/logo-new-g.png" alt="" height="35"></a>
+            <a class="navbar-brand" href="/"><img src="../../img/logo-new-g.png" alt="" height="35"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
                     <li class="nav-item">
-                        <a class="nav-link " href="#">Traductor</a>
+                        <a class="nav-link " href="/traductor/">Traductor</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="cursos/">Cursos</a>
+                        <a class="nav-link" href="../cursos/">Cursos</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Material didáctico</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">Colecciones</a></li>
-                            <li><a class="dropdown-item active" href="#">Hojas de trabajo</a></li>
-
+                            <li><a class="dropdown-item" href="#">Hojas de trabajo</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Ayuda</a>
                     </li>
                 </ul>
-                <form class="d-flex">
+                <form class="d-flex" id="SesionGlobalButton">
                     <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#LoginModal">
                         Iniciar Sesion
-                      </button>
-
+                    </button>
                 </form>
             </div>
 
@@ -342,7 +340,7 @@
     <script src="../../js/worksheet.js"></script>
     <script src="../../js/imprimirPDF.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
-
+    <script src="../../js/login.js "></script>
 
 </body>
 

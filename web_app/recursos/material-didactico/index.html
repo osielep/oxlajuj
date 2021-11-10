@@ -16,39 +16,37 @@
 
 </head>
 
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100" onload="autenticacionUser();">
 
     <nav class="navbar navbar-expand-md navbar-light ">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="../../../img/logo-new-g.png" alt="" height="35"></a>
+            <a class="navbar-brand" href="/"><img src="../../img/logo-new-g.png" alt="" height="35"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
                     <li class="nav-item">
-                        <a class="nav-link " href="#">Traductor</a>
+                        <a class="nav-link " href="/traductor/">Traductor</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="cursos/">Cursos</a>
+                        <a class="nav-link" href="../cursos/">Cursos</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Material didáctico</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">Colecciones</a></li>
-                            <li><a class="dropdown-item active" href="#">Hojas de trabajo</a></li>
-
+                            <li><a class="dropdown-item" href="#">Hojas de trabajo</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Ayuda</a>
                     </li>
                 </ul>
-                <form class="d-flex">
+                <form class="d-flex" id="SesionGlobalButton">
                     <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#LoginModal">
                         Iniciar Sesion
-                      </button>
-
+                    </button>
                 </form>
             </div>
 
@@ -93,8 +91,44 @@
                                     <h5 class="card-title">Busca las letras en qeqchi</h5>
                                     <p class="card-text">El objetivo es que encuentren la mayoria de letras en qeqchi.</p>
                                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                        <button type="button" class="btn btn-warning text-light">Visualizar</button>
-                                        <button type="button" class="btn btn-success text-light">Descargar</button>
+                                        <button type="button" class="btn btn-warning btn-sm text-light">Visualizar</button>
+                                        <button type="button" class="btn btn-success btn-sm text-light">Descargar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Los colores primarios</h5>
+                                    <p class="card-text">Identifica los colores primarios y realiza la traducción a Q'eqchi'</p>
+                                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                        <button type="button" class="btn btn-warning btn-sm text-light">Visualizar</button>
+                                        <button type="button" class="btn btn-success btn-sm text-light">Descargar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Frutas y verduras</h5>
+                                    <p class="card-text">Traduce las frutas y verduras que se te presentan a continuación.</p>
+                                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                        <button type="button" class="btn btn-warning btn-sm text-light">Visualizar</button>
+                                        <button type="button" class="btn btn-success btn-sm text-light">Descargar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Objetos en la escuela</h5>
+                                    <p class="card-text">Identifica los objetos que usas en la escuela y tradúcelos.</p>
+                                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                        <button type="button" class="btn btn-warning btn-sm text-light">Visualizar</button>
+                                        <button type="button" class="btn btn-success btn-sm text-light">Descargar</button>
                                     </div>
                                 </div>
                             </div>
@@ -139,25 +173,25 @@
     </div>
 
 
-    <footer class="footer mt-auto py-3 bg-light ">
+    <div class="container-fluid footer mt-auto py-3 bg-light">
         <div class="container">
-            <div class="row">
-                <div class="col">
-                    <h4>OXLAJUJ</h4>
-                    <span class="small text-muted">Aula virtual para fortalecer el aprendizaje del Idioma Maya Q'eqchi'.</span>
+            <footer class="py-1 my-2">
+                <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Inicio</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Sobre nosotros</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Fe y Alegría</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Ayuda</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Contacto</a></li>
+                </ul>
+                <div class="text-center">
+                    <p class="text-center text-muted small">&copy; 2021 OXLAJUJ Mi Aula Virtual - Fe y Alegría No. 41</p>
+
+                    <img src="../../img/logo-new-g-bn2.png" alt="" height="35"><br>
                 </div>
-                <div class="col">
-                    <h6>Nosotros</h6>
-                </div>
-                <div class="col">
-                    <h6>Servicios</h6>
-                </div>
-                <div class="col">
-                    <h6>Contáctanos</h6>
-                </div>
-            </div>
+
+            </footer>
         </div>
-    </footer>
+    </div>
 
 
 
@@ -167,7 +201,7 @@
 
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js "></script>
-    <script src="js/traductor.js "></script>
+    <script src="../../js/login.js "></script>
 
 
 </body>

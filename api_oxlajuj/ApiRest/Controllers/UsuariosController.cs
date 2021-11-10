@@ -104,5 +104,13 @@ namespace ApiRest
         {
             return Datos.UsuariosDatos.ReportePalabrasPopulares();
         }
+
+        [HttpPost]
+        [Route("api/TitulosWoksheetUser")]
+        public DataTable TitulosWoksheetUser(Entidades.UsuarioEntidad entidad)
+        {
+            return Datos.UsuariosDatos.TitulosWoksheetUser(entidad);
+        }
+
     }
 }

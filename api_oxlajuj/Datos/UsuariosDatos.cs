@@ -148,5 +148,16 @@ namespace Datos
 
             return DT;
         }
+
+        public static DataTable TitulosWoksheetUser(Entidades.UsuarioEntidad Entidad)
+        {
+            DataTable DT = new DataTable();
+            SqlCommand Comando = Conexion.EjecutarPA("Sesion.SP_ObtenerWorksheetUser");
+            Comando.Parameters.AddWithValue("@IdUsuario", Entidad.IdUsuario);
+
+            DT = Conexion.EjecutarComandoSelect(Comando);
+
+            return DT;
+        }
     }
 }

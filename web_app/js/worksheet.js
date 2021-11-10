@@ -1,12 +1,17 @@
 var urlApi = "http://localhost:60957/api/"
+    //var urlApi = "https://api.oxlajuj.com/api/"
+var DXTXTname = localStorage.getItem('NameUser');
+var DXTXTC0pe = localStorage.getItem('DUXDUser');
 
 //Se ejecuta en onload
 function ObtenerCategoriasPalabras() {
     document.getElementById("SelectTipoAll").setAttribute('disabled', 'disabled');
     document.getElementById("BtnAgregarPalabras").setAttribute('disabled', 'disabled');
 
+    $("#NombreDocente").val(DXTXTname)
+
     var settings = {
-        "url": "http://localhost:60957/api/ObtenerCategorias",
+        "url": urlApi + "ObtenerCategorias",
         "method": "GET",
         "timeout": 0,
     };
@@ -28,7 +33,7 @@ function ObtenerCategoriasPalabras() {
 //Se ejecuta en onload
 function ObtenerTipoEvaluacion() {
     var settings = {
-        "url": "http://localhost:60957/api/ObtenerTipoEvaluacion",
+        "url": urlApi + "ObtenerTipoEvaluacion",
         "method": "GET",
         "timeout": 0,
     };
@@ -50,7 +55,7 @@ function ObtenerTipoEvaluacion() {
 //1. Guardar encabezado de la hoja (El ID se guarda en localStorage)
 function GuardarEncabezadoWorksheet() {
     var settings = {
-        "url": "http://localhost:60957/api/AgregarHojaEncabezado",
+        "url": urlApi + "AgregarHojaEncabezado",
         "method": "POST",
         "timeout": 0,
         "headers": {
@@ -63,7 +68,7 @@ function GuardarEncabezadoWorksheet() {
             "FechaAplicacion": $("#FechaWorksheet").val(),
             "TxtTipoHoja": $("#SelectTipo").val(),
             "IntPrivacidad": 1,
-            "IdUsuario": 1
+            "IdUsuario": DXTXTC0pe
         }),
     };
 
@@ -94,7 +99,7 @@ function VerEncabezado() {
     var IdHG = localStorage.getItem('IdHeaderWorksheet');
 
     var settings = {
-        "url": "http://localhost:60957/api/VerHojaEncabezado",
+        "url": urlApi + "VerHojaEncabezado",
         "method": "POST",
         "timeout": 0,
         "headers": {
@@ -138,7 +143,7 @@ function VerEncabezado() {
 //2. Guardar cuerpo de la hoja (El ID se guarda en localStorage)
 function GuardarCuerpoWorksheet() {
     var settings = {
-        "url": "http://localhost:60957/api/AgregarHojaCuerpo",
+        "url": urlApi + "AgregarHojaCuerpo",
         "method": "POST",
         "timeout": 0,
         "headers": {
@@ -173,7 +178,7 @@ function GuardarCuerpoWorksheet() {
 //2.1 Se muestra la descripcion en el encabezado
 function VerCuerpo() {
     var settings = {
-        "url": "http://localhost:60957/api/VerHojaCuerpo",
+        "url": urlApi + "VerHojaCuerpo",
         "method": "POST",
         "timeout": 0,
         "headers": {
@@ -217,7 +222,7 @@ function AgregarNuevaSeccion() {
 
 
     var settings = {
-        "url": "http://localhost:60957/api/AgregarHojaSeccion",
+        "url": urlApi + "AgregarHojaSeccion",
         "method": "POST",
         "timeout": 0,
         "headers": {
@@ -277,7 +282,7 @@ function PalabrasAleatoriasPorCategoria() {
     $("#TblTopPalabrasCabecera td").remove();
 
     var settings = {
-        "url": "http://localhost:60957/api/TopCincoPalabras",
+        "url": urlApi + "TopCincoPalabras",
         "method": "POST",
         "timeout": 0,
         "headers": {
@@ -315,7 +320,7 @@ function PalabrasAleatoriasPorCategoria() {
 //3.1.1 
 function AgregarPalabraSeccion(IdPalabraPq) {
     var settings = {
-        "url": "http://localhost:60957/api/AgregarHojaPalabras",
+        "url": urlApi + "AgregarHojaPalabras",
         "method": "POST",
         "timeout": 0,
         "headers": {
@@ -363,7 +368,7 @@ function VerTituloSecciones() {
 
 
     var settings = {
-        "url": "http://localhost:60957/api/ObtenerTituloSeccion",
+        "url": urlApi + "ObtenerTituloSeccion",
         "method": "POST",
         "timeout": 0,
         "headers": {
@@ -406,7 +411,7 @@ function VerPalbrasSeccion() {
     $("#TablaTopPalabras" + TblTmp + " td").remove();
 
     var settings = {
-        "url": "http://localhost:60957/api/ObtenerPalabrasPorSeccion",
+        "url": urlApi + "ObtenerPalabrasPorSeccion",
         "method": "POST",
         "timeout": 0,
         "headers": {

@@ -14,6 +14,12 @@ function Mayuscula(palabra) {
 
 function BuscarPalabra() {
     //Mostrar cards para informacion
+
+    TextoBusqueda = $("#PalabraBuscar").val();
+    TextoBusquedaF = TextoBusqueda.trim();
+    console.log("'" + TextoBusqueda + "'")
+    console.log("'" + TextoBusquedaF + "'")
+
     var valor = '';
     document.getElementById('CardDefiniciones').innerHTML = valor;
     $(CardDefiniciones).prepend(CardInfo);
@@ -31,7 +37,7 @@ function BuscarPalabra() {
             "Content-Type": "application/json"
         },
         "data": JSON.stringify({
-            "TxtPalabraEspanol": $("#PalabraBuscar").val()
+            "TxtPalabraEspanol": TextoBusquedaF
         }),
     };
 
@@ -119,6 +125,7 @@ function OracionesDeEjemplo() {
 function PalabrasPopulares() {
     var settings = {
         "url": urlApi + "ObtenerTopPalabras",
+        //"url": urlApi + "ObtenerTopPalabras",
         "method": "GET",
         "timeout": 0,
     };

@@ -38,11 +38,8 @@ namespace Datos
         public static DataTable ObtenerTopPalabras()
         {
             DataTable DT = new DataTable();
-
             SqlCommand Comando = Conexion.EjecutarPA("Idiomas.ObtenerTopPalabras");
-
             DT = Conexion.EjecutarComandoSelect(Comando);
-
             return DT;
         }
 

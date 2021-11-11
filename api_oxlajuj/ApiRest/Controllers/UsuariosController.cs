@@ -33,6 +33,7 @@ namespace ApiRest
             return Datos.UsuariosDatos.OtenerDatosUsuario(entidad);
         }
 
+        [Authorize]
         [HttpPost]
         [Route("api/EliminarUsuario")]
         public DataTable EliminarUsuario(Entidades.UsuarioEntidad entidad)
@@ -40,6 +41,7 @@ namespace ApiRest
             return Datos.UsuariosDatos.EliminarUsuario(entidad);
         }
 
+        [Authorize]
         [HttpPost]
         [Route("api/ActualizarUsuario")]
         public DataTable ActualizarUsuario(Entidades.UsuarioEntidad entidad)
@@ -47,6 +49,7 @@ namespace ApiRest
             return Datos.UsuariosDatos.ActualizarUsuario(entidad);
         }
 
+        [Authorize]
         [HttpPost]
         [Route("api/CambiarContrasenia")]
         public DataTable CambiarContrasenia(Entidades.UsuarioEntidad entidad)
@@ -82,7 +85,7 @@ namespace ApiRest
             }
         }
 
-
+        [Authorize]
         [HttpGet]
         [Route("api/ReporteUsuariosActivos")]
         public DataTable ReporteUsuariosActivos()
@@ -90,6 +93,7 @@ namespace ApiRest
             return Datos.UsuariosDatos.ReporteUsuariosActivos();
         }
 
+        [Authorize]
         [HttpGet]
         [Route("api/ReporteUsuariosInactivos")]
         public DataTable ReporteUsuariosInactivos()
@@ -112,6 +116,7 @@ namespace ApiRest
             return Datos.UsuariosDatos.ReportePalabrasPopulares();
         }
 
+        [Authorize]
         [HttpPost]
         [Route("api/TitulosWoksheetUser")]
         public DataTable TitulosWoksheetUser(Entidades.UsuarioEntidad entidad)

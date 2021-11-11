@@ -262,3 +262,50 @@ BEGIN
 
 		SELECT Resultado = @Resultado
 END 
+
+
+
+
+/*
+	Tipo:	Cambiar contraseña
+	-------------------------------------
+	Autor:	Widman Esquivel
+	Fecha:	10/11/2021
+	-------------------------------------
+*/
+
+CREATE PROC Sesion.SP_CambiarPassword (@IdUsuario INT,@TxtPasswordUsuario NVARCHAR(150))
+AS
+DECLARE @FilasAfectadas TINYINT,
+		@Resultado		INT
+BEGIN
+	BEGIN TRAN
+
+		BEGIN TRY
+			UPDATE Sesion.TblUsuario 
+			SET		TxtPasswordUsuario	=	@TxtPasswordUsuario
+			WHERE	IdUsuario			=	@IdUsuario
+
+			SET @FilasAfectadas						= @@ROWCOUNT
+
+		END TRY
+
+		BEGIN CATCH
+			--Si no se hizo la transacción, se asigna 0
+			SET @FilasAfectadas						= 0
+		END CATCH
+
+		-- Se comprueba la transacción y se hace la operación correspondiente
+		IF(@FilasAfectadas > 0)
+			BEGIN
+				SET @Resultado = @IdUsuario
+				COMMIT -- Se confirma
+			END
+		ELSE
+			BEGIN
+				SET @Resultado = 0
+				ROLLBACK -- Se regresa al estado anterior
+			END
+
+		SELECT Resultado = @Resultado
+END 

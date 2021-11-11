@@ -16,7 +16,7 @@
 
 </head>
 
-<body class="d-flex flex-column min-vh-100" onload="autenticacionUser();">
+<body class="d-flex flex-column min-vh-100" onload="autenticacionUser(); VerAllWorksheet();">
 
     <nav class="navbar navbar-expand-md navbar-light ">
         <div class="container-fluid">
@@ -84,55 +84,9 @@
 
                     <p>Navega entre las muchas hojas de trabajo creadas por otros usuarios, o crea tu propio contenido.</p>
                     <hr>
-                    <div class="row row-cols-1 row-cols-md-3 g-4">
-                        <div class="col">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Busca las letras en qeqchi</h5>
-                                    <p class="card-text">El objetivo es que encuentren la mayoria de letras en qeqchi.</p>
-                                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                        <button type="button" class="btn btn-warning btn-sm text-light">Visualizar</button>
-                                        <button type="button" class="btn btn-success btn-sm text-light">Descargar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Los colores primarios</h5>
-                                    <p class="card-text">Identifica los colores primarios y realiza la traducción a Q'eqchi'</p>
-                                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                        <button type="button" class="btn btn-warning btn-sm text-light">Visualizar</button>
-                                        <button type="button" class="btn btn-success btn-sm text-light">Descargar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Frutas y verduras</h5>
-                                    <p class="card-text">Traduce las frutas y verduras que se te presentan a continuación.</p>
-                                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                        <button type="button" class="btn btn-warning btn-sm text-light">Visualizar</button>
-                                        <button type="button" class="btn btn-success btn-sm text-light">Descargar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Objetos en la escuela</h5>
-                                    <p class="card-text">Identifica los objetos que usas en la escuela y tradúcelos.</p>
-                                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                        <button type="button" class="btn btn-warning btn-sm text-light">Visualizar</button>
-                                        <button type="button" class="btn btn-success btn-sm text-light">Descargar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="row row-cols-1 row-cols-md-3 g-4" id="GridMaterialDidactico">
+
+
                     </div>
                 </div>
             </div>
@@ -202,6 +156,7 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js "></script>
     <script src="../../js/login.js "></script>
+    <script src="../../js/worksheet-p.js"></script>
 
 
 </body>

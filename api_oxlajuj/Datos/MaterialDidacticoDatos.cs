@@ -151,5 +151,16 @@ namespace Datos
 
             return DT;
         }
+
+        public static DataTable VerAllWorksheet()
+        {
+            DataTable DT = new DataTable();
+
+            SqlCommand Comando = Conexion.EjecutarPA("Aula.SP_VerAllWorksheet");
+
+            DT = Conexion.EjecutarComandoSelect(Comando);
+
+            return DT;
+        }
     }
 }

@@ -74,6 +74,13 @@ namespace ApiRest.Controllers
             return Datos.MaterialDidacticoDatos.ObtenerTipoEvaluacion();
         }
 
+        [HttpGet]
+        [Route("api/VerAllWorksheet")]
+        public DataTable VerAllWorksheet()
+        {
+            return Datos.MaterialDidacticoDatos.VerAllWorksheet();
+        }
+
         [HttpPost]
         [Route("api/ObtenerTituloSeccion")]
         public DataTable ObtenerTituloSeccion(Entidades.HojaSeccion entidad)

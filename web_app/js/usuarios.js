@@ -3,6 +3,7 @@ var urlApi = "http://localhost:60957/api/"
 
 var DXTXTname = localStorage.getItem('NameUser');
 var DXTXTC0pe = localStorage.getItem('DUXDUser');
+var tokenGloabl = localStorage.getItem('tokenuser');
 
 
 
@@ -17,12 +18,15 @@ function CargarMaterialDidactico() {
         "method": "POST",
         "timeout": 0,
         "headers": {
+            "Authorization": "Bearer " + tokenGloabl + "",
             "Content-Type": "application/json"
         },
         "data": JSON.stringify({
             "IdUsuario": DXTXTC0pe
         }),
     };
+
+
 
     $.ajax(settings).done(function(response) {
         console.log(response);

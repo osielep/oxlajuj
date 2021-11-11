@@ -48,6 +48,13 @@ namespace ApiRest
         }
 
         [HttpPost]
+        [Route("api/CambiarContrasenia")]
+        public DataTable CambiarContrasenia(Entidades.UsuarioEntidad entidad)
+        {
+            return Datos.UsuariosDatos.CambiarContrasenia(entidad);
+        }
+
+        [HttpPost]
         [Route("api/IniciarSesion")]
         public DataTable IniciarSesion(Entidades.UsuarioEntidad entidad)
         {

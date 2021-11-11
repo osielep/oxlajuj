@@ -34,7 +34,7 @@ function UsuariosActivos() {
                     "</td><td>" + ApUser +
                     "</td><td>" + EmUser +
                     "</td><td>" + GnUser +
-                    "</td><td><a href='' title='Cambiar clave de usuario' onclick='CambiarClave(" + IdUser + ");'><span class='badge rounded-pill bg-success'><i class='fas fa-key'></i></span></a>  <a href='' title='Desactivar usuario' onclick='DesactivarUsuario(" + IdUser + ");'><span class='badge rounded-pill bg-danger'><i class='fas fa-user-times'></i></span></span></a> <a href='' title='Enviar notificación' onclick='Notificacion(" + IdUser + ");'><span class='badge rounded-pill bg-warning'><i class='fas fa-bell'></i></span></span></a></td></tr>";
+                    "</td><td><a href='' title='Cambiar clave de usuario' data-bs-toggle='modal' data-bs-target='#SetPassword'><span class='badge rounded-pill bg-success'><i class='fas fa-key'></i></span></a>  <a href='' title='Desactivar usuario' onclick='DesactivarUsuario(" + IdUser + ");'><span class='badge rounded-pill bg-danger'><i class='fas fa-user-times'></i></span></span></a> <a href='' title='Enviar notificación' onclick='Notificacion(" + IdUser + ");'><span class='badge rounded-pill bg-warning'><i class='fas fa-bell'></i></span></span></a></td></tr>";
                 //"</td><td><a href='#' '>  <span class='badge bg-success'><i class='fas fa-plus-square'></i> Agregar</span></a> </td></tr>";
                 $(fila).appendTo("#TblUsuarios");
 

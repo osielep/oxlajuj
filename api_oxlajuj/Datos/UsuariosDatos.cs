@@ -86,6 +86,19 @@ namespace Datos
         }
 
 
+        public static DataTable CambiarContrasenia(Entidades.UsuarioEntidad Entidad)
+        {
+            DataTable DT = new DataTable();
+
+            SqlCommand Comando = Conexion.EjecutarPA("Sesion.SP_CambiarPassword");
+            Comando.Parameters.AddWithValue("@IdUsuario", Entidad.IdUsuario);
+            Comando.Parameters.AddWithValue("@TxtPasswordUsuario", Funciones.PasswordSHA512(Entidad.TxtPasswordUsuario));
+
+            DT = Conexion.EjecutarComandoSelect(Comando);
+
+            return DT;
+        }
+
         public static DataTable IniciarSesion(Entidades.UsuarioEntidad Entidad)
         {
             DataTable DT = new DataTable();

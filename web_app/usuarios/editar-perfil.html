@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="../css/estilos.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/utilidades.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+    <!-- Font awesome-->
+    <script src="https://kit.fontawesome.com/02fcd5a7a9.js" crossorigin="anonymous"></script>
+
+
+
+
+
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+        </symbol>
+        <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+        </symbol>
+        <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+        </symbol>
+        <symbol id="autor-text" viewBox="0 0 16 16">
+            <path d="M2.5 3a.5.5 0 0 0 0 1h11a.5.5 0 0 0 0-1h-11zm5 3a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1h-6zm0 3a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1h-6zm-5 3a.5.5 0 0 0 0 1h11a.5.5 0 0 0 0-1h-11zm.79-5.373c.112-.078.26-.17.444-.275L3.524 6c-.122.074-.272.17-.452.287-.18.117-.35.26-.51.428a2.425 2.425 0 0 0-.398.562c-.11.207-.164.438-.164.692 0 .36.072.65.217.873.144.219.385.328.72.328.215 0 .383-.07.504-.211a.697.697 0 0 0 .188-.463c0-.23-.07-.404-.211-.521-.137-.121-.326-.182-.568-.182h-.282c.024-.203.065-.37.123-.498a1.38 1.38 0 0 1 .252-.37 1.94 1.94 0 0 1 .346-.298zm2.167 0c.113-.078.262-.17.445-.275L5.692 6c-.122.074-.272.17-.452.287-.18.117-.35.26-.51.428a2.425 2.425 0 0 0-.398.562c-.11.207-.164.438-.164.692 0 .36.072.65.217.873.144.219.385.328.72.328.215 0 .383-.07.504-.211a.697.697 0 0 0 .188-.463c0-.23-.07-.404-.211-.521-.137-.121-.326-.182-.568-.182h-.282a1.75 1.75 0 0 1 .118-.492c.058-.13.144-.254.257-.375a1.94 1.94 0 0 1 .346-.3z"
+            />
+        </symbol>
+        <symbol id="autor-audio" viewBox="0 0 16 16">
+            <path d="M11 6.64a1 1 0 0 0-1.243-.97l-1 .25A1 1 0 0 0 8 6.89v4.306A2.572 2.572 0 0 0 7 11c-.5 0-.974.134-1.338.377-.36.24-.662.628-.662 1.123s.301.883.662 1.123c.364.243.839.377 1.338.377.5 0 .974-.134 1.338-.377.36-.24.662-.628.662-1.123V8.89l2-.5V6.64z"
+            />
+            <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z" />
+        </symbol>
+        <symbol id="trash" viewBox="0 0 16 16">
+            <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+        </symbol>
+        <symbol id="progreso" viewBox="0 0 16 16">
+            <path d="M13.5 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-11a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h11zm-11-1a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2h-11z"/>
+            <path d="M6.5 3a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V3zm-4 0a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V3zm8 0a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V3z"/>
+        </symbol>
+        <symbol id="salir" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+            <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+        </symbol>
+    </svg>
+
+    <title>Editar perfil - Oxlajuj Mi Aula Virtual</title>
+
+
+</head>
+
+<body class="d-flex flex-column min-vh-100" onload="autenticacionUser(); CargarDatosUser();">
+
+
+
+    <nav class="navbar navbar-expand-md navbar-light ">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/"><img src="../img/logo-new-g.png" alt="" height="35"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link " href="/traductor/">Traductor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../cursos/">Cursos</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Material didáctico</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Colecciones</a></li>
+                            <li><a class="dropdown-item" href="#">Hojas de trabajo</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Ayuda</a>
+                    </li>
+                </ul>
+                <form class="d-flex" id="SesionGlobalButton">
+                    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#LoginModal">
+                        Iniciar Sesion
+                    </button>
+                </form>
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <div class="container-fluid">
+
+    </div>
+    <div class="container-fluid bg-success" id="HeaderCurso">
+
+        <div class="container">
+            <div class="text-center">
+                <a class="nav-link link-light" href="#">Mi <strong>perfil</strong> en <strong>OXLAJUJ</strong></a>
+                <!--<img src="/img/header-top-traductor.png" class="text-center" alt="">-->
+            </div>
+        </div>
+
+    </div>
+    <br>
+    <div class="container">
+        <div class="card">
+            <br>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-3 col-sm-12">
+                        <img src="https://clubsuizomadrid.org/assets/images/juntadirectiva/user-gray.png" class="rounded mx-auto d-block" style="width: 250px;" alt="...">
+                        <p></p>
+                        <div class="text-center">
+                            <strong><span id="NombreUserPerfil" class="fs-5"></span></strong><br>
+                            <!-- <span class="badge rounded-pill bg-success">Estudiante</span> -->
+                            <!-- <span class="badge rounded-pill bg-danger">Profesor</span> -->
+                            <br>
+                            <div class="container">
+                                <div class="alert alert-warning" role="alert">
+                                    Mi perfil en OXLAJUJ
+                                </div>
+                            </div>
+
+                            <p></p>
+                            <!-- <button type="button" class="btn btn-outline-dark btn-sm">Editar perfil</button> -->
+                        </div>
+                        <br>
+                    </div>
+                    <div class="col-md-9 col-sm-12">
+                        <ul class="nav nav-tabs">
+                            <!-- <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Mis cursos</a>
+                            </li> -->
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html">Material didáctico</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Cursos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="editar-perfil.html">Editar perfil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="perfil.html/">Perfil público <i class="fas fa-external-link-alt"></i> </a>
+                            </li>
+                        </ul>
+                        <br>
+                        <!--AD
+                        <div class="row text-center">
+                            <h4>¿Quieres formar parte de la red de Profesores OXLAJUJ?</h4>
+                            <a href="#">
+                                <h4><span class="badge rounded-pill bg-warning">Darme de alta como profesor</span></h4>
+                            </a>
+                        </div>
+                        <div class="row text-center">
+                            <h4>¿Sin cursos aun? Invierte en conocimiento.</h4>
+                            <a href="#">
+                                <h4><span class="badge rounded-pill bg-warning">Ver todos los cursos</span></h4>
+                            </a>
+                        </div>
+                        End AD-->
+                        <div class="form-group">
+                            <div class="row" id="GridMaterialDidactico">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <!-- Modal Login-->
+    <div class="modal fade" id="LoginModal" tabindex="-1" aria-labelledby="LoginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-5 shadow">
+                <div class="modal-header p-5 pb-4 border-bottom-0">
+                    <!--<img src="/img/logo-new-g.png" style="width: 250px;" alt="">-->
+                    <h2 class="fw-bold mb-0" id="LoginModalLabel">Iniciar Sesión</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-5 pt-0">
+                    <form class="">
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control rounded-4" id="EmailForm" placeholder="name@example.com" required>
+                            <label for="floatingInput">Correo electrónico</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control rounded-4" id="PasswordForm" placeholder="Password" required>
+                            <label for="floatingPassword">Contraseña</label>
+                        </div>
+
+                        <button class="w-100 mb-2 btn btn-lg rounded-4 btn-success text-light" type="button" onclick="LoginUserToken();">Ingresar</button>
+                        <div id="AlertaError">
+
+                        </div>
+                        <hr class="my-4">
+                        <div class="text-center">
+                            <small class="text-muted"><strong>OXLAJUJ Mi Aula Virtual</strong>  es una plataforma para fortalecer el aprendizaje del Idioma Maya Q'eqchi'.</small><br><br>
+                            <!-- <button type="button" href class="btn btn-outline-dark btn-sm">Registrarme</button> -->
+                            <a class="btn btn-outline-dark btn-sm" href="/registro.html" role="button">Registrarme</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid footer mt-auto py-3 bg-light">
+        <div class="container">
+            <footer class="py-1 my-2">
+                <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Inicio</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Sobre nosotros</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Fe y Alegría</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Ayuda</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Contacto</a></li>
+                </ul>
+                <div class="text-center">
+                    <p class="text-center text-muted small">&copy; 2021 OXLAJUJ Mi Aula Virtual - Fe y Alegría No. 41</p>
+
+                    <img src="../img/logo-new-g-bn2.png" alt="" height="35"><br>
+                </div>
+
+            </footer>
+        </div>
+    </div>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="../libs/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js "></script>
+    <script src="../js/usuarios.js "></script>
+    <script src="../js/login.js "></script>
+</body>
+
+</html>

@@ -93,6 +93,44 @@ namespace Datos
         }
 
 
+        public static DataTable VerHojaCuerpoParametro(Entidades.HojaEncabezado Entidad)
+        {
+            DataTable DT = new DataTable();
+
+            SqlCommand Comando = Conexion.EjecutarPA("Aula.SP_VerCuerpoP");
+            Comando.Parameters.AddWithValue("@IdHojaEncabezado", Entidad.IdHojaEncabezado);
+
+            DT = Conexion.EjecutarComandoSelect(Comando);
+
+            return DT;
+        }
+
+
+        public static DataTable VerHojaPalabrasParametro(Entidades.HojaCuerpo Entidad)
+        {
+            DataTable DT = new DataTable();
+
+            SqlCommand Comando = Conexion.EjecutarPA("Aula.SP_VerPalabrasP");
+            Comando.Parameters.AddWithValue("@IdHojaCuerpo", Entidad.IdHojaCuerpo);
+
+            DT = Conexion.EjecutarComandoSelect(Comando);
+
+            return DT;
+        }
+
+        public static DataTable VerTodasLasSeries(Entidades.HojaCuerpo Entidad)
+        {
+            DataTable DT = new DataTable();
+
+            SqlCommand Comando = Conexion.EjecutarPA("Aula.SP_VerTodasLasSeries");
+            Comando.Parameters.AddWithValue("@IdHojaCuerpo", Entidad.IdHojaCuerpo);
+
+            DT = Conexion.EjecutarComandoSelect(Comando);
+
+            return DT;
+        }
+
+
         public static DataTable TopCincoPalabras(Entidades.TipoDepalabraEntidad Entidad)
         {
             DataTable DT = new DataTable();

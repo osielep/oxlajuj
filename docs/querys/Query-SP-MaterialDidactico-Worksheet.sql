@@ -259,15 +259,59 @@ END
 	|	Fecha:	26/10/2021					|
 	+---------------------------------------+
 */
-CREATE PROC Aula.VerHojaCuerpo(@IdHojaCuerpo int)
+ALTER PROC Aula.VerHojaCuerpo(@IdHojaCuerpo int)
 AS
 BEGIN
 
 	select	
-			h.TxtDescripcion
+			 h.TxtDescripcion, h.IdHojaCuerpo
 	from	
 			Aula.HojaCuerpo AS h
 	where
 			h.IdHojaCuerpo = @IdHojaCuerpo
 
 END
+
+
+/*
+	+---------------------------------------+
+	|	Tipo:	Ver Worksheets				|
+	+---------------------------------------+
+	|	Autor:	Widman Esquivel				|
+	|	Fecha:	11/11/2021					|
+	+---------------------------------------+
+*/
+CREATE PROC Aula.SP_VerAllWorksheet
+AS
+BEGIN
+
+	select e.IdHojaEncabezado, e.TxtTitulo, c.TxtDescripcion
+	from aula.HojaEncabezado as e, aula.HojaCuerpo as c
+	where e.IdHojaEncabezado = c.IdHojaEncabezado and
+	e.IntPrivacidad = 1
+
+END
+
+
+
+/*
+	+---------------------------------------+
+	|	Tipo:	Ver todas las series		|
+	+---------------------------------------+
+	|	Autor:	Widman Esquivel				|
+	|	Fecha:	11/11/2021					|
+	+---------------------------------------+
+*/
+CREATE PROC Aula.SP_VerTodasLasSeries (@IdHojaCuerpo as INT)
+AS
+BEGIN
+
+	select c.IdHojaCuerpo, s.IdHojaSeccion, s.IdTipoEvaluacion, e.TxtNombreEvaluacion, e.TxtDescripcion
+	from Aula.HojaCuerpo AS c, Aula.HojaSeccion AS s, Aula.TipoEvaluacion AS e
+	where s.IdHojaCuerpo = c.IdHojaCuerpo and
+	s.IdTipoEvaluacion = e.IdTipoEvaluacion and
+	c.IdHojaCuerpo = @IdHojaCuerpo
+
+END
+
+exec aula.SP_VerTodasLasSeries 5

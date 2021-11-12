@@ -82,6 +82,27 @@ namespace ApiRest.Controllers
         }
 
         [HttpPost]
+        [Route("api/VerTodasLasSeries")]
+        public DataTable VerTodasLasSeries(Entidades.HojaCuerpo entidad)
+        {
+            return Datos.MaterialDidacticoDatos.VerTodasLasSeries(entidad);
+        }
+
+        [HttpPost]
+        [Route("api/VerHojaCuerpoParametro")]
+        public DataTable VerHojaCuerpoParametro(Entidades.HojaEncabezado entidad)
+        {
+            return Datos.MaterialDidacticoDatos.VerHojaCuerpoParametro(entidad);
+        }
+
+        [HttpPost]
+        [Route("api/VerHojaPalabrasParametro")]
+        public DataTable VerHojaPalabrasParametro(Entidades.HojaCuerpo entidad)
+        {
+            return Datos.MaterialDidacticoDatos.VerHojaPalabrasParametro(entidad);
+        }
+
+        [HttpPost]
         [Route("api/ObtenerTituloSeccion")]
         public DataTable ObtenerTituloSeccion(Entidades.HojaSeccion entidad)
         {

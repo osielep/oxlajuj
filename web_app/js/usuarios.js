@@ -1,5 +1,5 @@
-//var urlApi = "https://api.oxlajuj.com/api/"
-var urlApi = "http://localhost:60957/api/"
+var urlApi = "https://api.oxlajuj.com/api/"
+    //var urlApi = "http://localhost:60957/api/"
 
 var DXTXTname = localStorage.getItem('NameUser');
 var DXTXTC0pe = localStorage.getItem('DUXDUser');

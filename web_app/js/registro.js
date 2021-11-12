@@ -1,5 +1,5 @@
-//var urlApi = "https://api.oxlajuj.com/api/"
-var urlApi = "http://localhost:60957/api/"
+var urlApi = "https://api.oxlajuj.com/api/"
+    //var urlApi = "http://localhost:60957/api/"
 
 
 

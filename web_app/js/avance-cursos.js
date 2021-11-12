@@ -1,4 +1,4 @@
-var urlApi = "http://localhost:60957/api/"
+var urlApi = "https://api.oxlajuj.com/api/"
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function PorcentajeTotal() {
     var settings = {
-        "url": "http://localhost:60957/api/MostarPorcentajeTotal",
+        "url": urlApi + "MostarPorcentajeTotal",
         "method": "POST",
         "timeout": 0,
         "headers": {

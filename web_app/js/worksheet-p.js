@@ -1,11 +1,11 @@
-var urlApi = "http://localhost:60957/api/"
-    //var urlApi = "https://api.oxlajuj.com/api/"
+//var urlApi = "http://localhost:60957/api/"
+var urlApi = "https://api.oxlajuj.com/api/"
 var DXTXTname = localStorage.getItem('NameUser');
 var DXTXTC0pe = localStorage.getItem('DUXDUser');
 
 function VerAllWorksheet() {
     var settings = {
-        "url": "http://localhost:60957/api/VerAllWorksheet",
+        "url": urlApi + "VerAllWorksheet",
         "method": "GET",
         "timeout": 0,
         "headers": {

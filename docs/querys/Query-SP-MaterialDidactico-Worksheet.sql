@@ -302,7 +302,7 @@ END
 	|	Fecha:	11/11/2021					|
 	+---------------------------------------+
 */
-CREATE PROC Aula.SP_VerTodasLasSeries (@IdHojaCuerpo as INT)
+ALTER PROC Aula.SP_VerTodasLasSeries (@IdHojaCuerpo as INT)
 AS
 BEGIN
 
@@ -314,4 +314,51 @@ BEGIN
 
 END
 
-exec aula.SP_VerTodasLasSeries 5
+
+
+/*
+	+---------------------------------------+
+	|	Tipo:	Ver cuerpo de Workshheet	|
+	+---------------------------------------+
+	|	Autor:	Widman Esquivel				|
+	|	Fecha:	11/11/2021					|
+	+---------------------------------------+
+*/
+CREATE PROC Aula.SP_VerCuerpoP (@IdHojaEncabezado as INT)
+AS
+BEGIN
+
+	select * 
+	from aula.HojaCuerpo 
+	where IdHojaEncabezado = @IdHojaEncabezado
+
+END
+
+
+
+/*
+	+---------------------------------------+
+	|	Tipo:	Ver palabras de Worksheet	|
+	+---------------------------------------+
+	|	Autor:	Widman Esquivel				|
+	|	Fecha:	11/11/2021					|
+	+---------------------------------------+
+*/
+CREATE PROC Aula.SP_VerPalabrasP(@IdHojaCuerpo as INT)
+AS
+BEGIN
+
+	select c.IdHojaCuerpo, s.IdHojaSeccion, p.IdHojaPalabra, i.TxtPalabraEspanol, i.TxtPalabraIdiomaMaya
+	from aula.HojaCuerpo as c, aula.HojaSeccion AS s, aula.HojaPalabra AS p, idiomas.TblPalabra AS i
+	where p.IdHojaSeccion = s.IdHojaSeccion
+	and s.IdHojaCuerpo = c.IdHojaCuerpo 
+	and p.IdPalabra = i.IdPalabra
+	and c.IdHojaCuerpo = @IdHojaCuerpo
+
+END
+
+exec Aula.SP_VerPalabrasP 5
+
+
+
+

@@ -24,6 +24,7 @@ namespace Entidades
         public int IdGenero { get; set; }
         public string TxtDescripcion { get; set; }
         public string TxtImg { get; set; }
+        public string UrlFoto { get; set; }
     }
 
     public class InstitucionIdentidad : TokenEntidad

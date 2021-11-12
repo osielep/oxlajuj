@@ -99,6 +99,33 @@ namespace Datos
             return DT;
         }
 
+
+        public static DataTable ActualizarFoto(Entidades.UsuarioEntidad Entidad)
+        {
+            DataTable DT = new DataTable();
+
+            SqlCommand Comando = Conexion.EjecutarPA("Sesion.SP_AgregarFoto");
+            Comando.Parameters.AddWithValue("@IdUsuario", Entidad.IdUsuario);
+            Comando.Parameters.AddWithValue("@UrlFoto", Entidad.UrlFoto);
+
+            DT = Conexion.EjecutarComandoSelect(Comando);
+
+            return DT;
+        }
+
+
+        public static DataTable VerFoto(Entidades.UsuarioEntidad Entidad)
+        {
+            DataTable DT = new DataTable();
+
+            SqlCommand Comando = Conexion.EjecutarPA("Sesion.SP_ObtenerFotoUsuario");
+            Comando.Parameters.AddWithValue("@IdUsuario", Entidad.IdUsuario);
+
+            DT = Conexion.EjecutarComandoSelect(Comando);
+
+            return DT;
+        }
+
         public static DataTable IniciarSesion(Entidades.UsuarioEntidad Entidad)
         {
             DataTable DT = new DataTable();

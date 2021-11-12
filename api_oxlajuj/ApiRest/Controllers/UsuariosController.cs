@@ -124,5 +124,20 @@ namespace ApiRest
             return Datos.UsuariosDatos.TitulosWoksheetUser(entidad);
         }
 
+        
+        [HttpPost]
+        [Route("api/ActualizarFoto")]
+        public DataTable ActualizarFoto(Entidades.UsuarioEntidad entidad)
+        {
+            return Datos.UsuariosDatos.ActualizarFoto(entidad);
+        }
+
+        [HttpPost]
+        [Route("api/VerFoto")]
+        public DataTable VerFoto(Entidades.UsuarioEntidad entidad)
+        {
+            return Datos.UsuariosDatos.VerFoto(entidad);
+        }
+
     }
 }

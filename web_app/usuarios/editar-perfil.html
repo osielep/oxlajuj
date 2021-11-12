@@ -118,7 +118,7 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-3 col-sm-12">
-                        <img src="https://clubsuizomadrid.org/assets/images/juntadirectiva/user-gray.png" class="rounded mx-auto d-block" style="width: 250px;" alt="...">
+                        <div id="FotoUsuario"></div>
                         <p></p>
                         <div class="text-center">
                             <strong><span id="NombreUserPerfil" class="fs-5"></span></strong><br>
@@ -156,22 +156,13 @@
                             </li>
                         </ul>
                         <br>
-                        <!--AD
-                        <div class="row text-center">
-                            <h4>¿Quieres formar parte de la red de Profesores OXLAJUJ?</h4>
-                            <a href="#">
-                                <h4><span class="badge rounded-pill bg-warning">Darme de alta como profesor</span></h4>
-                            </a>
-                        </div>
-                        <div class="row text-center">
-                            <h4>¿Sin cursos aun? Invierte en conocimiento.</h4>
-                            <a href="#">
-                                <h4><span class="badge rounded-pill bg-warning">Ver todos los cursos</span></h4>
-                            </a>
-                        </div>
-                        End AD-->
                         <div class="form-group">
-                            <div class="row" id="GridMaterialDidactico">
+                            <div class="row" id="EditarDatosUsuario">
+                                <div class="col-5">
+                                    <label for="formFile" class="form-label"><strong>Agrega foto de perfil</strong></label>
+                                    <input class="form-control" id="inputFileToLoad" type="file"><br>
+                                    <button type="button" class="btn btn-success text-light" onclick="encodeImageFileAsURL();">Cargar</button>
+                                </div>
 
                             </div>
                         </div>
